@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/4/29 ?U?? 03:53:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.AdmFunctionType" table="ADM_FUNCTION_TYPE" schema="dbo">
+         <id name="id" type="string">
+            <column name="FUNCTION_ID" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="functionName" type="string">
+            <column name="FUNCTION_NAME" />
+        </property>
+        <property name="functionCode" type="string">
+            <column name="FUNCTION_CODE" length="20" />
+        </property>
+        <property name="functionDescription" type="string">
+            <column name="FUNCTION_DESCRIPTION" />
+        </property>
+        <property name="functionUrl" type="string">
+            <column name="FUNCTION_URL" length="200" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="1" />
+        </property>
+        <property name="parentFunctionId" type="string">
+            <column name="PARENT_FUNCTION_ID" length="30" />
+        </property>
+        <property name="functionCategory" type="string">
+            <column name="FUNCTION_CATEGORY" length="40" />
+        </property>
+        <property name="functionOrder" type="int">
+            <column name="FUNCTION_ORDER" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/6/3 ?U?? 01:30:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.AdmRoleFunction" table="ADM_ROLE_FUNCTION" schema="dbo">
+        <composite-id name="id" class="com.cybersoft4u.xian.iatoms.services.dmo.AdmRoleFunctionId">
+            <key-property name="roleId" type="int">
+                <column name="ROLE_ID" />
+            </key-property>
+            <key-property name="functionId" type="java.lang.String">
+                <column name="FUNCTION_ID" length="20" />
+            </key-property>
+        </composite-id>
+        <property name="isQuery" type="int">
+            <column name="IS_QUERY" not-null="true" />
+        </property>
+        <property name="isAdd" type="int">
+            <column name="IS_ADD" not-null="true" />
+        </property>
+        <property name="isEdit" type="int">
+            <column name="IS_EDIT" not-null="true" />
+        </property>
+        <property name="isDelete" type="int">
+            <column name="IS_DELETE" not-null="true" />
+        </property>
+        <property name="isReport" type="int">
+            <column name="IS_REPORT" not-null="true" />
+        </property>
+        <property name="isExport" type="int">
+            <column name="IS_EXPORT" not-null="true" />
+        </property>
+        <property name="isPrint" type="int">
+            <column name="IS_PRINT" not-null="true" />
+        </property>
+        <property name="isExtRight1" type="int">
+            <column name="IS_EXT_RIGHT1" not-null="true" />
+        </property>
+        <property name="isExtRight2" type="int">
+            <column name="IS_EXT_RIGHT2" not-null="true" />
+        </property>
+        <property name="isExtRight3" type="int">
+            <column name="IS_EXT_RIGHT3" not-null="true" />
+        </property>
+        <property name="isExtRight4" type="int">
+            <column name="IS_EXT_RIGHT4" not-null="true" />
+        </property>
+        <property name="isExtRight5" type="int">
+            <column name="IS_EXT_RIGHT5" not-null="true" />
+        </property>
+        <property name="createUser" type="java.lang.String">
+            <column name="CREATE_USER" />
+        </property>
+        <property name="createUserName" type="java.lang.String">
+            <column name="CREATE_USER_NAME" />
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="CREATE_DATE" length="23" />
+        </property>
+        <property name="updateUser" type="java.lang.String">
+            <column name="UPDATE_USER" />
+        </property>
+        <property name="updateUserName" type="java.lang.String">
+            <column name="UPDATE_USER_NAME" />
+        </property>
+        <property name="updateDate" type="timestamp">
+            <column name="UPDATE_DATE" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

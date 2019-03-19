@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/6/3 ?U?? 01:30:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.AdmUser" table="ADM_USER" schema="dbo">
+        <id name="id" type="string">
+            <column name="USER_ID" length="32" not-null="true"/>
+        </id>
+        <property name="account" type="string">
+            <column name="ACCOUNT" length="32" />
+        </property>
+        <property name="companyId" type="string">
+            <column name="COMPANY_ID" length="32" />
+        </property>
+        <property name="deptCode" type="string">
+            <column name="DEPT_CODE" length="32" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="100" />
+        </property>
+        <property name="cname" type="string">
+            <column name="CNAME" length="50" />
+        </property>
+        <property name="ename" type="string">
+            <column name="ENAME" length="50" />
+        </property>
+        <property name="tel" type="string">
+            <column name="TEL" length="20" />
+        </property>
+        <property name="mobile" type="string">
+            <column name="MOBILE" length="20" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="100" />
+        </property>
+        <property name="managerEmail" type="string">
+            <column name="MANAGER_EMAIL" length="100" />
+        </property>
+        <property name="userDesc" type="string">
+            <column name="USER_DESC" length="255" />
+        </property>
+        <property name="retry" type="int">
+            <column name="RETRY"  length="10"/>
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="40" />
+        </property>
+        <property name="dataAcl" type="string">
+            <column name="DATA_ACL" length="1" />
+        </property>
+        <property name="lastLoginDate" type="timestamp">
+            <column name="LAST_LOGIN_DATE" length="23" />
+        </property>
+        <property name="changePwdDate" type="date">
+            <column name="CHANGE_PWD_DATE" length="10" />
+        </property>        
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+        <property name="deleted" type="string">
+            <column name="DELETED" length="1" not-null="true" />
+        </property>
+        <property name="resetPwd" type="string">
+            <column name="RESET_PWD" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

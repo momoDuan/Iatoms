@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.DmmSupplies" table="DMM_SUPPLIES" schema="dbo">
+        <id name="suppliesId" type="string"  >
+            <column name="SUPPLIES_ID" length="32" />
+              <generator class="assigned" />
+        </id>
+        <property name="companyId" type="string">
+            <column name="COMPANY_ID" length="32" />
+        </property>
+        <property name="suppliesType" type="string">
+            <column name="SUPPLIES_TYPE" length="40" />
+        </property>
+        <property name="suppliesName" type="string">
+            <column name="SUPPLIES_NAME" length="50" />
+        </property>
+        <property name="price" type="big_decimal">
+            <column name="PRICE" precision="12" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

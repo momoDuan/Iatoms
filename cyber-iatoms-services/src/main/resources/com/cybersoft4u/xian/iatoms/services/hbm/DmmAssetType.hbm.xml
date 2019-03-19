@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/7/08 created by ericdu -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.DmmAssetType" table="DMM_ASSET_TYPE" schema="dbo">
+        <id name="assetTypeId" type="string">
+            <column name="ASSET_TYPE_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" />
+        </property>
+        <property name="brand" type="string">
+            <column name="BRAND" />
+        </property>
+        <property name="model" type="string">
+            <column name="MODEL" />
+        </property>
+        <property name="assetCategory" type="string">
+            <column name="ASSET_CATEGORY" length="40" />
+        </property>
+        <property name="unit" type="string">
+            <column name="UNIT" />
+        </property>
+        <property name="safetyStock" type="java.math.BigDecimal">
+            <column name="SAFETY_STOCK" precision="15" scale="0" />
+        </property>
+        <property name="remark" type="string">
+            <column name="REMARK" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+        <property name="deleted" type="string">
+            <column name="DELETED" length="1" />
+        </property>
+        <property name="deletedById" type="string">
+            <column name="DELETED_BY_ID" />
+        </property>
+        <property name="deletedByName" type="string">
+            <column name="DELETED_BY_NAME" />
+        </property>
+        <property name="deletedDate" type="timestamp">
+            <column name="DELETED_DATE" length="23" />
+        </property>       
+    </class>
+</hibernate-mapping>

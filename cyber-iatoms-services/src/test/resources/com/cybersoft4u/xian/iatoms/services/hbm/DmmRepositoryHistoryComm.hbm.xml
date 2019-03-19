@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017/1/24 ?U?? 02:56:57 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.DmmRepositoryHistoryComm" table="DMM_REPOSITORY_HISTORY_COMM" schema="dbo">
+        <composite-id name="id" class="com.cybersoft4u.xian.iatoms.services.dmo.DmmRepositoryHistoryCommId">
+            <key-property name="historyId" type="string">
+                <column name="HISTORY_ID" length="32" />
+            </key-property>
+            <key-property name="faultComponent" type="string">
+                <column name="FAULT_COMPONENT" length="40" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.PvmApplication" table="PVM_APPLICATION" schema="dbo">
+        <id name="applicationId" type="string">
+            <column name="APPLICATION_ID" not-null="true" length="32"/>
+            <generator class="assigned" />
+        </id>
+        <property name="version" type="string">
+            <column name="VERSION" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" />
+        </property>
+        <property name="customerId" type="string">
+            <column name="CUSTOMER_ID" />
+        </property>
+        <property name="assetCategory" type="string">
+            <column name="ASSET_CATEGORY" length="40" />
+        </property>
+        <property name="comment" type="string">
+            <column name="COMMENT" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+        <property name="deleted" type="string">
+            <column name="DELETED" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

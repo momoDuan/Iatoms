@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.DmmAssetTransInfo" table="DMM_ASSET_TRANS_INFO" schema="dbo">
+        <id name="assetTransId" type="string">
+            <column name="ASSET_TRANS_ID" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="fromWarehouseId" type="string">
+            <column name="FROM_WAREHOUSE_ID" length="32" not-null="true" />
+        </property>
+        <property name="toWarehouseId" type="string">
+            <column name="TO_WAREHOUSE_ID" length="32" not-null="true" />
+        </property>
+        <property name="comment" type="string">
+            <column name="COMMENT" />
+        </property>
+        <property name="isListDone" type="string">
+            <column name="IS_LIST_DONE" length="1" not-null="true" />
+        </property>
+        <property name="isTransDone" type="string">
+            <column name="IS_TRANS_DONE" length="1" not-null="true" />
+        </property>
+        <property name="isBack" type="string">
+            <column name="IS_BACK" length="1" not-null="true" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+        <property name="noticeUserId" type="string">
+            <column name="NOTICE_USER_ID" />
+        </property>
+        <property name="transOutUserId" type="string">
+            <column name="TRANS_OUT_USER_ID" />
+        </property>
+        <property name="transOutUserName" type="string">
+            <column name="TRANS_OUT_USER_NAME" />
+        </property>
+        <property name="transOutDate" type="timestamp">
+            <column name="TRANS_OUT_DATE" length="23" />
+        </property>
+        <property name="acceptanceUserId" type="string">
+            <column name="ACCEPTANCE_USER_ID" />
+        </property>
+        <property name="acceptanceUserName" type="string">
+            <column name="ACCEPTANCE_USER_NAME" />
+        </property>
+        <property name="acceptanceDate" type="timestamp">
+            <column name="ACCEPTANCE_DATE" length="23" />
+        </property>
+        <property name="cancelUserId" type="string">
+            <column name="CANCEL_USER_ID" />
+        </property>
+        <property name="cancelUserName" type="string">
+            <column name="CANCEL_USER_NAME" />
+        </property>
+        <property name="cancelDate" type="timestamp">
+            <column name="CANCEL_DATE" length="23" />
+        </property>
+        <property name="isCancel" type="string">
+            <column name="IS_CANCEL" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

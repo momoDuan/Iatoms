@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cybersoft4u.xian.iatoms.services.dmo.BimWarehouse" table="BIM_WAREHOUSE" schema="dbo">
+		<id name="warehouseId" type="string">
+			<column name="WAREHOUSE_ID" length="32"/>
+			<generator class="assigned" />
+		</id>
+		<property name="companyId" type="string">
+            <column name="COMPANY_ID" length="32" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" />
+        </property>
+        <property name="contact" type="string">
+            <column name="CONTACT" />
+        </property>
+        <property name="tel" type="string">
+            <column name="TEL" />
+        </property>
+        <property name="fax" type="string">
+            <column name="FAX" />
+        </property>
+        <property name="location" type="string">
+            <column name="LOCATION" />
+        </property>
+        <property name="address" type="string">
+            <column name="ADDRESS" />
+        </property>
+        <property name="comment" type="string">
+            <column name="COMMENT" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+        <property name="deleted" type="string">
+            <column name="DELETED" length="1" />
+        </property>
+	</class>
+</hibernate-mapping>

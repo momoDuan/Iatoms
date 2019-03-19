@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.BimCompany" table="BIM_COMPANY" schema="dbo">
+         <id name="companyId" type="string">
+            <column name="COMPANY_ID"  not-null="true" length="32"/>
+             <generator class="assigned" />
+        </id> 
+        <property name="companyCode" type="string">
+            <column name="COMPANY_CODE" not-null="true" length="10"/>
+        </property>
+        <property name="shortName" type="string">
+            <column name="SHORT_NAME" not-null="true" length="20"/>
+        </property>
+        <property name="unityNumber" type="string">
+            <column name="UNITY_NUMBER" length="8"/>
+        </property>
+        <property name="invoiceHeader" type="string">
+            <column name="INVOICE_HEADER" length="50"/>
+        </property>
+        <property name="leader" type="string">
+            <column name="LEADER" length="50"/>
+        </property>
+        <property name="tel" type="string">
+            <column name="TEL" length="20"/>
+        </property>
+        <property name="fax" type="string">
+            <column name="FAX" length="20"/>
+        </property>
+        <property name="applyDate" type="string">
+            <column name="APPLY_DATE" length="20" />
+        </property>
+        <property name="payDate" type="string">
+            <column name="PAY_DATE" length="20" />
+        </property>
+        <property name="contact" type="string">
+            <column name="CONTACT" length="50" />
+        </property>
+        <property name="contactTel" type="string">
+            <column name="CONTACT_TEL" length="20"/>
+        </property>
+        <property name="contactEmail" type="string">
+            <column name="CONTACT_EMAIL" length="100"/>
+        </property>
+        <property name="customerCode" type="string">
+            <column name="CUSTOMER_CODE" length="2"/>
+        </property>
+        <property name="companyEmail" type="string">
+            <column name="COMPANY_EMAIL"/>
+        </property>
+        <property name="dtidType" type="string">
+            <column name="DTID_TYPE" length="40"/>
+        </property>
+        <property name="authenticationType" type="string">
+            <column name="AUTHENTICATION_TYPE" length="40" />
+        </property>
+        <property name="addressLocation" type="string">
+            <column name="ADDRESS_LOCATION" length="40"/>
+        </property>
+        <property name="address" type="string">
+            <column name="ADDRESS" length="100"/>
+        </property>
+        <property name="invoiceAddressLocation" type="string">
+            <column name="INVOICE_ADDRESS_LOCATION" length="40"/>
+        </property>
+        <property name="invoiceAddress" type="string">
+            <column name="INVOICE_ADDRESS" length="100"/>
+        </property>
+        <property name="remark" type="string">
+            <column name="REMARK" length="200"/>
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+        <property name="deleted" type="string">
+            <column name="DELETED" length="1" />
+        </property>
+       <property name="isNotifyAo" type="string">
+            <column name="IS_NOTIFY_AO"/>
+        </property>
+    </class>
+</hibernate-mapping>

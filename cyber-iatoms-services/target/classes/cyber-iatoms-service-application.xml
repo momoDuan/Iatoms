@@ -1,0 +1,1464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	
+	<!-- 员工Service注入 Start -->
+	
+	<!-- system log Service注入 Start -->
+	<bean id="apLogServiceBean" class="com.cybersoft4u.xian.iatoms.services.ApLogService" parent="atomicService">
+		<property name="apLogDAO" ref="apLogDAO" /> 
+	</bean>
+	<bean id="apLogService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IApLogService</value>
+			</list>
+		</property>
+		<property name="target" ref="apLogServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- system log Service注入 end -->
+	<!-- admUser -->
+	<bean id="admUserService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IAdmUserService</value>
+		</list>		
+		</property>
+		<property name="target" ref="admUserServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="admUserServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.AdmUserService" parent="humanTaskActivityService">
+		<property name="admUserDAO" ref="admUserDAO"></property>
+		<property name="admRoleDAO" ref="admRoleDAO"></property>
+		<property name="admUserRoleDAO" ref="admUserRoleDAO"></property>	
+		<property name="admUserWarehouseDAO" ref="admUserWarehouseDAO"></property>
+		<property name="passwordSettingDAO" ref="passwordSettingDAO"></property>
+		<property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+	</bean>
+	
+	<!-- 密碼修改service -->
+	<bean id="ChangePasswordService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IChangePasswordService</value>
+		</list>		
+		</property>
+		<property name="target" ref="changePasswordServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="changePasswordServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.ChangePasswordService" parent="atomicService">
+		<property name="admUserDAO" ref="admUserDAO"></property>
+		<property name="admPwdHistoryDAO" ref="admPwdHistoryDAO"></property>
+		<property name="passwordSettingDAO" ref="passwordSettingDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+	</bean>
+	<bean id="admRoleService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IAdmRoleService</value>
+		</list>		
+		</property>
+		<property name="target" ref="admRoleServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="admRoleServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.AdmRoleService" parent="humanTaskActivityService">
+		<property name="admRoleDAO" ref="admRoleDAO"></property>
+		<property name="functionTypeDAO" ref="functionTypeDAO"></property>
+		<property name="permissionDAO" ref="permissionDAO"></property>
+		<property name="rolePermissionDAO" ref="rolePermissionDAO"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+	</bean>
+	<!--部門維護service Start  -->
+	<bean id="departmentService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IDepartmentService</value>
+		</list>		
+		</property>
+		<property name="target" ref="departmentServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="departmentServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.DepartmentService" parent="atomicService">
+		<property name="departmentDAO" ref="departmentDAO"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+	</bean>
+	<!--部門維護service End  -->
+	
+	<!-- 客訴管理service Start -->
+	<bean id="ComplaintService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IComplaintService</value>
+		</list>		
+		</property>
+		<property name="target" ref="complaintServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="complaintServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.ComplaintService" parent="atomicService">
+		<property name="srmComplaintDAO" ref="srmComplaintDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+		<property name="srmComplaintCaseFileDAO" ref="srmComplaintCaseFileDAO"></property>
+	</bean>
+	<!-- 客訴管理service End -->
+	
+	<!-- 合约Sla设定 Service注入 Start -->
+	<bean id="contractSlaServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.ContractSlaService" parent="atomicService">
+		<property name="contractSlaDAO" ref="contractSlaDAO"></property>
+		<property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO"></property>
+		<property name="contractDAO" ref="contractDAO"></property>
+		<property name="multipleNumber" value="24"></property>
+		<property name="limitNumber" value="500"></property>
+		<property name="attributes">
+			<map>
+				<entry key="YES_OR_NO">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="是"/>
+							<property name="value" value="Y"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="否"/>
+							<property name="value" value="N"/>
+						</bean>
+					</list>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="contractSlaService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IContractSlaService</value>
+			</list>
+		</property>
+		<property name="target" ref="contractSlaServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 合约Sla设定 Service注入 end -->
+	<!--設備管理作業service Start  -->
+	<bean id="assetManageService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IAssetManageService</value>
+		</list>		
+		</property>
+		<property name="target" ref="assetManageServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="assetManageServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.AssetManageService" parent="atomicService">
+		<property name="repositoryDAO" ref="repositoryDAO"></property>
+		<property name="dmmRepositoryHistDAO" ref="repoHistoryDAO"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+		<property name="mailComponent" ref="mailComponent"></property> 
+		<property name="admUserWarehouseDAO" ref="admUserWarehouseDAO"></property>
+		<property name="repositoryFaultComDAO" ref="repositoryFaultComDAO"></property>
+		<property name="repositoryFaultDescDAO" ref="repositoryFaultDescDAO"></property>
+		<property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO"></property>
+		<property name="srmCaseNewAssetLinkDAO" ref="srmCaseNewAssetLinkDAO"></property>
+		<property name="srmCaseTransactionDAO" ref="srmCaseTransactionDAO"></property>
+		<property name="srmCaseAssetLinkDAO" ref="srmCaseAssetLinkDAO" />
+		<property name="srmCaseNewHandleInfoDAO" ref="srmCaseNewHandleInfoDAO"></property>
+		<property name="departmentDAO" ref="departmentDAO"></property>
+		<property name="apiCmsRepositoryDAO" ref="apiCmsRepositoryDAO"></property>
+		<property name="merchantDAO" ref="merchantNewDAO"></property>
+	</bean>
+	<!--設備管理作業service End  -->
+	<!--設備轉倉作業service Start  -->
+	<bean id="assetTransferService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IAssetTransferService</value>
+		</list>		
+		</property>
+		<property name="target" ref="assetTransInfoServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="assetTransInfoServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.AssetTransferService" parent="atomicService">
+		<property name="assetTransInfoDAO" ref="assetTransInfoDAO"></property>
+		<property name="assetTransListDAO" ref="assetTransListDAO"></property>
+		<property name="repositoryDAO" ref="repositoryDAO"></property>
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+		<property name="warehouseDAO" ref="warehouseDAO"></property>
+	</bean>
+	<!--設備轉倉作業service End  -->
+	
+	<bean id="contractServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.ContractService" parent="atomicService">
+		<property name="contractDAO" ref="contractDAO"></property>
+		<property name="contractAssetDAO" ref="contractAssetDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+		<property name="contractTypeDAO" ref="contractTypeDAO"></property>
+		<property name="contractVendorDAO" ref="contractVendorDAO"></property>
+		<property name="contractAttachedFileDAO" ref="contractAttachedFileDAO"></property>
+	</bean>
+	<bean id="contractService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IContractService</value>
+			</list>
+		</property>
+		<property name="target" ref="contractServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!--密碼原則設定service Start  -->
+	<bean id="passwordSettingService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IPasswordSettingService</value>
+		</list>		
+		</property>
+		<property name="target" ref="passwordSettingServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="passwordSettingServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.PasswordSettingService" parent="atomicService">
+		<property name="passwordSettingDAO" ref="passwordSettingDAO"></property>
+	</bean>
+	<!--密碼原則設定service End  -->	
+	
+	<!--特店表頭維護service Start  -->
+	<bean id="merchantHeaderServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.MerchantHeaderService" parent="atomicService">
+		<property name="merchantHeaderDAO" ref="merchantHeaderDAO"></property>
+		<property name="merchantNewDAO" ref="merchantNewDAO"></property>
+		<property name="baseParameterPostCodeDAO" ref="baseParameterPostCodeDAO"></property>
+	</bean>
+	<bean id="merchantHeaderService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IMerchantHeaderService</value>
+			</list>
+		</property>
+		<property name="target" ref="merchantHeaderServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!--特店表頭維護service End  -->
+	
+	<!-- 客戶特店維護service Start -->
+	<bean id="merchantNewService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IMerchantService</value>
+			</list>	
+		</property>
+		<property name="target" ref="merchantNewServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="merchantNewServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.MerchantService" parent="atomicService">
+		<property name="merchantNewDAO" ref="merchantNewDAO"></property>
+		<property name="merchantHeaderDAO" ref="merchantHeaderDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+		<property name="bpidDAO" ref="baseParameterItemDefDAO"></property>
+		<property name="baseParameterPostCodeDAO" ref="baseParameterPostCodeDAO"></property>
+		<property name="limitNumber" value="500"></property>
+				<property name="attributes">
+			<map>
+				<entry key="YES_OR_NO">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="是"/>
+							<property name="value" value="Y"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="否"/>
+							<property name="value" value="N"/>
+						</bean>
+					</list>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<!-- 客戶特店維護service End -->
+	
+	<!--公司基本訊息維護service Start  -->
+	<bean id="companyService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.ICompanyService</value>
+		</list>		
+		</property>
+		<property name="target" ref="companyServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="companyServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.CompanyService" parent="atomicService">
+		<property name="companyDAO" ref="companyDAO"></property>
+		<property name="companyTypeDAO" ref="companyTypeDAO"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+	</bean> 
+	<!--公司基本訊息維護service End  -->
+	
+	
+	
+	<!--倉庫service Start -->
+	<bean id="warehouseService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IWarehouseService
+				</value>
+			</list>
+		</property>
+		<property name="target" ref="warehouseServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="warehouseServiceBean"
+		class="com.cybersoft4u.xian.iatoms.services.impl.WarehouseService"
+		parent="atomicService">
+		<property name="warehouseDAO" ref="warehouseDAO"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+	</bean>
+	<!--倉庫service End -->
+	<!-- 設備入庫service start -->
+	<bean id="assetInServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.AssetInService" parent="atomicService">
+		<property name="assetInInfoDAO" ref="assetInInfoDAO"></property>
+		<property name="assetInListDAO" ref="assetInListDAO"></property>
+		<property name="wareHouseDAO" ref="warehouseDAO"></property>
+		<property name="contractAssetDAO" ref="contractAssetDAO"></property>
+		<property name="repositoryDAO" ref="repositoryDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+		<property name="contractDAO" ref="contractDAO"></property>
+		<property name="assetTypeDAO" ref="assetTypeDAO"></property>
+		<property name="checkSettingList">
+			<list>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.CheckSettingDTO">
+					<property name="minNumber" value="0"/>
+					<property name="maxNumber" value="300"/>
+					<property name="checkType" value="PERCENT"/><!--PERCENT表示按百分比驗收-->
+					<property name="checkValue" value="0.1"/><!--10%-->
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.CheckSettingDTO">
+					<property name="minNumber" value="301"/>
+					<property name="maxNumber" value="1000"/>
+					<property name="checkType" value="FIXED"/><!--FIXED表示固定驗收多少台-->
+					<property name="checkValue" value="30"/><!--30台-->
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.CheckSettingDTO">
+					<property name="minNumber" value="1001"/>
+					<property name="maxNumber" value="999999999"/><!--寫一個大值，表示最後一個設置-->
+					<property name="checkType" value="INTERVAL"/><!--INTERVAL表示每滿多少台，則加驗收多少台-->
+					<property name="intervalValue" value="1000"/>
+					<property name="checkValue" value="30"/><!--30台-->
+					<property name="addValue" value="30"/><!--加驗收30台-->
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean id="assetInService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IAssetInService</value>
+			</list>
+		</property>
+		<property name="target" ref="assetInServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 設備入庫service end -->
+	<!--系统参数维护service Start -->
+	<bean id="baseParameterManagerServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.BaseParameterManagerService" parent="atomicService">
+		<property name="baseParameterManagerDAO" ref="baseParameterManagerDAO"></property>
+		<property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO"></property>
+	</bean>
+	<bean id="baseParameterManagerService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IBaseParameterManagerService</value>
+			</list>
+		</property>
+		<property name="target" ref="baseParameterManagerServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!--系统参数维护service End -->
+	<!--電子郵件羣組維護service Start -->
+	<bean id="mailListServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.MailListService" parent="atomicService">
+		<property name="mailListDAO" ref="mailListDAO"></property>
+	</bean>
+	<bean id="mailListService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IMailListService</value>
+			</list>
+		</property>
+		<property name="target" ref="mailListServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!--電子郵件羣組維護service End -->
+	<!--系統log查詢service Start -->
+	<bean id="systemLogServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.SystemLogService" parent="atomicService">
+		<property name="systemLogDAO" ref="systemLogDAO"></property>
+		<property name="permissionDAO" ref="permissionDAO"></property>
+	</bean>
+	<bean id="systemLogService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.ISystemLogService</value>
+			</list>
+		</property>
+		<property name="target" ref="systemLogServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!--系統log查詢service End -->
+	<!--報表發送功能設定service Start -->
+	<bean id="reportSettingServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.ReportSettingService" parent="atomicService">
+		<property name="reportSettingMap">
+			<map>
+				<entry key="2" value-ref="edcReqCaseAnalysisMonReportServiceBean"></entry><!-- EDC報表服務需求案件(維修)分析月報 -->
+				<entry key="3" value-ref="edcOutstandingNumServiceBean"></entry><!-- EDC流通在外台數報表 -->
+				<entry key="4" value-ref="edcContractExpireServiceBean"></entry><!-- EDC合約到期提示報表 -->
+				<entry key="5" value-ref="unfinishedReportToGPServiceBean"></entry><!-- 未完修報表（環匯格式） -->
+				<entry key="6" value-ref="unfinishedReportServiceBean"></entry><!-- 未完修報表(大眾格式) -->
+				<entry key="7" value-ref="finishedReplyReportServiceBean"></entry><!-- 完工回覆檔(環匯格式) -->
+				<entry key="8" value-ref="finishedReplyReportTCBServiceBean"></entry><!-- 完工回覆檔(大眾格式) -->
+				<entry key="9" value-ref="finishedReplyReportToOFBServiceBean"></entry><!-- 完工回覆檔(歐付寶格式) -->
+				<entry key="10" value-ref="caseRepairDetailReportToGPServiceBean"></entry><!-- 案件報修明細(環匯格式) -->
+				<entry key="11" value-ref="caseAssetDetailReportToGPServiceBean"></entry><!-- 案件設備明細(環匯格式) -->
+				<entry key="12" value-ref="completeOverdueRateReportServiceBean"></entry><!-- 完修逾時率警示通知 -->
+				<entry key="15" value-ref="edcFeeReportForTcbServiceBean"></entry><!-- 維護費報表(大眾格式) -->
+				<entry key="16" value-ref="edcFeeReportForGreenWorldServiceBean"></entry><!-- 維護費報表(綠界格式) -->
+				<entry key="17" value-ref="edcFeeReportForScsbServiceBean"></entry><!-- 維護費報表(上銀格式) -->
+				<entry key="19" value-ref="edcFeeReportForSybServiceBean"></entry><!-- 維護費報表(陽信格式) -->
+				<entry key="20" value-ref="edcFeeReportForChbServiceBean"></entry><!-- 維護費報表(彰銀格式) -->
+				<entry key="feeReportForGp" value-ref="edcFeeReportForGpServiceBean"></entry><!-- 維護費報表(環匯格式) -->
+				<entry key="feeReportForJdw" value-ref="edcFeeReportForJdwServiceBean"></entry><!-- 維護費報表(環匯格式) -->
+			</map>
+		</property> 
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="reportSettingDetailDAO" ref="reportSettingDetailDAO"></property>
+		<property name="mailListDAO" ref="mailListDAO"></property>
+		<property name="mailComponent" ref="mailComponent"></property>
+	</bean>
+	<bean id="reportSettingService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IReportSettingService</value>
+			</list>
+		</property>
+		<property name="target" ref="reportSettingServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!--報表發送功能設定service End -->
+	<!--行事曆 start  -->
+	<bean id="calendarServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.CalendarService" parent="atomicService">
+		<property name="calendarDayDAO" ref="calendarDayDAO"></property>
+		<property name="calendarYearDAO" ref="calendarYearDAO"></property>
+	</bean>
+	<bean id="calendarService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.ICalendarService</value>
+			</list>
+		</property>
+		<property name="target" ref="calendarServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!--行事曆 end  -->
+	<!--耗材品项维护service Start  -->
+	<bean id="suppliesTypeServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.SuppliesTypeService" parent="atomicService">
+	 <property name="suppliesDAO" ref="suppliesDAO"></property> 
+	</bean>
+	
+	<bean id="suppliesTypeService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.ISuppliesTypeService</value>
+			</list>
+		</property>
+		<property name="target" ref="suppliesTypeServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!--耗材品项维护維護service End  -->
+	<!--財產編號批次匯入service Start -->
+	<bean id="propertyImportServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.PropertyImportService" parent="atomicService">
+		 <property name="repositoryDAO" ref="repositoryDAO"></property> 
+		 <property name="contractDAO" ref="contractDAO"></property> 
+		 <property name="companyTypeDAO" ref="companyTypeDAO"></property> 
+		 <property name="assetTypeDAO" ref="assetTypeDAO"></property> 
+		 <property name="userDAO" ref="admUserDAO"></property> 
+		 <property name="assetInInfoDAO" ref="assetInInfoDAO"></property>
+		 <property name="userWarehouseDAO" ref="admUserWarehouseDAO"></property> 
+		 <property name="companyDAO" ref="companyDAO"></property>
+		 <property name="repositoryHistoryDAO" ref="repoHistoryDAO"></property>
+		 <property name="assetInListDAO" ref="assetInListDAO"></property>
+		 <property name="merchantDAO" ref="merchantNewDAO"></property>
+		 <property name="merchantHeaderDAO" ref="merchantHeaderDAO"></property>
+		 <property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO"></property>
+		 <property name="monthlyDAO" ref="dmmRepositoryHistoryMonthlyDAO"></property>
+	</bean>
+	<bean id="propertyImportService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IPropertyImportService</value>
+			</list>
+		</property>
+		<property name="target" ref="propertyImportServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!--財產編號批次匯入service End -->
+	<!--設備品項维护service ||  Start  -->
+	<bean id="assetTypeService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IAssetTypeService</value>
+		</list>		
+		</property>
+		<property name="target" ref="assetTypeServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="assetTypeServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.AssetTypeService" parent="atomicService">
+		<property name="assetTypeDAO" ref="assetTypeDAO"></property>
+	</bean> 
+	<!--設備品項维护service || End  -->
+	<!--設備盤點service Start  -->
+	<bean id="assetStacktakeService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IAssetStacktakeService</value>
+		</list>		
+		</property>
+		<property name="target" ref="assetStacktakeServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="assetStacktakeServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.AssetStacktakeService" parent="atomicService">
+		<property name="assetStocktackInfoDAO" ref="assetStocktackInfoDAO"></property>
+		<property name="assetStocktackListDAO" ref="assetStocktackListDAO"></property>
+		<property name="assetStocktackStatusDAO" ref="assetStocktackStatusDAO"></property>
+		<property name="assetStocktackCategroyDAO" ref="assetStocktackCategroyDAO"></property>
+		<property name="repositoryDAO" ref="repositoryDAO"></property>
+	</bean> 
+	<!--設備盤點service End  -->
+	<!--程式版本維護service Start -->
+	<bean id="applicationService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IApplicationService</value>
+		</list>		
+		</property>
+		<property name="target" ref="applicationServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="applicationServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.ApplicationService" parent="atomicService">
+		<property name="applicationDAO" ref="applicationDAO"></property>
+		<property name="applicationAssetLinkDAO" ref="applicationAssetLinkDAO"></property>
+		<property name="assetTypeDAO" ref="assetTypeDAO"></property>
+	</bean> 
+	<!--程式版本維護service End  -->
+	<!--設備轉倉作業-轉入驗收service Start -->
+	<!-- <bean id="checkTransInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.ICheckTransInfoService</value>
+		</list>		
+		</property>
+		<property name="target" ref="checkTransInfoServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean> -->
+	<!-- <bean id="checkTransInfoServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.CheckTransInfoService" parent="atomicService">
+		<property name="checkTransInfoDAO" ref="checkTransInfoDAO"></property>
+		<property name="repositoryDAO" ref="repositoryDAO"></property>
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+	</bean>  -->
+	<!--設備轉倉作業-轉入驗收service End  -->
+		<!--歷史轉倉作業service Start  -->
+	<!-- <bean id="assetTransInfoHistoryService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IAssetTransInfoHistoryService</value>
+		</list>		
+		</property>
+		<property name="target" ref="assetTransInfoHistoryServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="assetTransInfoHistoryServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.AssetTransInfoHistoryService" parent="atomicService">
+		<property name="assetTransInfoHistoryDAO" ref="assetTransInfoHistoryDAO"></property>
+		<property name="assetTransInfoDAO" ref="assetTransInfoDAO"></property>
+	</bean> -->
+	<!--歷史轉倉查詢service End  -->
+	<!--設備歷史記錄查詢service Start -->
+	<bean id="repoHistoryService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IRepoHistoryService</value>
+		</list>		
+		</property>
+		<property name="target" ref="repoHistoryServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="repoHistoryServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.RepoHistoryService" parent="atomicService">
+		<property name="repoHistoryDAO" ref="repoHistoryDAO"></property>
+	</bean> 
+	<!--設備歷史記錄查詢service End  -->
+	<!--設備狀態報表service Start -->
+	<bean id="repoStatusReportService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IRepoStatusReportService</value>
+		</list>		
+		</property>
+		<property name="target" ref="repoStatusReportServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="repoStatusReportServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.RepoStatusReportService" parent="atomicService">
+		<property name="repoStatusReportDAO" ref="repoStatusReportDAO"></property>
+		<property name="warehouseDAO" ref="warehouseDAO"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+	</bean> 
+	<!--設備狀態報表service End  -->
+	<!--設備庫存表service Start -->
+	<bean id="assetStockReportService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IAssetStockReportService</value>
+		</list>		
+		</property>
+		<property name="target" ref="assetStockReportServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="assetStockReportServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.AssetStockReportService" parent="atomicService">
+		<property name="assetStockReportDAO" ref="assetStockReportDAO"></property>
+		<property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+		<property name="warehouseDAO" ref="warehouseDAO"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+	</bean> 
+	<!--設備庫存表service End  -->
+	<!--客戶設備總表service Start -->
+	<bean id="customerRepoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.ICustomerRepoService</value>
+		</list>		
+		</property>
+		<property name="target" ref="customerRepoServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="customerRepoServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.CustomerRepoService" parent="atomicService">
+		<property name="customerRepoDAO" ref="customerRepoDAO"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+		<property name="warehouseDAO" ref="warehouseDAO"></property>
+	</bean> 
+	<!--客戶設備總表service End  -->
+	<!--案件處理service Start -->
+	<bean id="caseManagerService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.ICaseManagerService</value>
+		</list>		
+		</property>		
+		<property name="target" ref="caseManagerServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="caseManagerServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.CaseManagerService" parent="humanTaskActivityService">
+		<property name="handleTypeDefaultValueMap">
+			<map>
+				<entry key="INSTALL" value="1"/><!-- 裝機默認到場處理 -->
+				<entry key="MERGE" value="3"/><!-- 并機默認軟派 -->
+				<entry key="UPDATE" value="3"/><!-- 異動默認軟派 -->
+				<entry key="CHECK" value="1"/><!-- 查核默認到場處理 -->
+				<entry key="UNINSTALL" value="1"/><!-- 拆機默認到場處理 -->
+				<entry key="REPAIR" value="1"/><!-- 其他默認到場處理 -->
+				<entry key="OTHER" value="1"/><!-- 報修默認到場處理 -->
+			</map>
+		</property>
+		<property name="caseSuppliesTypeMap">
+			<map>
+				<entry key="Transformer" value="變壓器"/><!-- 變壓器 -->
+				<entry key="PowerCord" value="電源線"/><!-- 電源線 -->
+				<entry key="Battery" value="電池"/><!-- 電池 -->
+				<entry key="SIMCARD" value="SIM卡"/><!-- SIM卡 -->
+				<entry key="ThermalPaper" value="感熱紙"/><!-- 感熱紙-->
+				<entry key="NetworkRoute" value="網路線"/><!-- 網路線 -->
+				<entry key="ECRLINE" value="ECR線"/><!-- ECR線-->
+				<entry key="WindowSticker" value="口窗貼"/><!-- 口窗貼-->
+			</map>
+		</property>
+		<property name="caseStatusList">
+			<list>
+				<value>Closed</value>
+				<value>ImmediateClose</value>
+				<value>Voided</value>
+			</list>
+		</property>
+		<property name="srmTransactionParameterDetailDAO" ref="srmTransactionParameterDetailDAO"></property>
+		<property name="srmTransactionParameterItemDAO" ref="srmTransactionParameterItemDAO"></property>
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="srmCaseNewHandleInfoDAO" ref="srmCaseNewHandleInfoDAO"></property>
+		<property name="srmCaseNewTransactionParameterDAO" ref="srmCaseNewTransactionParameterDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+		<property name="srmCaseTransactionParameterDAO" ref="srmCaseTransactionParameterDAO"></property>
+		<property name="contractSlaDAO" ref="contractSlaDAO"></property>
+		<property name="srmCaseAttFileDAO" ref="srmCaseAttFileDAO"></property>
+		<property name="dtidDefDAO" ref="dtidDefDAO"></property>
+		<property name="contractDAO" ref="contractDAO"></property>
+		<property name="calendarDayDAO" ref="calendarDayDAO"></property>
+		<property name="assetTypeDAO" ref="assetTypeDAO"></property>
+		<property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO"></property>
+		<property name="srmCaseTransactionDAO" ref="srmCaseTransactionDAO"></property>
+		<property name="mailComponent" ref="mailComponent" />
+		<property name="srmCaseAssetLinkDAO" ref="srmCaseAssetLinkDAO" />
+		<property name="srmCaseAssetFunctionDAO" ref="srmCaseAssetFunctionDAO" />
+		<property name="departmentDAO" ref="departmentDAO"></property>
+		<property name="suppliesDAO" ref="suppliesDAO"></property>
+		<property name="caseDetailDAO" ref ="caseDetailDAO"></property>
+		<property name="iAtomsActivitiUtilsService" ref="iAtomsActivitiUtilsService"></property> 
+		<property name="merchantHeaderDAO" ref="merchantHeaderDAO"></property>
+		<property name="pvmApplicationDAO" ref="applicationDAO"></property>
+		<property name="dmmRepositoryDAO" ref="repositoryDAO"></property>
+		<property name="dmmRepositoryHistoryDAO" ref="repoHistoryDAO"></property>
+		<property name="merchantDAO" ref="merchantNewDAO"></property>
+		<property name="contractAssetDAO" ref="contractAssetDAO"></property>
+		<property name="srmCaseNewAssetLinkDAO" ref="srmCaseNewAssetLinkDAO"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+		<property name="srmCaseTemplatesDAO" ref="srmCaseTemplatesDAO"></property>
+		<property name="mailListDAO" ref="mailListDAO"></property>
+		<property name="admRoleDAO" ref="admRoleDAO"></property>
+		<property name="historyCaseHandleInfoDAO" ref="historyCaseHandleInfoDAO"></property>
+		<property name="srmHistoryCaseTransactionDAO" ref="srmHistoryCaseTransactionDAO"></property>
+		<property name="baseParameterManagerService" ref="baseParameterManagerService"></property>
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="srmCaseCommModeDAO" ref="srmCaseCommModeDAO"></property>
+		<property name="paymentInfoDAO" ref="paymentInfoDAO"></property>
+		<property name="srmPaymentItemDAO" ref="srmPaymentItemDAO"></property>
+		<property name="apiLogDAO" ref="apiLogDAO"></property>
+		<property name="baseParameterPostCodeDAO" ref="baseParameterPostCodeDAO"></property>
+		<property name="caseCheckInfoService" ref="caseCheckInfoService"></property>
+	</bean> 
+	<!--案件處理service End  -->
+	<!-- DTID號碼管理 start -->
+	<bean id="dtidDefService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IDtidDefService</value>
+		</list>		
+		</property>
+		<property name="target" ref="dtidDefServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="dtidDefServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.DtidDefService" parent="atomicService">
+		<property name="dtidDefDAO" ref="dtidDefDAO"></property>
+		<property name="repositoryDAO" ref="repositoryDAO"></property>
+	</bean>
+	<!-- DTID號碼管理 end -->
+	<!--工單範本維護service Start  -->
+	<bean id="srmCaseTemplatesServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.SrmCaseTemplatesService" parent="atomicService">
+		 <property name="srmCaseTemplatesDAO" ref="srmCaseTemplatesDAO"></property> 
+		 <property name="srmTransactionParameterDetailDAO" ref="srmTransactionParameterDetailDAO"></property>
+		 <property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO"></property>
+		 <property name="baseParameterManagerService" ref="baseParameterManagerService"></property>
+	</bean>
+	<bean id="srmCaseTemplatesService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.ISrmCaseTemplatesService</value>
+			</list>
+		</property>
+		<property name="target" ref="srmCaseTemplatesServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!--工單範本維護service End  -->
+	<!--EDC交易參數查詢service Start -->
+	<bean id="edcParameterService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IEdcParameterService</value>
+		</list>		
+		</property>
+		<property name="target" ref="edcParameterServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="edcParameterServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.EdcParameterService" parent="atomicService">
+		<property name="edcParameterDAO" ref="edcParameterDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+		<property name="srmCaseNewTransactionParameterDAO" ref="srmCaseNewTransactionParameterDAO"></property>
+		<property name="srmTransactionParameterItemDAO" ref="srmTransactionParameterItemDAO"></property>
+	</bean> 
+	<!--EDC交易參數查詢service End  -->
+	<!-- EDC合約到期提示報表 Start -->
+	<bean id="edcContractExpireServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.EdcContractExpireService" parent="atomicService">
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="contractDAO" ref="contractDAO"></property>
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="expireMonths" value="2"></property>
+	</bean>
+	<bean id="edcContractExpireService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IReportService</value>
+		</list>		
+		</property>
+		<property name="target" ref="edcContractExpireServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!-- EDC合約到期提示報表 End -->
+	
+	<!-- 求償service start -->
+	<bean id="paymentService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IPaymentService</value>
+		</list>		
+		</property>
+		<property name="target" ref="paymentServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="paymentServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.PaymentService" parent="atomicService">
+		<property name="caseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="paymentInfoDAO" ref="paymentInfoDAO"></property>
+		<property name="srmPaymentItemDAO" ref="srmPaymentItemDAO"></property>
+		<property name="paymentTranscationDAO" ref="paymentTranscationDAO"></property>
+		<property name="mailComponent" ref="mailComponent"></property> 
+		<property name="admUserDAO" ref="admUserDAO"></property>
+		<property name="repositoryDAO" ref="repositoryDAO"></property>
+		<property name="apiLogDAO" ref="apiLogDAO"></property>
+	</bean>
+	<!-- 求償service end -->
+	
+	<!-- EDC報表服務需求案件(維修)分析月報 start-->
+	<bean id="edcReqCaseAnalysisMonReportServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.EdcReqCaseAnalysisMonReportService" parent="atomicService">
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="caseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="orderByCodes">
+			<list>
+				<value>CASE_CATEGORY</value><!-- 案件類別 -->
+				 <value>DEPT_CODE</value><!--維護組別 -->
+				<value>CONTRACT_CODE</value><!-- 合約編號 -->
+			</list>
+		</property>
+	</bean>
+	<bean id="edcReqCaseAnalysisMonReportService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IReportService</value>
+			</list>
+		</property>
+		<property name="target" ref="edcReqCaseAnalysisMonReportServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- EDC報表服務需求案件(維修)分析月報 end-->
+	
+	<!-- EDC報表服務需求案件(維修)分析月報 end-->
+	
+	<!-- EDC流通在外台數報表 start-->
+	<bean id="edcOutstandingNumServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.EdcOutstandingNumService" parent="atomicService">
+		<property name="dmmRepositoryDAO" ref="repositoryDAO"></property>
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="calendarDayDAO" ref="calendarDayDAO"></property>
+		<!-- <property name="orderByCodes">
+			<list>
+				<value>CASE_CATEGORY</value>案件類別
+				<value>DEPT_CODE</value>維護組別
+				<value>CONTRACT_CODE</value>合約編號
+			</list>
+		</property> -->
+	</bean>
+	<bean id="edcOutstandingNumService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IReportService</value>
+			</list>
+		</property>
+		<property name="target" ref="edcOutstandingNumServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- EDC流通在外台數報表 end-->
+	
+	<!-- 未完修報表 start-->
+	<bean id="unfinishedReportServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.UnfinishedReportService" parent="atomicService">
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="ticketTypeList">
+			<list>
+				<value>PROJECT</value>
+				<value>REPAIR</value>
+			</list>
+		</property>
+		<property name="caseStatusList">
+			<list>
+				<value>Completed</value>
+				<value>WaitClose</value>
+				<value>Closed</value>
+				<value>ImmediateClose</value>
+				<value>Voided</value>
+			</list>
+		</property>
+		<property name="installedCaseCategorys">
+			<list>
+				<value>UPDATE</value>
+				<value>INSTALL</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="unfinishedReportService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IReportService</value>
+			</list>
+		</property>
+		<property name="target" ref="unfinishedReportServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 未完修報表 end-->
+	
+	<!-- 未完修報表(環匯格式) start-->
+	<bean id="unfinishedReportToGPServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.UnfinishedReportToGPService" parent="atomicService">
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="excelPwd" value="82530155"></property>
+		<property name="ticketTypeList">
+			<list>
+				<value>PROJECT</value>
+				<value>REPAIR</value>
+			</list>
+		</property>
+		<property name="caseStatusList">
+			<list>
+				<value>Completed</value>
+				<value>WaitClose</value>
+				<value>Closed</value>
+				<value>ImmediateClose</value>
+				<value>Voided</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="unfinishedReportToGPService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IReportService</value>
+			</list>
+		</property>
+		<property name="target" ref="unfinishedReportToGPServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 未完修報表(環匯格式) end-->
+	
+	<!-- 完工回覆檔(環匯格式) start-->
+	<bean id="finishedReplyReportServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.FinishedReplyReportService" parent="atomicService">
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="ticketTypeList">
+			<list>
+				<value>INSTALL</value>
+				<value>UPDATE</value>
+				<value>UNINSTALL</value>
+				<value>MERGE</value>
+			</list>
+		</property>
+		<property name="caseStatusList">
+			<list>
+				<value>Completed</value>
+				<value>WaitClose</value>
+				<value>Closed</value>
+				<value>ImmediateClose</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="finishedReplyReportService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IReportService</value>
+			</list>
+		</property>
+		<property name="target" ref="finishedReplyReportServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 完工回覆檔(環匯格式) end-->
+	
+	<!-- 完工回覆檔(大眾格式) start-->
+	<bean id="finishedReplyReportTCBServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.FinishedReplyReportTCBService" parent="atomicService">
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="ticketTypeList">
+			<list>
+				<value>INSTALL</value>
+				<value>UPDATE</value>
+				<value>UNINSTALL</value>
+			</list>
+		</property>
+		<property name="caseStatusList">
+			<list>
+				<value>Completed</value>
+				<value>WaitClose</value>
+				<value>Closed</value>
+				<value>ImmediateClose</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="finishedReplyReportTCBService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IReportService</value>
+			</list>
+		</property>
+		<property name="target" ref="finishedReplyReportTCBServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 完工回覆檔(大眾格式) end-->
+	
+	<!-- 案件報修明細（環匯格式） start -->
+	<bean id="caseRepairDetailReportToGPServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.CaseRepairDetailReportToGPService" parent="atomicService">
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="srmCaseTransactionDAO" ref="srmCaseTransactionDAO"></property>
+	</bean>
+	<bean id="caseRepairDetailReportToGPService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IReportService</value>
+			</list>
+		</property>
+		<property name="target" ref="caseRepairDetailReportToGPServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 案件報修明細（環匯格式） end -->
+	
+	<!-- 完修逾時率警示通知(大眾格式) start-->
+	<bean id="completeOverdueRateReportServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.CompleteOverdueRateReportService" parent="atomicService">
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+	</bean>
+	<bean id="completeOverdueRateReportService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IReportService</value>
+			</list>
+		</property>
+		<property name="target" ref="completeOverdueRateReportServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 完修逾時率警示通知(大眾格式) end-->
+	<!-- 案件設備明細（環匯格式） start -->
+	<bean id="caseAssetDetailReportToGPServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.CaseAssetDetailReportToGPService" parent="atomicService">
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="srmCaseTransactionDAO" ref="srmCaseTransactionDAO"></property>
+	</bean>
+	<bean id="caseAssetDetailReportToGPService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IReportService</value>
+			</list>
+		</property>
+		<property name="target" ref="caseAssetDetailReportToGPServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 案件設備明細（環匯格式） end -->
+	
+	<!--  完工回覆檔(歐付寶格式) start-->
+	<bean id="finishedReplyReportToOFBServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.FinishedReplyReportToOFBService" parent="atomicService">
+		<property name="mailComponent" ref="mailComponent"></property>
+		<property name="reportSettingDAO" ref="reportSettingDAO"></property>
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="ticketTypeList">
+			<list>
+				<value>INSTALL</value>
+				<value>UPDATE</value>
+				<value>UNINSTALL</value>
+			</list>
+		</property>
+		<property name="caseStatusList">
+			<list>
+				<value>Completed</value>
+				<value>WaitClose</value>
+				<value>Closed</value>
+				<value>ImmediateClose</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="finishedReplyReportToOFBService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IReportService</value>
+			</list>
+		</property>
+		<property name="target" ref="finishedReplyReportToOFBServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!--  完工回覆檔(歐付寶格式) end-->
+	<!-- 批次處理 start-->
+	<bean id="iatomsBatchServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.IAtomsBatchService" parent="atomicService">
+		<property name="dmmRepositoryHistoryDAO" ref="repoHistoryDAO"></property> 
+		<property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO"></property>
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="systemLogDAO" ref="systemLogDAO"></property>
+		<property name="passwordSettingDAO" ref="passwordSettingDAO"></property>
+		<property name="dmmRepositoryHistoryMonthlyDAO" ref="dmmRepositoryHistoryMonthlyDAO"></property>
+		<property name="assetInInfoDAO" ref="assetInInfoDAO"></property>
+		<property name="assetTransInfoDAO" ref="assetTransInfoDAO"></property>
+		
+	</bean>
+	<bean id="iatomsBatchService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IIAtomsBatchService</value>
+			</list>
+		</property>
+		<property name="target" ref="iatomsBatchServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 批次處理 end-->
+	
+	<!-- 匯出案件資訊範本(派工給華經資訊) start --> 
+	<bean id="exportCaseTemplateForFisService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IExportCaseTemplateForFisService</value>
+			</list>
+		</property>
+		<property name="target" ref="exportCaseTemplateForFisServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<bean id="exportCaseTemplateForFisServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.ExportCaseTemplateForFisService" parent="atomicService">
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="srmCaseTransactionParameterDAO" ref="srmCaseTransactionParameterDAO"></property>
+		<property name="srmTransactionParameterDetailDAO" ref="srmTransactionParameterDetailDAO"></property>
+	</bean>
+	<!-- 匯出案件資訊範本(派工給華經資訊) end -->
+	
+	<bean id="iAtomsActivitiUtilsServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.IAtomsActivitiUtilsService" parent="atomicService">
+		<property name="humanWorkflowServiceHelper" ref="humanWorkflowServiceHelper" />
+		<property name="taskPredicateFilterHelper" ref="taskPredicateFilterHelper" />
+		<property name="predicateBuildings">
+        	<list>
+				<bean class="cafe.workflow.bean.TaskFilterField">
+					<property name="filterName" value="includeTaskLocalVariables" /><!--  -->
+					<property name="valueObjectFieldName" value="includeTaskLocalVariables" /><!-- FormDTO值物件欄項名稱 -->
+					<property name="defaultValue" value="true" /><!-- 欄項預設值 -->
+					<property name="defaultDataType" value="boolean" /><!-- 欄項預設資料型態 -->
+				</bean>
+ 				<bean class="cafe.workflow.bean.TaskFilterField">
+					<property name="filterName" value="includeProcessVariables" /><!--  -->
+					<property name="valueObjectFieldName" value="includeProcessVariables" /><!-- FormDTO值物件欄項名稱 -->
+					<property name="defaultValue" value="true" /><!-- 欄項預設值 -->
+					<property name="defaultDataType" value="boolean" /><!-- 欄項預設資料型態 -->
+				</bean>
+ 				<bean class="cafe.workflow.bean.TaskFilterField">
+					<property name="filterName" value="filterCaseType" /><!-- 案件類別 -->
+					<property name="valueObjectFieldName" value="filterCaseType" /><!-- FormDTO值物件欄項名稱 -->
+					<property name="defaultValue" value="My" /><!-- 欄項預設值 -->
+					<property name="defaultDataType" value="java.lang.String" /><!-- 欄項預設資料型態 -->
+				</bean>
+				<bean class="cafe.workflow.bean.TaskFilterField"><!-- 案件編號 -->
+					<property name="filterName" value="filterCaseId" />
+					<property name="valueObjectFieldName" value="filterCaseId" />
+				</bean>
+				<bean class="cafe.workflow.bean.TaskFilterField"><!-- 案件送達起日 -->
+					<property name="filterName" value="filterCreatedDateFrom" />
+					<property name="valueObjectFieldName" value="filterCreatedDateFrom" />
+				</bean>
+				<bean class="cafe.workflow.bean.TaskFilterField"><!-- 案件送達迄日 -->
+					<property name="filterName" value="filterCreatedDateTo" />
+					<property name="valueObjectFieldName" value="filterCreatedDateTo" />
+				</bean>
+				<bean class="cafe.workflow.bean.TaskFilterField">
+					<property name="filterName" value="filterProcessId" /><!-- 系統業務別 -->
+					<property name="valueObjectFieldName" value="filterProcessId" />
+				</bean>					
+				<bean class="cafe.workflow.bean.TaskFilterField"><!-- 關卡代碼 -->
+					<property name="filterName" value="filterActivityCode" />
+					<property name="valueObjectFieldName" value="filterActivityCode" />
+				</bean>
+				<bean class="cafe.workflow.bean.TaskFilterField"><!-- 請假員工 -->
+					<property name="filterName" value="filterEmployeeName" />
+					<property name="valueObjectFieldName" value="filterEmployeeName" />
+				</bean>	
+        	</list>
+        </property>
+	</bean>
+	<bean id="iAtomsActivitiUtilsService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" >
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IIAtomsActivitiUtilsService</value>
+			</list>
+		</property>
+		<property name="target" ref="iAtomsActivitiUtilsServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!--EDC維護費用付款報表service Start  -->
+	<bean id="edcPaymentReportServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.EdcPaymentReportService" parent="atomicService">
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+	</bean>
+	<bean id="edcPaymentReportService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IEdcPaymentReportService</value>
+			</list>
+		</property>
+		<property name="target" ref="edcPaymentReportServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!--EDC維護費用付款報表service End  -->
+	
+	<!-- 案件查詢模板service Start  -->
+	<bean id="srmQueryTemplateServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.SrmQueryTemplateService" parent="atomicService">
+		<property name="srmQueryTemplateDAO" ref="srmQueryTemplateDAO"></property>
+	</bean>
+	<bean id="srmQueryTemplateService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.ISrmQueryTemplateService</value>
+			</list>
+		</property>
+		<property name="target" ref="srmQueryTemplateServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!-- 案件查詢模板service End  -->
+	
+	<!-- 舊資料批次執行service Start  -->
+	<bean id="oldDataBatchServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.OldDataBatchService" parent="atomicService">
+		<property name="applicationAssetLinkList">
+			<list>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="GP" />
+					<property name="applicationId" value="GPAP" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="TCB_EDC" />
+					<property name="applicationId" value="TCBANK" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="SCSB" />
+					<property name="applicationId" value="SCSB" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="CHB_EDC" />
+					<property name="applicationId" value="CHB" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="SYB-EDC" />
+					<property name="applicationId" value="SYB" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>	
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="GreenWorld" />
+					<property name="applicationId" value="Greenworld" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>	
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="JDW-EDC" />
+					<property name="applicationId" value="JDWFCB" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>	
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="GreenWorld" />
+					<property name="applicationId" value="AllPay" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="TCB_EDC" />
+					<property name="applicationId" value="CUP EMV MULTI" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>	
+			</list>
+		</property>
+		<property name="oldDataBatchDAO" ref="oldDataBatchDAO"></property>
+		<property name="calendarYearDAO" ref="calendarYearDAO"></property>
+		<property name="calendarDayDAO" ref="calendarDayDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+		
+
+		<property name="applicationDAO" ref="applicationDAO"></property>
+		<property name="applicationAssetLinkDAO" ref="applicationAssetLinkDAO"></property>
+		<property name="assetTypeDAO" ref="assetTypeDAO"></property>
+	</bean>
+	<bean id="oldDataBatchService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IOldDataBatchService</value>
+			</list>
+		</property>
+		<property name="target" ref="oldDataBatchServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 舊資料批次執行service End  -->
+	<!-- api service Start  -->
+	<bean id="apiAuthorizationInfoServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.ApiAuthorizationInfoService" parent="atomicService">
+		<property name="apiAuthorizationInfoDAO" ref="apiAuthorizationInfoDAO"></property>
+		<property name="apiLogDAO" ref="apiLogDAO"></property>
+	</bean>
+	<bean id="apiAuthorizationInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IApiAuthorizationInfoService</value>
+			</list>
+		</property>
+		<property name="target" ref="apiAuthorizationInfoServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!-- api service End  -->
+	
+	<!-- apiLog service Start  -->
+	<bean id="apiLogService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IApiLogService</value>
+			</list>
+		</property>
+		<property name="target" ref="apiLogServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="apiLogServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.ApiLogService" parent="atomicService">
+		<property name="apiLogDAO" ref="apiLogDAO"></property>
+	</bean>
+	<!-- apiLog service End  -->
+	
+	<!-- 批次通知工程師回應、到場、完修逾期情況  Start (CarrieDuan) -->
+	<bean id="exportCaseOverdueServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.ExportCaseOverdueService" parent="atomicService">
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="mailComponent" ref="mailComponent"></property> 
+		<property name="admUserDAO" ref="admUserDAO"></property> 
+		<property name="admRoleDAO" ref="admRoleDAO"></property>
+	</bean>
+	<bean id="exportCaseOverdueService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IExportCaseOverdueService</value>
+			</list>
+		</property>
+		<property name="target" ref="exportCaseOverdueServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!-- 批次通知工程師回應、到場、完修逾期情況  End (CarrieDuan) -->
+	
+	<!-- 案件商業性邏輯核檢service  Start (CarrieDuan) -->
+	<bean id="caseCheckInfoServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.CaseCheckInfoService" parent="atomicService">
+	</bean>
+	<bean id="caseCheckInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.ICaseCheckInfoService</value>
+			</list>
+		</property>
+		<property name="target" ref="caseCheckInfoServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<!-- 案件商業性邏輯核檢service  End (CarrieDuan) -->
+
+	<!-- 刷卡機標籤管理Service Start -->
+	<bean id="edcLabelService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IEdcLabelService</value>
+			</list>
+		</property>
+		<property name="target" ref="edcLabelServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="edcLabelServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.EdcLabelService" parent="atomicService">
+		<property name="dmmEdcLabelDAO" ref="dmmEdcLabelDAO"></property>
+	</bean>
+	<!-- 刷卡機標籤管理Service End -->
+	
+	<!-- 錯誤記錄檔下載Service Start -->
+	<bean id="logFileDownloadService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.ILogFileDownloadService</value>
+			</list>
+		</property>
+		<property name="target" ref="logFileDownloadServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="logFileDownloadServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.LogFileDownloadService" parent="atomicService">
+	</bean>
+	<!-- 錯誤記錄檔下載Service End -->
+	
+	<!-- 設備借用Service Start -->
+	<bean id="assetBorrowService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IAssetBorrowService</value>
+		</list>		
+		</property>
+		<property name="target" ref="assetBorrowServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	<bean id="assetBorrowServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.AssetBorrowService" parent="atomicService">
+		<property name="assetBorrowListDAO" ref="assetBorrowListDAO"></property>
+		<property name="assetBorrowNumberDAO" ref="assetBorrowNumberDAO"></property>
+		<property name="assetBorrowInfoDAO" ref="assetBorrowInfoDAO"></property>
+		<property name="repositoryDAO" ref="repositoryDAO"></property>
+		<property name="repositoryHistoryDAO" ref="repoHistoryDAO"></property> 
+		<property name="admUserDAO" ref="admUserDAO"></property>
+		<property name="mailComponent" ref="mailComponent"></property>
+	</bean>
+	<!-- 設備借用Service End -->
+</beans>

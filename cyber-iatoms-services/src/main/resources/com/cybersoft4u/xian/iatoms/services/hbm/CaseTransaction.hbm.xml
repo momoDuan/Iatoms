@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 26, 2008 7:14:16 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="cafe.workflow.dmo.CaseTransaction" table="CAFE_CASE_TRANSACTION" schema="dbo">
+         <id name="id" type="string">
+            <column name="TRANSACTION_ID" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="caseId" type="string">
+            <column name="CASE_ID" length="30" />
+        </property>
+        <property name="description" type="string">
+            <column name="TRANSACTION_DESCRIPTION" />
+        </property>
+        <property name="startTime" type="java.sql.Timestamp">
+            <column name="TRANSACTION_START_TIME" length="11" />
+        </property>
+        <property name="startTimestamp" type="string">
+            <column name="TX_START_TIMESTAMP" />
+        </property>
+        <property name="endTime" type="java.sql.Timestamp">
+            <column name="TRANSACTION_END_TIME" length="11" />
+        </property>
+        <property name="assignee" type="string">
+            <column name="CASE_ASSIGNEE" />
+        </property>
+        <property name="assignerId" type="string">
+            <column name="CASE_ASSIGNER_ID" length="20" />
+        </property>
+        <property name="assignerName" type="string">
+            <column name="CASE_ASSIGNER_NAME" length="20" />
+        </property>
+        <property name="activityCode" type="string">
+            <column name="CASE_STAGE" length="32" />
+        </property>
+        <property name="action" type="string">
+            <column name="CASE_ACTION" length="32" />
+        </property>
+        <property name="status" type="string">
+            <column name="CASE_STATUS" length="32" />
+        </property>
+        <property name="substatus" type="string">
+            <column name="CASE_SUBSTATUS" length="32" />
+        </property>
+        <property name="remark" type="string">
+            <column name="TRANSACTION_REMARK" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" length="20" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+    </class>
+</hibernate-mapping>

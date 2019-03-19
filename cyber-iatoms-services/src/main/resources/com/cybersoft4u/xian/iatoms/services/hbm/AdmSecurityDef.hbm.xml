@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/4/29 ?U?? 03:53:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.AdmSecurityDef" table="ADM_SECURITY_DEF" schema="dbo">
+         <id name="id" type="string"  >
+            <column name="ID"  not-null="true" length="32"/>
+             <generator class="assigned" />
+        </id> 
+        <property name="pwdLenBg" type="int">
+            <column name="PWD_LEN_BG" not-null="true" default="4" length="5"/>
+        </property>
+        <property name="pwdLenNd" type="int">
+            <column name="PWD_LEN_ND" not-null="true" default="10" length="5"/>
+        </property>
+        <property name="pwdValidDay" type="int">
+            <column name="PWD_VALID_DAY" not-null="true" default="0" length="5"/>
+        </property>
+        <property name="idValidDay" type="int">
+            <column name="ID_VALID_DAY" not-null="true"   length="5"/>
+        </property>
+        <property name="pwdErrCnt" type="int">
+            <column name="PWD_ERR_CNT" not-null="true" default="0" length="5"/>
+        </property>
+        <property name="pwdRpCnt" type="int">
+            <column name="PWD_RP_CNT"  not-null="true" default="0" length="5"/>
+        </property>
+        <property name="pwdChgFlag" type="string">
+            <column name="PWD_CHG_FLAG" length="1" not-null="true" default="Y"/>
+        </property>
+        <property name="pwdAlertDay" type="int">
+            <column name="PWD_ALERT_DAY" not-null="true" length="5"/>
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" length="32" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" length="50" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23"/>
+        </property>        
+    </class>
+</hibernate-mapping>

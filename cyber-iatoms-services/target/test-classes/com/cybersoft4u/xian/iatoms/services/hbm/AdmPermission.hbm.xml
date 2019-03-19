@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/4/29 ?U?? 03:53:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.AdmPermission" table="ADM_PERMISSION" schema="dbo">
+        <id name="id" type="string">
+            <column name="PERMISSION_ID" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="accessRight" type="string">
+            <column name="ACCESS_RIGHT" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>

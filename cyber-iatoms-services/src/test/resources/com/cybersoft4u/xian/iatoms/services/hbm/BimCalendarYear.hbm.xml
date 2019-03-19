@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/6/3 ?U?? 01:30:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.BimCalendarYear" table="BIM_CALENDAR_YEAR" schema="dbo">
+        <id name="year" type="int">
+            <column name="YEAR" />
+            <generator class="assigned" />
+        </id>        
+        <property name="monday" type="string">
+            <column name="MONDAY" length="1" not-null="true" />
+        </property>
+        <property name="tuesday" type="string">
+            <column name="TUESDAY" length="1" not-null="true" />
+        </property>
+        <property name="wednesday" type="string">
+            <column name="WEDNESDAY" length="1" not-null="true" />
+        </property>
+        <property name="thursday" type="string">
+            <column name="THURSDAY" length="1" not-null="true" />
+        </property>
+        <property name="friday" type="string">
+            <column name="FRIDAY" length="1" not-null="true" />
+        </property>
+        <property name="saturday" type="string">
+            <column name="SATURDAY" length="1" not-null="true" />
+        </property>
+        <property name="sunday" type="string">
+            <column name="SUNDAY" length="1" not-null="true" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

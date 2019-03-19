@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/12/7 ?U?? 02:32:53 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.SrmCaseNewTransactionParameter" table="SRM_CASE_NEW_TRANSACTION_PARAMETER" schema="dbo">
+        <id name="paramterValueId" type="string">
+            <column name="PARAMTER_VALUE_ID" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="caseId" type="string">
+            <column name="CASE_ID" length="30" />
+        </property>
+        <property name="dtid" type="string">
+            <column name="DTID" length="50" not-null="true" />
+        </property>
+        <property name="transactionType" type="string">
+            <column name="TRANSACTION_TYPE" length="32" not-null="true" />
+        </property>
+        <property name="merchantCode" type="string">
+            <column name="MERCHANT_CODE" />
+        </property>
+        <property name="merchantCodeOther" type="string">
+            <column name="MERCHANT_CODE_OTHER" />
+        </property>
+        <property name="tid" type="string">
+            <column name="TID" />
+        </property>
+        <property name="itemValue" type="string">
+            <column name="ITEM_VALUE" />
+        </property>
+    </class>
+</hibernate-mapping>

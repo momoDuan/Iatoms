@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017/2/9 ?W?? 10:18:50 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.SrmPaymentInfo" table="SRM_PAYMENT_INFO" schema="dbo">
+        <id name="paymentId" type="string">
+            <column name="PAYMENT_ID" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="customerId" type="string">
+            <column name="CUSTOMER_ID" length="32" />
+        </property>
+        <property name="dtid" type="string">
+            <column name="DTID" length="8" />
+        </property>
+        <property name="requirementNo" type="string">
+            <column name="REQUIREMENT_NO" length="50" />
+        </property>
+        <property name="caseId" type="string">
+            <column name="CASE_ID" length="30" />
+        </property>
+        <property name="tid" type="string">
+            <column name="TID" length="128" />
+        </property>
+        <property name="merchantId" type="string">
+            <column name="MERCHANT_ID" length="32" />
+        </property>
+        <property name="realFinishDate" type="timestamp">
+            <column name="REAL_FINISH_DATE" length="23" />
+        </property>
+        <property name="caseCreatedDate" type="timestamp">
+            <column name="CASE_CREATED_DATE" length="23" />
+        </property>        
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+        <property name="merchantHeaderId" type="string">
+            <column name="MERCHANT_HEADER_ID" length="32" />
+        </property>
+        <property name="isCaseCreate" type="string">
+            <column name="IS_CASE_CREATE" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>

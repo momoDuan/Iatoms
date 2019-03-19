@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">	
+
+	<import resource="classpath*:cyber-iatoms-common-context.xml"/>
+	<import resource="cyber-iatoms-hibernate.xml"/>
+	<import resource="cyber-iatoms-dao-application.xml"/>
+	<import resource="cyber-iatoms-service-application.xml"/>
+	<!-- <import resource="cyber-cms-im-dao-application.xml"/> -->
+
+	<bean id="genericBaseDAO" abstract="true">
+		<property name="defaultAttrValueOfSeqNoType" value="999999" /><!-- 預設序號類型屬性值:以各個屬性以delimiter-連結成一個屬性樣式值 -->
+		<property name="defaultSeqNoFormatLength" value="4" /><!-- 預設序號長度 -->
+		<property name="myRealm" value="cyber_iatoms" /><!-- 預設系統業務別 -->
+		<property name="daoSupport" ref="daoSupport"/><!-- DAO support -->
+		<property name="sequenceSql" value="SELECT NEXT VALUE FOR db_owner.S_GENERIC_SEQNO" /><!-- 取得資料庫序號sql statement -->
+	</bean>
+	
+	 <!-- <bean id="identityDAO" class="ccaps.dao.identity.impl.CcapsIdentityDAO" parent="genericBaseDAO">
+		<property name="myRealm" value="IM" />
+		<property name="userDAO" ref="userDAO"/>
+		<property name="functionDAO" ref="functionDAO"/>
+		<property name="divisionDAO" ref="divisionDAO"/>
+		<property name="substituteDAO" ref="substituteDAO"/>
+	</bean> --> 
+	
+	<bean id="sequenceNumberControlDAO" class="cafe.core.dao.SequenceNumberControlDAO" parent="genericBaseDAO"/>
+	
+	<bean id="atomicService" abstract="true">
+		<property name="sequenceNumberControlDAO" ref="sequenceNumberControlDAO" /><!-- 序號產生器DAO -->
+	</bean>
+	<bean id="identityServiceBean" class="cafe.core.service.identity.impl.IdentityService" parent="atomicService">
+		<property name="identityDAO" ref="identityDAO"/>
+	</bean>
+	<bean id="identityService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>cafe.core.service.identity.IIdentityService</value>
+			</list>
+		</property>
+		<property name="target" ref="identityServiceBean"/>
+		<property name="transactionManager" ref="transactionManager"/><!-- 交易管理 -->
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!--  -->
+	<bean id="iAtomsIdentityService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IIAtomsIdentityService</value>
+		</list>		
+		</property>
+		<property name="target" ref="iAtomsIdentityServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	 <bean id="iAtomsIdentityServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.IAtomsIdentityService" parent="atomicService">
+	    <property name="iAtomsIdentityDAO" ref="identityDAO" />
+	    <property name="identityDAO" ref="identityDAO"/>
+	</bean>
+	<!-- <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+  	  	<property name="defaultLocale" value="zh_CN"/>
+	</bean> -->
+	<!-- 基础参数Service注入 Start -->
+	<bean id="baseParameterServiceBean" class="cafe.core.service.parameter.impl.BaseParameterService" parent="atomicService">
+		<property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO" />
+		<property name="parameterServiceAndActionMap">
+			<map>
+				<entry key="ACTIVITY_CODE" value="identityService.getActivities" /><!-- key:參數類型代碼 value: serviceId.actionId-->
+			</map>
+		</property>
+	</bean>
+	<bean id="baseParameterService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>cafe.core.service.parameter.IBaseParameterService</value>
+			</list>
+		</property>
+		<property name="target" ref="baseParameterServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<bean id="baseParameterTypeDefServiceBean" class="cafe.core.service.parameter.impl.BaseParameterTypeDefService" parent="atomicService">
+		<property name="baseParameterTypeDefDAO" ref="baseParameterTypeDefDAO" />
+	</bean>
+	<bean id="baseParameterTypeDefService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>cafe.core.service.parameter.IBaseParameterTypeDefService</value>
+			</list>
+		</property>
+		<property name="target" ref="baseParameterTypeDefServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 基础参数Service注入 end -->
+</beans>

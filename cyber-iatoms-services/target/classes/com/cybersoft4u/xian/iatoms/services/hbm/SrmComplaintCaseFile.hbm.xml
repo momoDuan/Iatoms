@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cybersoft4u.xian.iatoms.services.dmo.SrmComplaintCaseFile" table="SRM_COMPLAINT_CASE_FILE" schema="dbo">
+		<id name="fileId" type="string">
+            <column name="FILE_ID" not-null="true" length="32"/>
+            <generator class="assigned" />
+        </id>
+        <property name="caseId" type="string">
+            <column name="CASE_ID" not-null="true" length="30"/>
+        </property>
+        <property name="fileName" type="string">
+            <column name="FILE_NAME" length="100"/>
+        </property>
+        <property name="filePath" type="string">
+            <column name="FILE_PATH" length="100"/>
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" length="32"/>
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" length="50"/>
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+	</class>
+</hibernate-mapping>

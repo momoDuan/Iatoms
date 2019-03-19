@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/9/14 ?U?? 02:37:12 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.BimContractAttachedFile" table="BIM_CONTRACT_ATTACHED_FILE" schema="dbo">
+        <id name="attachedFileId" type="string">
+            <column name="ATTACHED_FILE_ID" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="contractId" type="string">
+            <column name="CONTRACT_ID" length="32" not-null="true" />
+        </property>
+        <property name="fileName" type="string">
+            <column name="FILE_NAME" />
+        </property>
+        <property name="attachedFile" type="string">
+            <column name="ATTACHED_FILE" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

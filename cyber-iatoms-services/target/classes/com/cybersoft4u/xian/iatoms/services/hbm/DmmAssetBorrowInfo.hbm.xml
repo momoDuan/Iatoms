@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/6/3 ?U?? 01:30:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.DmmAssetBorrowInfo" table="DMM_ASSET_BORROW_INFO"  schema="dbo">
+        <id name="borrowCaseId" type="string">
+            <column name="BORROW_CASE_ID" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="borrowUser" type="java.lang.String">
+            <column name="BORROW_USER" length="32" />
+        </property>
+        <property name="comment" type="java.lang.String">
+            <column name="COMMENT" length="200"/>
+        </property>
+        <property name="borrowCategory" type="java.lang.String">
+            <column name="BORROW_CATEGORY" length="50"/>
+        </property>        
+        <property name="borrowStatus" type="java.lang.String">
+            <column name="BORROW_STATUS" length="20" />
+        </property>
+        <property name="borrowStartDate" type="timestamp">
+            <column name="BORROW_START_DATE"/>
+        </property>
+        <property name="borrowEndDate" type="timestamp">
+            <column name="BORROW_END_DATE" />
+        </property>
+        <property name="directorCheckById" type="java.lang.String">
+            <column name="DIRECTOR_CHECK_BY_ID" length="32"/>
+        </property>
+        <property name="directorCheckByName" type="java.lang.String">
+            <column name="DIRECTOR_CHECK_BY_NAME" length="50" />
+        </property>
+        <property name="directorCheckByDate" type="timestamp">
+            <column name="DIRECTOR_CHECK_BY_DATE" />
+        </property>
+        <property name="agentById" type="java.lang.String">
+            <column name="AGENT_BY_ID" length="32"/>
+        </property>
+        <property name="agentByName" type="java.lang.String">
+            <column name="AGENT_BY_NAME" length="50" />
+        </property>
+        <property name="agentByDate" type="timestamp">
+            <column name="AGENT_BY_DATE" />
+        </property>
+        <property name="createdById" type="java.lang.String">
+            <column name="CREATED_BY_ID" length="32" />
+        </property>
+        <property name="createdByName" type="java.lang.String">
+            <column name="CREATED_BY_NAME" length="50"/>
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" />
+        </property>
+        <property name="updatedById" type="java.lang.String">
+            <column name="UPDATED_BY_ID" length="32" />
+        </property>
+        <property name="updatedByName" type="java.lang.String">
+            <column name="UPDATED_BY_NAME" length="50"/>
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" />
+        </property>
+        <property name="directorBack" type="java.lang.String">
+            <column name="DIRECTOR_BACK" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

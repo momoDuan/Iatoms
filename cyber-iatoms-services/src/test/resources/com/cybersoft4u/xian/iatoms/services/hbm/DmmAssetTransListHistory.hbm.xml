@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cybersoft4u.xian.iatoms.services.dmo.DmmAssetTransListHistory"
+		table="DMM_ASSET_TRANS_LIST_HISTORY" schema="dbo">
+		<id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="assigned" />
+		</id>
+		<property name="assetTransId" type="java.lang.String">
+			<column name="ASSET_TRANS_ID" length="14" not-null="true" />
+		</property>
+		<property name="serialNumber" type="string">
+            <column name="SERIAL_NUMBER" length="32" />
+        </property>
+        <property name="isCup" type="string">
+            <column name="IS_CUP" length="1" />
+        </property>
+        <property name="isEnabled" type="string">
+            <column name="IS_ENABLED" length="1" />
+        </property>
+        <property name="contractId" type="string">
+            <column name="CONTRACT_ID" length="32" />
+        </property>
+        <property name="comment" type="string">
+            <column name="COMMENT" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+        <property name="assetUser" type="string">
+            <column name="ASSET_USER" />
+        </property>
+	</class>
+</hibernate-mapping>

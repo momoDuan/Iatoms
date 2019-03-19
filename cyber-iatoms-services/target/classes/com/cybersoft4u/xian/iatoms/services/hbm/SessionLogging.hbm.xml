@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/8/5 ?U?? 01:28:32 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.SessionLogging" table="SESSION_LOGGING" schema="dbo">
+        <id name="account" type="string">
+            <column name="ACCOUNT" />
+            <generator class="assigned" />
+        </id>
+        <property name="loginTime" type="timestamp">
+            <column name="LOGIN_TIME" length="23" />
+        </property>
+        <property name="logoutTime" type="timestamp">
+            <column name="LOGOUT_TIME" length="23" />
+        </property>
+        <property name="userIp" type="string">
+            <column name="USER_IP" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="1" />
+        </property>
+        <property name="sessionId" type="string">
+            <column name="SESSION_ID" />
+        </property>
+    </class>
+</hibernate-mapping>

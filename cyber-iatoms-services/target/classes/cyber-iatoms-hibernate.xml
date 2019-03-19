@@ -1,0 +1,260 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+	
+	<!-- DataSource Settings -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    </bean>
+    <!-- org.apache.commons.dbcp.BasicDataSource -->
+    <bean id="dataSource" init-method="initDataSource"
+          class="com.cybersoft4u.xian.iatoms.services.dbcp.EncryptedBasicDataSource"  
+          destroy-method="close">  
+        <property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver"/>  
+        
+        <property name="databaseType" value="IATOMS_DATABASE"/>
+        
+        <!--maxActive: 最大连接数量-->    
+        <property name="maxActive" value="300"/>  
+        <!--minIdle: 最小空闲连接-->    
+        <property name="minIdle" value="5"/>  
+        <!--maxIdle: 最大空闲连接-->    
+        <property name="maxIdle" value="20"/>  
+        <!--initialSize: 初始化连接-->    
+        <property name="initialSize" value="30"/>  
+        <!-- 连接被泄露时是否打印 -->  
+        <property name="logAbandoned" value="true"/>  
+        <!--removeAbandoned: 是否自动回收超时连接-->    
+        <property name="removeAbandoned"  value="true"/>  
+        <!--removeAbandonedTimeout: 超时时间(以秒数为单位)-->    
+        <property name="removeAbandonedTimeout" value="10"/>  
+        <!--maxWait: 超时等待时间以毫秒为单位 1000等于60秒-->  
+        <property name="maxWait" value="1000"/>  
+        <!-- 在空闲连接回收器线程运行期间休眠的时间值,以毫秒为单位. -->  
+        <property name="timeBetweenEvictionRunsMillis" value="10000"/>  
+        <!--  在每次空闲连接回收器线程(如果有)运行时检查的连接数量 -->  
+        <property name="numTestsPerEvictionRun" value="10"/>  
+        <!-- 1000 * 60 * 30  连接在池中保持空闲而不被空闲连接回收器线程-->  
+        <property name="minEvictableIdleTimeMillis" value="10000"/>  
+    	<property name="validationQuery" value="SELECT 1"/>  
+    </bean>  
+
+     <bean id="dataSourceFoms" class="com.cybersoft4u.xian.iatoms.services.dbcp.EncryptedBasicDataSource" init-method="initDataSource" destroy-method="close">
+		<property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver"></property>
+		
+		<property name="databaseType" value="FOMS_DATABASE"/>
+		
+		<!--maxActive: 最大连接数量-->    
+        <property name="maxActive" value="150"/>  
+        <!--minIdle: 最小空闲连接-->    
+        <property name="minIdle" value="5"/>  
+        <!--maxIdle: 最大空闲连接-->    
+        <property name="maxIdle" value="20"/>  
+        <!--initialSize: 初始化连接-->    
+        <property name="initialSize" value="30"/>  
+        <!-- 连接被泄露时是否打印 -->  
+        <property name="logAbandoned" value="true"/>  
+        <!--removeAbandoned: 是否自动回收超时连接-->    
+        <property name="removeAbandoned"  value="true"/>  
+        <!--removeAbandonedTimeout: 超时时间(以秒数为单位)-->    
+        <property name="removeAbandonedTimeout" value="10"/>  
+        <!--maxWait: 超时等待时间以毫秒为单位 1000等于60秒-->  
+        <property name="maxWait" value="1000"/>  
+        <!-- 在空闲连接回收器线程运行期间休眠的时间值,以毫秒为单位. -->  
+        <property name="timeBetweenEvictionRunsMillis" value="10000"/>  
+        <!--  在每次空闲连接回收器线程(如果有)运行时检查的连接数量 -->  
+        <property name="numTestsPerEvictionRun" value="10"/>  
+        <!-- 1000 * 60 * 30  连接在池中保持空闲而不被空闲连接回收器线程-->  
+        <property name="minEvictableIdleTimeMillis" value="10000"/>  
+    	<property name="validationQuery" value="SELECT 1"/>  
+    </bean> 
+    
+	<!-- JPA Entity Manager Settings -->	
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mappingResources">
+			<list>				
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/CaseDetail.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/CaseTransaction.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/AdmFunctionType.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/AdmPermission.hbm.xml</value>				
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/AdmPwdHistory.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/AdmRole.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/AdmRoleFunction.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/AdmRolePermission.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/AdmSecurityDef.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/AdmSystemLogging.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/AdmUser.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/AdmUserRole.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/AdmUserWarehouse.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BaseParameterItemDef.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimCalendarDay.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimCalendarYear.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimCompany.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimCompanyType.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimContract.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimContractType.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimContractAsset.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimContractVendor.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimDepartment.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimMailList.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimMerchant.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimMerchantHeader.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimReportSetting.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimReportSettingDetail.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimSla.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimWarehouse.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetInInfo.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetInList.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetStocktakeCategory.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetStocktakeInfo.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetStocktakeList.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetStocktakeStatus.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetSupportedComm.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetSupportedFunction.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetTransInfo.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetTransList.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetType.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetTypeCompany.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmSupplies.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmRepository.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/PvmApplication.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/PvmApplicationAssetLink.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/PvmDtidDef.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmRepositoryHistory.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmRepositoryFaultCom.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmRepositoryFaultDesc.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmRepositoryHistoryMonthly.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BimContractAttachedFile.hbm.xml</value>
+				
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SequenceNumberControl.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/UserSessionLogging.hbm.xml</value>
+					
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseAssetFunction.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseAssetLink.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseAttFile.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseDetail.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseHandleInfo.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseNewAssetFunction.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseNewAssetLink.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseNewHandleInfo.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseNewTransactionParameter.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseTransaction.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseTransactionParameter.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmHistoryCaseAssetFunction.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmHistoryCaseAssetLink.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmHistoryCaseAttFile.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmHistoryCaseHandleInfo.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmHistoryCaseTransaction.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmHistoryCaseTransactionParameter.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmTransactionParameterItem.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmTransactionParameterDetail.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseTemplates.hbm.xml</value>
+				
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmComplaint.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmComplaintCaseFile.hbm.xml</value>
+				
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmPaymentInfo.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmPaymentItem.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmPaymentTranscation.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmRepositoryHistoryComm.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmRepositoryHistoryDesc.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BaseParameterTypeDef.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseCommMode.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmCaseNewCommMode.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmHistoryCaseCommMode.hbm.xml</value>
+				
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/SrmQueryTemplate.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/ApiAuthorizationInfo.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/ApiLog.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/BaseParameterPostCode.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/ApiCmsRepository.hbm.xml</value>
+				
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmEdcLabel.hbm.xml</value>
+				
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetBorrowInfo.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetBorrowNumber.hbm.xml</value>
+				<value>com/cybersoft4u/xian/iatoms/services/hbm/DmmAssetBorrowList.hbm.xml</value>
+			</list>
+		</property>	
+		<!-- SQL server -->	
+       	<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.autoReconnect">true</prop>
+			</props>
+		</property>
+    </bean>	
+    
+    
+ 	<bean id="sessionFactoryFoms" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSourceFoms"/>
+		</property>
+		<property name="mappingResources">
+			<list>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+	</bean> 
+    
+	<!-- Add Transaction support -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <!-- Use @Transaction annotation for managing transactions -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<bean id="transactionAttributeSource"
+		class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource">
+		<property name="properties">
+			<props>
+				<prop key="doService*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>	
+	
+	<!-- GenericDaoSupport -->
+	<bean id="daoSupport" class="cafe.core.dao.support.hibernate4.GenericDaoSupport">
+		<property name="sessionFactory" ref="sessionFactory" /><!-- sessionFactory -->
+		<property name="myRealm" value="cyber-iatoms" /><!-- 預設系統業務別 -->
+		<property name="schemas"><!-- 系統業務別與實際Schema名稱的對應 -->
+			<map>
+				<entry key="cyber-iatoms" value="dbo" />
+			</map>
+		</property>
+	</bean>
+		  
+    <!-- 加载activiti引擎 -->
+    <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+        <property name="processEngineConfiguration" ref="processEngineConfiguration" />
+    </bean>
+    <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+        <property name="dataSource" ref="dataSource" />
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="databaseSchemaUpdate" value="true" />
+        <property name="jobExecutorActivate" value="false" />
+        <property name="history" value="none"></property> <!-- none: 不保存任何歷史記錄，可以提高系統性能；
+        													activity：保存所有的流程實例、任務、活動信息；
+        													audit：也是Activiti的默認級別，保存所有的流程實例、任務、活動、表單屬性；
+        													full：最完整的歷史記錄，除了包含audit級別的信息之外還能保存詳細，例如：流程變數。 -->
+    </bean>
+    
+    <!-- 7大接口 -->
+    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService"/>
+    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService"/>
+    <bean id="formService" factory-bean="processEngine" factory-method="getFormService"/>
+    <bean id="activitiIdentityService" factory-bean="processEngine" factory-method="getIdentityService"/>
+    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService"/>
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>
+    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService"/> 
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017/2/24 ?U?? 01:13:23 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.SrmHistoryCaseCommMode" table="SRM_HISTORY_CASE_COMM_MODE" schema="dbo">
+        <id name="id" type="string">
+            <column name="ID" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="caseId" type="string">
+            <column name="CASE_ID" length="30" />
+        </property>
+        <property name="commModeId" type="string">
+            <column name="COMM_MODE_ID" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>

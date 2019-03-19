@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/6/3 ?U?? 01:30:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.ApiAuthorizationInfo" table="API_AUTHORIZATION_INFO"  schema="dbo">
+        <id name="ip" type="string">
+            <column name="IP" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="clientCode" type="java.lang.String" not-null="true">
+            <column name="CLIENT_CODE" length="50" />
+        </property>
+        <property name="status" type="java.lang.String" not-null="true">
+            <column name="STATUS" length="50" />
+        </property>
+        <property name="retry" type="int" not-null="true">
+            <column name="RETRY"  length="10"/>
+        </property>
+        <property name="authorizationTime" type="timestamp" not-null="true">
+            <column name="AUTHORIZATION_TIME" />
+        </property>        
+         <property name="token" type="java.lang.String" not-null="true">
+            <column name="TOKEN" length="500" />
+        </property>
+        <property name="hasToken" type="java.lang.String" not-null="true">
+            <column name="HAS_TOKEN" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

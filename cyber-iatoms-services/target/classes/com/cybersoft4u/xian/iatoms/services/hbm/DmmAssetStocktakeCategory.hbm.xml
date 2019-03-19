@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/6/3 ?U?? 01:30:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.DmmAssetStocktakeCategory" table="DMM_ASSET_STOCKTAKE_CATEGORY" schema="dbo">
+        <composite-id name="id" class="com.cybersoft4u.xian.iatoms.services.dmo.DmmAssetStocktakeCategoryId">
+        	<key-property name="stocktackId" type="java.lang.String">
+                <column name="STOCKTACK_ID"  length="40"/>
+            </key-property>
+       		<key-property name="assetTypeId" type="string">
+                <column name="ASSET_TYPE_ID" length="32" />
+            </key-property>
+       		<generator class="assigned"></generator>
+       	</composite-id>
+    </class>
+</hibernate-mapping>

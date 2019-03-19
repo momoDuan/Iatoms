@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">	
+
+	<bean id="baseParameterTypeDefDAO" class="cafe.core.dao.parameter.impl.BaseParameterTypeDefDAO" parent="genericBaseDAO"/>
+	<!-- <bean id="baseParameterItemDefDAO" class="cafe.core.dao.parameter.impl.BaseParameterItemDefDAO" parent="genericBaseDAO"> -->
+	<bean id="baseParameterItemDefDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.IAtomsBaseParameterItemDefDAO" parent="genericBaseDAO">
+		<property name="parameterItemClasses">
+			<map>
+				<entry key="COMMON">
+					<bean class="cafe.core.bean.ParameterItemClassAttribute">
+						<property name="className">
+							<value>cafe.core.bean.CompositeParameter</value>
+						</property>
+						<property name="columnMap">
+							<props>
+								<prop key="REFERENCE_CODE">referenceCode</prop>
+								<prop key="ITEM_DEPTH">depth</prop>
+								<prop key="TEXT_FIELD1">textField1</prop>
+								<prop key="TEXT_FIELD2">textField2</prop>
+								<prop key="TEXT_FIELD3">textField3</prop>
+								<prop key="TEXT_FIELD4">textField4</prop>
+								<prop key="TEXT_FIELD5">textField5</prop>
+								<prop key="PARENT_BPID_ID">parentId</prop>
+							</props>
+						</property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<!-- <bean id="iAtomsBaseParameterItemDefDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.IAtomsBaseParameterItemDefDAO" parent="baseParameterItemDefDAO"/> -->
+	<bean id="caseDetailDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.CaseDetailDAO" parent="genericBaseDAO"/>
+	<bean id="caseTransactionDAO" class="cafe.workflow.dao.impl.CaseTransactionDAO" parent="genericBaseDAO"/> 
+	<bean id="identityDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.IAtomsIdentityDAO" parent="genericBaseDAO"></bean>
+	<bean id="apLogDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ApLogDAO" parent="genericBaseDAO"></bean>
+	<bean id="functionTypeDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.FunctionTypeDAO" parent="genericBaseDAO"></bean>
+	<bean id="permissionDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.PermissionDAO" parent="genericBaseDAO"></bean>
+	<bean id="rolePermissionDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.RolePermissionDAO" parent="genericBaseDAO"></bean>
+	
+	
+	<bean id="admUserRoleDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.AdmUserRoleDAO" parent="genericBaseDAO"/>
+	<bean id="admUserDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.AdmUserDAO" parent="genericBaseDAO"/>
+	<bean id="admPwdHistoryDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.AdmPwdHistoryDAO" parent="genericBaseDAO"/>
+	<bean id="admRoleDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.AdmRoleDAO" parent="genericBaseDAO"/>
+	<bean id="systemLogDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SystemLogDAO" parent="genericBaseDAO"></bean>
+	<bean id="baseParameterManagerDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.BaseParameterManagerDAO" parent="genericBaseDAO"/>
+	<bean id="departmentDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DepartmentDAO" parent="genericBaseDAO"/>
+	
+	<bean id="passwordSettingDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.PasswordSettingDAO" parent="genericBaseDAO"/>
+	<bean id="contractDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ContractDAO" parent="genericBaseDAO"/>
+	<bean id="contractAssetDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ContractAssetDAO" parent="genericBaseDAO"/>
+	<bean id="merchantHeaderDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.MerchantHeaderDAO" parent="genericBaseDAO"/>
+	<bean id="merchantNewDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.MerchantDAO" parent="genericBaseDAO"></bean>
+	<bean id="companyDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.CompanyDAO" parent="genericBaseDAO"/> 
+	<bean id="companyTypeDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.CompanyTypeDAO" parent="genericBaseDAO"/>
+	<bean id="repositoryDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmRepositoryDAO" parent="genericBaseDAO"></bean>
+	<bean id="assetInListDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.AssetInListDAO" parent="genericBaseDAO"></bean>
+	<bean id="assetInInfoDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.AssetInInfoDAO" parent="genericBaseDAO"></bean>
+	<bean id="warehouseDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.WarehouseDAO" parent="genericBaseDAO" />
+	<bean id="reportSettingDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ReportSettingDAO" parent="genericBaseDAO"/>
+	<bean id="reportSettingDetailDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ReportSettingDetailDAO" parent="genericBaseDAO"/>
+	<bean id="calendarDayDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.CalendarDayDAO" parent="genericBaseDAO"/>
+	<bean id="calendarYearDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.CalendarYearDAO" parent="genericBaseDAO"/>
+	<bean id="suppliesDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SuppliesTypeDAO" parent="genericBaseDAO"/>
+	<bean id="mailListDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.MailListDAO" parent="genericBaseDAO"/>
+	<bean id="assetTypeDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.AssetTypeDAO" parent="genericBaseDAO"/>
+	<bean id="applicationDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.PvmApplicationDAO" parent="genericBaseDAO"/>
+	<bean id="applicationAssetLinkDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ApplicationAssetLinkDAO" parent="genericBaseDAO"/>
+	<bean id="assetTransInfoDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmAssetTransInfoDAO" parent="genericBaseDAO"></bean>
+	<bean id="assetTransListDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmAssetTransListDAO" parent="genericBaseDAO"></bean>
+	<bean id="assetStocktackInfoDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmAssetStacktakeInfoDAO" parent="genericBaseDAO"></bean>
+	<bean id="assetStocktackListDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmAssetStacktakeListDAO" parent="genericBaseDAO"></bean>
+	<bean id="assetStocktackStatusDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmAssetStacktakeStatusDAO" parent="genericBaseDAO"></bean>
+	<bean id="assetStocktackCategroyDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmAssetStacktakeCategoryDAO" parent="genericBaseDAO"></bean>
+	<bean id="repoHistoryDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmRepositoryHistoryDAO" parent="genericBaseDAO"></bean>
+	<bean id="repoStatusReportDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.RepoStatusReportDAO" parent="genericBaseDAO"></bean>
+	<bean id="assetStockReportDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.AssetStockReportDAO" parent="genericBaseDAO"></bean>
+	<bean id="customerRepoDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.CustomerRepoDAO" parent="genericBaseDAO"></bean>
+	<bean id="contractTypeDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ContractTypeDAO" parent="genericBaseDAO"></bean>
+	<bean id="contractVendorDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ContractVendorDAO" parent="genericBaseDAO"></bean>
+	<bean id="admUserWarehouseDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.AdmUserWarehouseDAO" parent="genericBaseDAO"></bean>
+	
+	<bean id="contractAttachedFileDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ContractAttachedFileDAO" parent="genericBaseDAO"></bean>	
+	<bean id="dtidDefDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.PvmDtidDefDAO" parent="genericBaseDAO"></bean>
+	<bean id="contractSlaDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ContractSlaDAO" parent="genericBaseDAO"/>
+	<bean id="edcParameterDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.EdcParameterDAO" parent="genericBaseDAO"/>
+	<bean id="repositoryFaultComDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmRepositoryFaultComDAO" parent="genericBaseDAO"/>
+	<bean id="repositoryFaultDescDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmRepositoryFaultDescDAO" parent="genericBaseDAO"/>
+	<bean id="srmCaseTemplatesDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseTemplatesDAO" parent="genericBaseDAO"></bean>
+	
+	<bean id="srmComplaintDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmComplaintDAO" parent="genericBaseDAO"/>
+	<bean id="srmComplaintCaseFileDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmComplaintCaseFileDAO" parent="genericBaseDAO"/>
+	<!-- 交易參數 -->
+	<bean id="srmCaseDetailDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseDetailDAO" parent="genericBaseDAO"/>
+	<bean id="srmCaseHandleInfoDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseHandleInfoDAO" parent="genericBaseDAO"/>
+	<bean id="srmCaseTransactionDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseTransactionDAO" parent="genericBaseDAO"/>
+	<bean id="srmTransactionParameterDetailDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmTransactionParameterDetailDAO" parent="genericBaseDAO"/>
+	<bean id="srmTransactionParameterItemDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmTransactionParameterItemDAO" parent="genericBaseDAO"/>
+	<bean id="srmCaseNewTransactionParameterDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseNewTransactionParameterDAO" parent="genericBaseDAO"/>
+	<bean id="srmCaseTransactionParameterDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseTransactionParameterDAO" parent="genericBaseDAO"/>
+	<bean id="srmCaseAttFileDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseAttFileDAO" parent="genericBaseDAO"/>
+	<bean id="srmCaseNewHandleInfoDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseNewHandleInfoDAO" parent="genericBaseDAO"/>
+	<bean id="historyCaseHandleInfoDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmHistoryCaseHandleInfoDAO" parent="genericBaseDAO"></bean>
+	<bean id="paymentInfoDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmPaymentInfoDAO" parent="genericBaseDAO"></bean>
+	<bean id="srmPaymentItemDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmPaymentItemDAO" parent="genericBaseDAO"></bean>
+	<bean id="paymentTranscationDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmPaymentTranscationDAO" parent="genericBaseDAO"></bean>
+	
+	<bean id="srmCaseAssetLinkDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseAssetLinkDAO" parent="genericBaseDAO"></bean>
+	<bean id="srmCaseAssetFunctionDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseAssetFunctionDAO" parent="genericBaseDAO"></bean>
+	<bean id="srmCaseNewAssetLinkDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseNewAssetLinkDAO" parent="genericBaseDAO"></bean>
+	<bean id="srmCaseNewAssetFunctionDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseNewAssetFunctionDAO" parent="genericBaseDAO"></bean>
+	
+	<bean id="srmHistoryCaseTransactionDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmHistoryCaseTransactionDAO" parent="genericBaseDAO"></bean>
+	<bean id="dmmRepositoryHistoryDescDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmRepositoryHistoryDescDAO" parent="genericBaseDAO"></bean>
+	<bean id="dmmRepositoryHistoryCommDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmRepositoryHistoryCommDAO" parent="genericBaseDAO"></bean>
+	<bean id="dmmRepositoryHistoryMonthlyDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmRepositoryHistoryMonthlyDAO" parent="genericBaseDAO"></bean>
+	
+	<bean id="dmmEdcLabelDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmEdcLabelDAO" parent="genericBaseDAO"></bean>
+	
+	<bean id="srmCaseCommModeDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseCommModeDAO" parent="genericBaseDAO"></bean>
+	<bean id="srmCaseNewCommModeDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmCaseNewCommModeDAO" parent="genericBaseDAO"></bean>
+	<bean id="iAtomsBaseParameterTypeDefDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.IAtomsBaseParameterTypeDefDAO" parent="genericBaseDAO"></bean>
+	
+	<bean id="srmQueryTemplateDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.SrmQueryTemplateDAO" parent="genericBaseDAO"></bean>
+	
+	<bean id="apiAuthorizationInfoDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ApiAuthorizationInfoDAO" parent="genericBaseDAO"></bean>
+	<bean id="apiLogDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ApiLogDAO" parent="genericBaseDAO"></bean>
+	<bean id="baseParameterPostCodeDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.BaseParameterPostCodeDAO" parent="genericBaseDAO"></bean>
+	<bean id="apiCmsRepositoryDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.ApiCmsRepositoryDAO" parent="genericBaseDAO"></bean>
+	<bean id="assetBorrowNumberDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmAssetBorrowNumberDAO" parent="genericBaseDAO"></bean>
+	<bean id="assetBorrowListDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmAssetBorrowListDAO" parent="genericBaseDAO"></bean>
+	<bean id="assetBorrowInfoDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.DmmAssetBorrowInfoDAO" parent="genericBaseDAO"></bean>
+	
+	<bean id="oldDataBatchDAO" class="com.cybersoft4u.xian.iatoms.services.dao.impl.OldDataBatchDAO" parent="genericBaseDAO">
+		<property name="daoSupport">
+			<bean class="cafe.core.dao.support.hibernate4.GenericDaoSupport" parent="daoSupport">
+				<property name="sessionFactory">
+					<ref bean="sessionFactoryFoms" />
+				</property>
+				<property name="schemas">
+					<map>
+						<entry key="iatoms-foms" value="foms" />
+						<entry key="iatoms-aims" value="dbo" />
+					</map>
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

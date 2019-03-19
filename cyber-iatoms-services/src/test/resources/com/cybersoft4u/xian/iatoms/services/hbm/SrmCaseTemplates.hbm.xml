@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017/2/24 ?U?? 01:13:23 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.SrmCaseTemplates" table="SRM_CASE_TEMPLATES" schema="dbo">
+        <id name="id" type="string">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="category" type="string">
+            <column name="CATEGORY" length="30" />
+        </property>
+        <property name="fileName" type="string">
+            <column name="FILE_NAME" />
+        </property>
+        <property name="filePath" type="string">
+            <column name="FILE_PATH" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+        <property name="deleted" type="string">
+            <column name="DELETED" />
+        </property>
+    </class>
+</hibernate-mapping>

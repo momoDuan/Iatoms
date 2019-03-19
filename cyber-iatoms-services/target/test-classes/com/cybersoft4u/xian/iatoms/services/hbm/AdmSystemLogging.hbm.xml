@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/4/29 ?U?? 03:53:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.AdmSystemLogging" table="ADM_SYSTEM_LOGGING" schema="dbo">
+        <id name="id" type="java.lang.Integer">
+            <column name="LOG_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="userId" type="string">
+            <column name="USER_ID" />
+        </property>
+        <property name="operationTime" type="timestamp">
+            <column name="OPERATION_TIME" length="23" />
+        </property>
+        <property name="ip" type="string">
+            <column name="IP" length="50" />
+        </property>
+        <property name="logCategre" type="string">
+            <column name="LOG_CATEGRE" length="50" />
+        </property>
+        <property name="functionName" type="string">
+            <column name="FUNCTION_NAME" length="30" />
+        </property>
+        <property name="content" type="string">
+            <column name="CONTENT" />
+        </property>
+        <property name="result" type="string">
+            <column name="RESULT" />
+        </property>
+        <property name="sessionId" type="string">
+            <column name="SESSION_ID" length="100" />
+        </property>
+        <property name="clientInfo" type="string">
+            <column name="CLIENT_INFO"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<type-mapping>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"
+			not-null="true">
+		</sql-type>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"
+			not-null="false">
+		</sql-type>
+		<sql-type jdbc-type="NVARCHAR" hibernate-type='string'
+			not-null="false">
+		</sql-type>
+		<sql-type jdbc-type="DATE" hibernate-type="date" length="10"
+			not-null="false">
+		</sql-type>
+		<sql-type jdbc-type="DECIMAL" hibernate-type="java.lang.Long"
+			precision="11" not-null="false">
+		</sql-type>
+		<sql-type jdbc-type="TIMESTAMP" hibernate-type="timestamp"
+			length="23" not-null="false">
+		</sql-type>
+		<sql-type jdbc-type="CHAR" hibernate-type="string" length="1"
+			not-null="false">
+		</sql-type>
+		<sql-type jdbc-type="INTEGER" hibernate-type="java.lang.Integer"
+			not-null="false">
+		</sql-type>
+		<sql-type jdbc-type="NUMERIC" hibernate-type="java.lang.Long"
+			precision="15" not-null="false">
+		</sql-type>
+	</type-mapping>
+	<table-filter match-name="SRM_HISTORY_CASE_HANDLE_INFO"
+		match-catalog="IATOMS">
+	</table-filter>
+	<table-filter match-name="SRM_CASE_HANDLE_INFO"
+		match-catalog="IATOMS">
+	</table-filter>
+	<table-filter match-name="SRM_CASE_NEW_HANDLE_INFO"
+		match-catalog="IATOMS">
+	</table-filter>
+
+
+</hibernate-reverse-engineering>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">	
+
+	<import resource="classpath*:cyber-iatoms-common-context.xml"/>
+	<import resource="cyber-iatoms-hibernate.xml"/>
+	<import resource="cyber-iatoms-dao-application.xml"/>
+	<import resource="cyber-iatoms-service-application.xml"/>
+	<import resource="cyber-iatoms-edcFeeReport-service.xml"/>
+	<!-- <import resource="cyber-cms-im-dao-application.xml"/> -->
+	
+	<import resource="classpath*:cyber-iatoms-dataTransfer-service.xml"/>
+	<import resource="classpath*:cyber-iatoms-dataTransfer-dao.xml"/>
+	<bean id="genericBaseDAO" abstract="true">
+		<property name="defaultAttrValueOfSeqNoType" value="999999" /><!-- 預設序號類型屬性值:以各個屬性以delimiter-連結成一個屬性樣式值 -->
+		<property name="defaultSeqNoFormatLength" value="4" /><!-- 預設序號長度 -->
+		<property name="myRealm" value="cyber_iatoms" /><!-- 預設系統業務別 -->
+		<property name="daoSupport" ref="daoSupport"/><!-- DAO support -->
+		<property name="sequenceSql" value="SELECT NEXT VALUE FOR dbo.S_GENERIC_SEQNO" /><!-- 取得資料庫序號sql statement -->
+	</bean>
+	
+	 <!-- <bean id="identityDAO" class="ccaps.dao.identity.impl.CcapsIdentityDAO" parent="genericBaseDAO">
+		<property name="myRealm" value="IM" />
+		<property name="userDAO" ref="userDAO"/>
+		<property name="functionDAO" ref="functionDAO"/>
+		<property name="divisionDAO" ref="divisionDAO"/>
+		<property name="substituteDAO" ref="substituteDAO"/>
+	</bean> --> 
+	
+	<bean id="sequenceNumberControlDAO" class="cafe.core.dao.SequenceNumberControlDAO" parent="genericBaseDAO"/>
+	
+	<bean id="atomicService" abstract="true">
+		<property name="sequenceNumberControlDAO" ref="sequenceNumberControlDAO" /><!-- 序號產生器DAO -->
+	</bean>
+	<bean id="identityServiceBean" class="cafe.core.service.identity.impl.IdentityService" parent="atomicService">
+		<property name="identityDAO" ref="identityDAO"/>
+	</bean>
+	<bean id="identityService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>cafe.core.service.identity.IIdentityService</value>
+			</list>
+		</property>
+		<property name="target" ref="identityServiceBean"/>
+		<property name="transactionManager" ref="transactionManager"/><!-- 交易管理 -->
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!--  -->
+	<bean id="iAtomsIdentityService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+		<list>
+			<value>com.cybersoft4u.xian.iatoms.services.IIAtomsIdentityService</value>
+		</list>		
+		</property>
+		<property name="target" ref="iAtomsIdentityServiceBean"></property>
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource" ref="transactionAttributeSource" />
+	</bean>
+	 <bean id="iAtomsIdentityServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.IAtomsIdentityService" parent="atomicService">
+	    <property name="iAtomsIdentityDAO" ref="identityDAO" />
+	    <property name="identityDAO" ref="identityDAO"/>
+	    <property name="passwordSettingDAO" ref="passwordSettingDAO"/>
+	    <property name="admUserDAO" ref="admUserDAO"/>
+	    <property name="companyDAO" ref="companyDAO"/>
+	</bean>
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+  	  	<property name="defaultLocale" value="zh_TW"/>
+	</bean>
+	<!-- 基础参数Service注入 Start -->
+	<bean id="baseParameterServiceBean" class="cafe.core.service.parameter.impl.BaseParameterService" parent="atomicService">
+		<!-- <property name="baseParameterItemDefDAO" ref="iAtomsBaseParameterItemDefDAO" /> -->
+		<property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO" />
+		<property name="parameterServiceAndActionMap">
+			<map>
+				<entry key="ACTIVITY_CODE" value="identityService.getActivities" /><!-- key:參數類型代碼 value: serviceId.actionId-->
+			</map>
+		</property>
+	</bean>
+	<bean id="baseParameterService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>cafe.core.service.parameter.IBaseParameterService</value>
+			</list>
+		</property>
+		<property name="target" ref="baseParameterServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<bean id="baseParameterTypeDefServiceBean" class="cafe.core.service.parameter.impl.BaseParameterTypeDefService" parent="atomicService">
+		<property name="baseParameterTypeDefDAO" ref="baseParameterTypeDefDAO" />
+	</bean>
+	<bean id="baseParameterTypeDefService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>cafe.core.service.parameter.IBaseParameterTypeDefService</value>
+			</list>
+		</property>
+		<property name="target" ref="baseParameterTypeDefServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 基础参数Service注入 end -->
+	<!-- 案件明细Service start -->
+	<bean id="caseDetailServiceBean" class="com.cybersoft4u.xian.iatoms.services.impl.CaseDetailService" parent="atomicService">
+		 <property name="caseDetailDAO" ref="caseDetailDAO" />
+		<property name="caseTransactionDAO" ref="caseTransactionDAO" /> 
+	</bean>
+	<bean id="caseDetailService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.services.IIAtomsCaseDetailService</value>
+			</list>
+		</property>
+		<property name="target" ref="caseDetailServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 案件明细Service end -->
+	<!-- 案件動作服務  payloadSetter配置位置  Start-->
+	<bean id="humanTaskActionServiceBean" class="cafe.workflow.service.impl.HumanTaskActionService" parent="atomicService">
+		<property name="caseDetailService" ref="caseDetailService"/><!-- 案件明細服務 -->
+		<!-- <property name="identityService" ref="identityService"/>識別管理服務 -->
+		<!-- <property name="humanWorkflowServiceHelper" ref="humanRestWorkflowServiceHelper"/>人工任務服務輔助器 -->
+		<property name="humanWorkflowServiceHelper" ref="humanWorkflowServiceHelper"/><!-- 人工任務服務輔助器 -->
+		<property name="defaultPayloadSetter"><!-- 預設Payload -->
+			<bean class="cafe.workflow.service.util.CommonPayloadSetter" />
+		</property>
+    	<property name="payloadSetters"><!-- 送下一關Payload更新設定機制 -->
+    		<map>
+    			<entry key="caseManagerService"><!-- 案件處理 -->
+					<map>
+						 <entry key="all"><!-- 若值為*.*,all或any，則表任一服務方法都套用 -->
+							<bean class="com.cybersoft4u.xian.iatoms.services.workflow.payloadsetter.CasePayloadSetter" />
+						</entry>
+					</map>
+				</entry>
+	    		<!-- <entry key="caseReceivedService">人工起案
+					<map>
+						<entry key="start">若值為*.*,all或any，則表任一服務方法都套用
+							<bean class="ccaps.service.workflow.payloadsetter.CaseReceivedPayloadSetter" />
+						</entry>
+					</map>
+				</entry> -->
+	    		<!-- <entry key="workLogService">提交審核表
+					<map>
+						<entry key="send">若值為*.*,all或any，則表任一服務方法都套用
+							<bean class="com.cybersoft4u.xian.cms.services.workflow.payloadsetter.WorkLogCaseReceivedPayloadSetter" />
+						</entry>
+						<entry key="saveTasksApply">若值為*.*,all或any，則表任一服務方法都套用
+							<bean class="com.cybersoft4u.xian.cms.services.workflow.payloadsetter.TaskApplyCaseReceivedPayloadSetter" />
+						</entry>
+					</map>
+				</entry> -->
+			</map>	
+   		</property>
+		<property name="actionAndProcessIdMapping"><!-- 起案動作與BPM Process Id之對應 -->
+			<map>
+				<!-- key=ActionAliasCode or outcome or serviceid.outcome, value=bpm process id -->
+				<!-- <entry key="caseReceivedService.start" value="WORK_LOG_APPROVED"></entry> -->
+			</map>
+		</property>
+		<property name="autoAcquireTaskAfterCaseReceived" value="false" /><!-- 是否起案後自動取件 -->
+		<property name="intervalOfAcquireTask" value="1" /><!-- 取件間隔 :秒 -->
+		<property name="frequencyOfAcquireTask" value="3" /><!-- 取件頻率:次 -->
+		<property name="durationOfAcquireTask" value="60" /><!-- 取件逾時時間: 秒 同關卡下自動取下一件之取件必要過濾條件 -->
+		<!-- 自动取件 -->
+		<!-- <property name="autoAcquireTask">
+			<bean class="com.tsb.ipms.cpl.services.utilities.CplAutoAcquireTask">
+				<property name="taskPredicateFilterHelper" ref="taskPredicateFilterHelper" />
+			</bean>
+		</property> -->
+	</bean>
+	<bean id="humanTaskActionService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>cafe.workflow.service.IHumanTaskActionService</value>
+			</list>
+		</property>
+		<property name="target" ref="humanTaskActionServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+	<!-- 案件動作服務  payloadSetter配置位置 End-->	
+	<!-- 取得下一关人处理人 Start-->
+	 <bean id="commonNextAssigneeRetriever" class="com.cybersoft4u.xian.iatoms.services.utils.IAtomsCommonNextAssigneeRetriever">
+		<!-- <property name="cmsIdentityService" ref="cmsIdentityService"/> -->
+		<property name="admUserDAO" ref="admUserDAO"/>
+		<property name="assigneeInquiryContextClass" value="com.cybersoft4u.xian.iatoms.common.bean.workflow.IAtomsAssigneeInquiryContext" />
+	</bean>
+	<!-- 取得下一关人处理人 End-->
+	<bean id="humanTaskActivityService" abstract="true" parent="atomicService">
+		<property name="humanTaskActionService" ref="humanTaskActionService"/>
+		<property name="nextAssigneeRetriever" ref="commonNextAssigneeRetriever"/>
+		<property name="compensatedTaskActionHandlers">
+			<list>
+			</list>
+		</property>
+		<property name="taskPredicateFilterHelper" ref="taskPredicateFilterHelper"/>
+	</bean>
+	<!-- 流程部分-Start -->
+	
+	
+	<!-- 流程部分-End -->
+	
+</beans>

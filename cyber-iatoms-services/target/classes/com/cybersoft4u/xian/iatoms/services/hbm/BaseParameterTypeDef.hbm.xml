@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/6/27  by hermanwang -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.BaseParameterTypeDefIAtoms" table="BASE_PARAMETER_TYPE_DEF" schema="dbo" optimistic-lock="version">
+        <composite-id name="id" class="cafe.core.dmo.parameter.BaseParameterTypeDefId">
+            <key-property name="parameterTypeCode" type="string">
+                <column name="BPTD_CODE" length="30" />
+            </key-property>
+            <key-property name="effectiveDate" type="date">
+                <column name="EFFECTIVE_DATE"/>
+            </key-property>
+        </composite-id>
+        <property name="name" type="string">
+            <column name="PT_NAME" not-null="true" length="100" />
+        </property>
+        <property name="valueScopeOperator1" type="java.lang.Integer">
+            <column name="VALUE_SCOPE_OPERATOR1" length="20" />
+        </property>
+        <property name="valueScopeOperator2" type="java.lang.Integer">
+            <column name="VALUE_SCOPE_OPERATOR2" length="50" />
+        </property>
+        <property name="readOnly" type="string">
+            <column name="READONLY" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

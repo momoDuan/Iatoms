@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/6/27  by ericdu -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.BaseParameterItemDef" table="BASE_PARAMETER_ITEM_DEF" schema="dbo">
+        <composite-id name="id" class="com.cybersoft4u.xian.iatoms.services.dmo.BaseParameterItemDefId">
+            <key-property name="bpidId" type="string">
+                <column name="BPID_ID" length="40" />
+            </key-property>
+            <key-property name="bptdCode" type="string">
+                <column name="BPTD_CODE" length="30" />
+            </key-property>
+            <key-property name="effectiveDate" type="date">
+                <column name="EFFECTIVE_DATE"/>
+            </key-property>
+        </composite-id>
+        <property name="itemName" type="string">
+            <column name="ITEM_NAME" not-null="true" length="200" />
+        </property>
+        <property name="itemValue" type="string">
+            <column name="ITEM_VALUE" length="32" not-null="true" />
+        </property>
+        <property name="itemDesc" type="string">
+            <column name="ITEM_DESC" />
+        </property>
+        <property name="itemOrder" type="java.lang.Integer">
+            <column name="ITEM_ORDER" precision="22" scale="0" />
+        </property>
+        <property name="textField1" type="string">
+            <column name="TEXT_FIELD1" />
+        </property>
+        <property name="parentBpidId" type="string">
+            <column name="PARENT_BPID_ID" length="32" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" length="10" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" length="10" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE"/>
+        </property>
+         <property name="deleted" type="string">
+            <column name="DELETED" length="1" />
+        </property>
+        <property name="deletedDate" type="timestamp">
+            <column name="DELETED_DATE"/>
+        </property>
+    </class>
+</hibernate-mapping>

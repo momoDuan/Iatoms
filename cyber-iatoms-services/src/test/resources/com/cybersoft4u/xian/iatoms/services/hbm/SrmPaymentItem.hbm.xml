@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017/2/9 ?W?? 10:18:50 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.SrmPaymentItem" table="SRM_PAYMENT_ITEM"  schema="dbo">
+        <id name="itemId" type="string">
+            <column name="ITEM_ID" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="paymentId" type="string">
+            <column name="PAYMENT_ID" length="30" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="32" />
+        </property>
+        <property name="backDesc" type="string">
+            <column name="BACK_DESC" length="100" />
+        </property> 
+        <property name="paymentItem" type="string">
+            <column name="PAYMENT_ITEM" length="32" />
+        </property>
+        <property name="itemName" type="string">
+            <column name="ITEM_NAME" />
+        </property>
+        <property name="serialNumber" type="string">
+            <column name="SERIAL_NUMBER" length="20" />
+        </property>
+        <property name="contractId" type="string">
+            <column name="CONTRACT_ID" length="32" />
+        </property>
+        <property name="suppliesType" type="string">
+            <column name="SUPPLIES_TYPE" length="40" />
+        </property>
+        <property name="suppliesAmount" type="java.lang.Integer">
+            <column name="SUPPLIES_AMOUNT" />
+        </property>
+        <property name="isPay" type="string">
+            <column name="IS_PAY" length="1" />
+        </property>
+        <property name="paymentReason" type="string">
+            <column name="PAYMENT_REASON" length="32" />
+        </property>
+        <property name="reasonDetail" type="string">
+            <column name="REASON_DETAIL" />
+        </property>
+        <property name="checkResult" type="string">
+            <column name="CHECK_RESULT" />
+        </property>
+        <property name="checkUser" type="string">
+            <column name="CHECK_USER" />
+        </property>
+        <property name="fee" type="string">
+            <column name="FEE" />
+        </property>
+        <property name="feeDesc" type="string">
+            <column name="FEE_DESC" />
+        </property>
+        <property name="isAskPay" type="string">
+            <column name="IS_ASK_PAY" length="1" />
+        </property>
+        <property name="paymentType" type="string">
+            <column name="PAYMENT_TYPE" length="32" />
+        </property>
+        <property name="paymentTypeDesc" type="string">
+            <column name="PAYMENT_TYPE_DESC" />
+        </property>
+        <property name="askPayDate" type="date">
+            <column name="ASK_PAY_DATE" length="10" />
+        </property>
+        <property name="askPayDesc" type="string">
+            <column name="ASK_PAY_DESC" />
+        </property>
+        <property name="cancelDate" type="date">
+            <column name="CANCEL_DATE" length="10" />
+        </property>
+        <property name="repaymentDate" type="date">
+            <column name="REPAYMENT_DATE" length="10" />
+        </property>
+        <property name="cancelDesc" type="string">
+            <column name="CANCEL_DESC" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+        <property name="lockedDate" type="timestamp">
+            <column name="LOCKED_DATE" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

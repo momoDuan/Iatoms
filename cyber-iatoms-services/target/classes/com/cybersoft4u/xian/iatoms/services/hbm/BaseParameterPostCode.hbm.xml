@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/6/3 ?U?? 01:30:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.BaseParameterPostCode" table="BASE_PARAMETER_POST_CODE" schema="dbo">
+        <id name="postCodeId" type="string">
+            <column name="POST_CODE_ID" length="30" not-null="true"/>
+        </id>
+        <property name="cityId" type="string">
+            <column name="CITY_ID" length="30" not-null="true" />
+        </property>
+        <property name="postName" type="string">
+            <column name="POST_NAME" length="30" not-null="true" />
+        </property>
+        <property name="postCode" type="string">
+            <column name="POST_CODE" length="30" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

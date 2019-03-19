@@ -1,0 +1,429 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017/2/24 ?U?? 01:13:23 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.SrmCaseHandleInfo" table="SRM_CASE_HANDLE_INFO" schema="dbo">
+       <id name="caseId" type="string">
+            <column name="CASE_ID" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="caseCategory" type="string">
+            <column name="CASE_CATEGORY" length="40" not-null="true" />
+        </property>
+        <property name="customerId" type="string">
+            <column name="CUSTOMER_ID" length="32" />
+        </property>
+        <property name="contractId" type="string">
+            <column name="CONTRACT_ID" length="32" />
+        </property>
+        <property name="requirementNo" type="string">
+            <column name="REQUIREMENT_NO" length="50" />
+        </property>
+        <property name="processType" type="string">
+            <column name="PROCESS_TYPE" />
+        </property>
+        <property name="installType" type="string">
+            <column name="INSTALL_TYPE" />
+        </property>
+        <property name="dtid" type="string">
+            <column name="DTID" length="50" />
+        </property>
+        <property name="companyId" type="string">
+            <column name="COMPANY_ID" length="32" />
+        </property>
+        <property name="departmentId" type="string">
+            <column name="DEPARTMENT_ID" length="32" />
+        </property>
+        <property name="isProject" type="string">
+            <column name="IS_PROJECT" length="1" />
+        </property>
+        <property name="projectCode" type="string">
+            <column name="PROJECT_CODE" />
+        </property>
+        <property name="projectName" type="string">
+            <column name="PROJECT_NAME" />
+        </property>
+        <property name="caseType" type="string">
+            <column name="CASE_TYPE" />
+        </property>
+        <property name="expectedCompletionDate" type="timestamp">
+            <column name="EXPECTED_COMPLETION_DATE" length="23" />
+        </property>
+        <property name="merchantCode" type="string">
+            <column name="MERCHANT_CODE" />
+        </property>
+        <property name="oldMerchantCode" type="string">
+            <column name="OLD_MERCHANT_CODE" />
+        </property>
+        <property name="merchantHeaderId" type="string">
+            <column name="MERCHANT_HEADER_ID" length="32" />
+        </property>
+        <property name="installedAdress" type="string">
+            <column name="INSTALLED_ADRESS" />
+        </property>
+        <property name="installedAdressLocation" type="string">
+            <column name="INSTALLED_ADRESS_LOCATION" length="40" />
+        </property>
+        <property name="installedContact" type="string">
+            <column name="INSTALLED_CONTACT" length="32" />
+        </property>
+        <property name="installedContactPhone" type="string">
+            <column name="INSTALLED_CONTACT_PHONE" length="20" />
+        </property>
+        <property name="edcType" type="string">
+            <column name="EDC_TYPE" />
+        </property>
+        <property name="softwareVersion" type="string">
+            <column name="SOFTWARE_VERSION" />
+        </property>
+        <property name="builtInFeature" type="string">
+            <column name="BUILT_IN_FEATURE" />
+        </property>
+        <property name="multiModule" type="string">
+            <column name="MULTI_MODULE" />
+        </property>
+        <property name="peripherals" type="string">
+            <column name="PERIPHERALS" />
+        </property>
+        <property name="peripheralsFunction" type="string">
+            <column name="PERIPHERALS_FUNCTION" />
+        </property>
+        <property name="ecrConnection" type="string">
+            <column name="ECR_CONNECTION" />
+        </property>
+        <property name="peripherals2" type="string">
+            <column name="PERIPHERALS2" />
+        </property>
+        <property name="peripheralsFunction2" type="string">
+            <column name="PERIPHERALS_FUNCTION2" />
+        </property>
+        <property name="connectionType" type="string">
+            <column name="CONNECTION_TYPE" />
+        </property>
+        <property name="peripherals3" type="string">
+            <column name="PERIPHERALS3" />
+        </property>
+        <property name="peripheralsFunction3" type="string">
+            <column name="PERIPHERALS_FUNCTION3" />
+        </property>
+        <property name="localhostIp" type="string">
+            <column name="LOCALHOST_IP" />
+        </property>
+        <property name="netVendorId" type="string">
+            <column name="NET_VENDOR_ID" />
+        </property>
+        <property name="gateway" type="string">
+            <column name="GATEWAY" />
+        </property>
+        <property name="netmask" type="string">
+            <column name="NETMASK" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="attendanceTimes" type="java.lang.Integer">
+            <column name="ATTENDANCE_TIMES" precision="5" scale="0" />
+        </property>
+        <property name="repairTimes" type="java.lang.Integer">
+            <column name="REPAIR_TIMES" precision="5" scale="0" />
+        </property>
+        <property name="repairReason" type="string">
+            <column name="REPAIR_REASON" />
+        </property>
+        <property name="uninstallType" type="string">
+            <column name="UNINSTALL_TYPE" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+        <property name="createdFinishDate" type="timestamp">
+            <column name="CREATED_FINISH_DATE" length="23" />
+        </property>
+        <property name="acceptableResponseDate" type="timestamp">
+            <column name="ACCEPTABLE_RESPONSE_DATE" length="23" />
+        </property>
+        <property name="acceptableArriveDate" type="timestamp">
+            <column name="ACCEPTABLE_ARRIVE_DATE" length="23" />
+        </property>
+        <property name="acceptableFinishDate" type="timestamp">
+            <column name="ACCEPTABLE_FINISH_DATE" length="23" />
+        </property>
+        <property name="closeDate" type="timestamp">
+            <column name="CLOSE_DATE" length="23" />
+        </property>
+        <property name="caseStatus" type="string">
+            <column name="CASE_STATUS" length="32" />
+        </property>
+        <property name="dispatchDeptId" type="string">
+            <column name="DISPATCH_DEPT_ID" length="32" />
+        </property>
+        <property name="updatedDescription" type="string">
+            <column name="UPDATED_DESCRIPTION" />
+        </property>
+        <property name="contactAddressLocation" type="string">
+            <column name="CONTACT_ADDRESS_LOCATION" length="40" />
+        </property>
+        <property name="contactAddress" type="string">
+            <column name="CONTACT_ADDRESS" />
+        </property>
+        <property name="contactUser" type="string">
+            <column name="CONTACT_USER" />
+        </property>
+        <property name="contactUserPhone" type="string">
+            <column name="CONTACT_USER_PHONE" />
+        </property>
+        <property name="dispatchProcessUser" type="string">
+            <column name="DISPATCH_PROCESS_USER" />
+        </property>
+        <property name="dispatchProcessUsername" type="string">
+            <column name="DISPATCH_PROCESS_USERNAME" />
+        </property>
+        <property name="dispatchUser" type="string">
+            <column name="DISPATCH_USER" />
+        </property>
+        <property name="dispatchUserName" type="string">
+            <column name="DISPATCH_USER_NAME" />
+        </property>
+        <property name="dispatchDate" type="timestamp">
+            <column name="DISPATCH_DATE" length="23" />
+        </property>
+        <property name="responseUser" type="string">
+            <column name="RESPONSE_USER" />
+        </property>
+        <property name="responseUserName" type="string">
+            <column name="RESPONSE_USER_NAME" />
+        </property>
+        <property name="responseDate" type="timestamp">
+            <column name="RESPONSE_DATE" length="23" />
+        </property>
+        <property name="arriveUser" type="string">
+            <column name="ARRIVE_USER" />
+        </property>
+        <property name="arriveUserName" type="string">
+            <column name="ARRIVE_USER_NAME" />
+        </property>
+        <property name="arriveDate" type="timestamp">
+            <column name="ARRIVE_DATE" length="23" />
+        </property>
+        <property name="completeUser" type="string">
+            <column name="COMPLETE_USER" />
+        </property>
+        <property name="completeUserName" type="string">
+            <column name="COMPLETE_USER_NAME" />
+        </property>
+        <property name="completeDate" type="timestamp">
+            <column name="COMPLETE_DATE" length="23" />
+        </property>
+        <property name="analyzeUser" type="string">
+            <column name="ANALYZE_USER" />
+        </property>
+        <property name="analyzeUserName" type="string">
+            <column name="ANALYZE_USER_NAME" />
+        </property>
+        <property name="analyzeDate" type="timestamp">
+            <column name="ANALYZE_DATE" length="23" />
+        </property>
+        <property name="closeUser" type="string">
+            <column name="CLOSE_USER" />
+        </property>
+        <property name="closeUserName" type="string">
+            <column name="CLOSE_USER_NAME" />
+        </property>
+        <property name="installedDeptId" type="string">
+            <column name="INSTALLED_DEPT_ID" length="32" />
+        </property>
+        <property name="installedUser" type="string">
+            <column name="INSTALLED_USER" />
+        </property>
+        <property name="isTms" type="string">
+            <column name="IS_TMS" length="1" />
+        </property>
+        <property name="problemReason" type="string">
+            <column name="PROBLEM_REASON" length="32" />
+        </property>
+        <property name="problemSolution" type="string">
+            <column name="PROBLEM_SOLUTION" length="32" />
+        </property>
+        <property name="responsibity" type="string">
+            <column name="RESPONSIBITY" length="32" />
+        </property>
+        <property name="isBussinessAddress" type="string">
+            <column name="IS_BUSSINESS_ADDRESS" length="1" />
+        </property>
+        <property name="isBussinessContact" type="string">
+            <column name="IS_BUSSINESS_CONTACT" length="1" />
+        </property>
+        <property name="isBussinessContactPhone" type="string">
+            <column name="IS_BUSSINESS_CONTACT_PHONE" length="1" />
+        </property>
+        <property name="contactIsBussinessAddress" type="string">
+            <column name="CONTACT_IS_BUSSINESS_ADDRESS" length="1" />
+        </property>
+        <property name="contactIsBussinessContact" type="string">
+            <column name="CONTACT_IS_BUSSINESS_CONTACT" length="1" />
+        </property>
+        <property name="contactIsBussinessContactPhone" type="string">
+            <column name="CONTACT_IS_BUSSINESS_CONTACT_PHONE" length="1" />
+        </property>
+        <property name="responseWarnning" type="double">
+            <column name="RESPONSE_WARNNING" precision="8" scale="1" />
+        </property>
+        <property name="arriveWarnning" type="double">
+            <column name="ARRIVE_WARNNING" precision="8" scale="1" />
+        </property>
+        <property name="completeWarnning" type="double">
+            <column name="COMPLETE_WARNNING" precision="8" scale="1" />
+        </property>
+        <property name="installedDate" type="timestamp">
+            <column name="INSTALLED_DATE" length="23" />
+        </property>
+        <property name="uninstalledDate" type="timestamp">
+            <column name="UNINSTALLED_DATE" length="23" />
+        </property>
+        <property name="cupEnableDate" type="timestamp">
+            <column name="CUP_ENABLE_DATE" length="23" />
+        </property>
+        <property name="cupDisableDate" type="timestamp">
+            <column name="CUP_DISABLE_DATE" length="23" />
+        </property>
+        <property name="updateItem" type="string">
+            <column name="UPDATE_ITEM" />
+        </property>
+        <property name="problemReasonCode" type="string">
+            <column name="PROBLEM_REASON_CODE" />
+        </property>
+        <property name="problemSolutionCode" type="string">
+            <column name="PROBLEM_SOLUTION_CODE" />
+        </property>
+        <property name="electronicInvoice" type="string">
+            <column name="ELECTRONIC_INVOICE" length="1"/>
+        </property>
+        <property name="cupQuickPass" type="string">
+            <column name="CUP_QUICK_PASS" length="1"/>
+        </property>
+        <property name="sameInstalled" type="string">
+            <column name="SAME_INSTALLED" length="1"/>
+        </property>
+        <property name="tmsParamDesc" type="string">
+            <column name="TMS_PARAM_DESC" />
+        </property>
+        <property name="fomsCase" type="string">
+            <column name="FOMS_CASE" length="1"/>
+        </property>
+        <property name="isFirstInstalled" type="string">
+            <column name="IS_FIRST_INSTALLED" length="1"/>
+        </property>
+        <property name="logoStyle" type="string">
+            <column name="LOGO_STYLE" length="32"/>
+        </property>
+        <property name="isOpenEncrypt" type="string">
+            <column name="IS_OPEN_ENCRYPT" length="1"/>
+        </property>
+        <property name="electronicPayPlatform" type="string">
+            <column name="ELECTRONIC_PAY_PLATFORM" length="1"/>
+        </property>
+        <property name="isUpdateAsset" type="string">
+            <column name="IS_UPDATE_ASSET" length="1"/>
+        </property>
+        <property name="completeDepartmentId" type="string">
+            <column name="COMPLETE_DEPARTMENT_ID"/>
+        </property>
+        <property name="hasOnlineExclusion" type="string">
+            <column name="HAS_ONLINE_EXCLUSION"/>
+        </property>
+        <property name="firstDescription" type="string">
+            <column name="FIRST_DESCRIPTION"/>
+        </property>
+        <property name="secondDescription" type="string">
+            <column name="SECOND_DESCRIPTION"/>
+        </property>
+        <property name="thirdDescription" type="string">
+            <column name="THIRD_DESCRIPTION"/>
+        </property>
+        <property name="hasRetreat" type="string">
+            <column name="HAS_RETREAT"/>
+        </property>
+         <property name="hasDelay" type="string">
+            <column name="HAS_DELAY"/>
+        </property>
+        <property name="isBussinessContactMobilePhone" type="string">
+            <column name="IS_BUSSINESS_CONTACT_MOBILE_PHONE"/>
+        </property>
+        <property name="isBussinessContactEmail" type="string">
+            <column name="IS_BUSSINESS_CONTACT_EMAIL"/>
+        </property>
+        <property name="contactIsBussinessContactEmail" type="string">
+            <column name="CONTACT_IS_BUSSINESS_CONTACT_EMAIL"/>
+        </property>
+        <property name="contactIsBussinessContactMobilePhone" type="string">
+            <column name="CONTACT_IS_BUSSINESS_CONTACT_MOBILE_PHONE"/>
+        </property>
+        <property name="installedContactMobilePhone" type="string">
+            <column name="INSTALLED_CONTACT_MOBILE_PHONE"/>
+        </property>
+        <property name="installedContactEmail" type="string">
+            <column name="INSTALLED_CONTACT_EMAIL"/>
+        </property>
+         <property name="contactMobilePhone" type="string">
+            <column name="CONTACT_MOBILE_PHONE"/>
+        </property>
+        <property name="contactUserEmail" type="string">
+            <column name="CONTACT_USER_EMAIL"/>
+        </property>
+        <property name="cmsCase" type="string">
+            <column name="CMS_CASE" length="1"/>
+        </property>
+        <property name="confirmAuthorizes" type="string">
+            <column name="CONFIRM_AUTHORIZES" length="1"/>
+        </property>
+        <property name="installCaseId" type="string">
+            <column name="INSTALL_CASE_ID" length="30" />
+        </property>
+        <property name="installCompleteDate" type="timestamp">
+            <column name="INSTALL_COMPLETE_DATE" length="23" />
+        </property>
+        <property name="isIatomsCreateCms" type="string">
+            <column name="IS_IATOMS_CREATE_CMS" length="1"/>
+        </property>
+        <property name="preloadSerialNumber" type="string">
+            <column name="PRELOAD_SERIAL_NUMBER" length="20" />
+        </property>
+        <property name="simSerialNumber" type="string">
+            <column name="SIM_SERIAL_NUMBER" length="20" />
+        </property>
+        <property name="installedPostCode" type="string">
+            <column name="INSTALLED_POST_CODE" length="30" />
+        </property>
+        <property name="contactPostCode" type="string">
+            <column name="CONTACT_POST_CODE" length="30" />
+        </property>
+        <property name="hasArrive" type="string">
+            <column name="HAS_ARRIVE" length="1" />
+        </property>
+        <property name="logisticsVendor" type="string">
+            <column name="LOGISTICS_VENDOR" length="10" />
+        </property>
+        <property name="logisticsNumber" type="string">
+            <column name="LOGISTICS_NUMBER" length="50" />
+        </property>
+        <property name="receiptType" type="string">
+            <column name="RECEIPT_TYPE" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

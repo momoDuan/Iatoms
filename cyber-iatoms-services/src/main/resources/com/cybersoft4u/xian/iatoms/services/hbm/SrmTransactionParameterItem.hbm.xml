@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/12/7 ?U?? 02:32:53 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.SrmTransactionParameterItem" table="SRM_TRANSACTION_PARAMETER_ITEM" schema="dbo">
+        <id name="paramterItemId" type="string">
+            <column name="PARAMTER_ITEM_ID" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="paramterItemCode" type="string">
+            <column name="PARAMTER_ITEM_CODE" length="50" />
+        </property>
+        <property name="paramterItemName" type="string">
+            <column name="PARAMTER_ITEM_NAME" length="100" />
+        </property>
+        <property name="paramterItemType" type="string">
+            <column name="PARAMTER_ITEM_TYPE" length="50" />
+        </property>
+        <property name="paramterDataType" type="string">
+            <column name="PARAMTER_DATA_TYPE" length="20" />
+        </property>
+        <property name="paramterItemLength" type="java.lang.Integer">
+            <column name="PARAMTER_ITEM_LENGTH" />
+        </property>
+        <property name="itemOrder" type="java.lang.Integer">
+            <column name="ITEM_ORDER" />
+        </property>
+        <property name="effectiveDate" type="date">
+            <column name="EFFECTIVE_DATE" />
+        </property>
+        <property name="approvedFlag" type="string">
+            <column name="APPROVED_FLAG" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

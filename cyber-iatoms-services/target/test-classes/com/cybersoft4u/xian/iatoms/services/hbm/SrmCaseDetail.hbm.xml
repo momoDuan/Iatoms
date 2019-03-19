@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/12/7 ?U?? 02:32:53 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.SrmCaseDetail" table="SRM_CASE_DETAIL" schema="dbo">
+        <id name="caseId" type="string">
+            <column name="CASE_ID" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="businessType" type="string">
+            <column name="BUSINESS_TYPE" length="1" not-null="true" />
+        </property>
+        <property name="caseType" type="string">
+            <column name="CASE_TYPE" length="32" />
+        </property>
+        <property name="processId" type="string">
+            <column name="PROCESS_ID" length="40" not-null="true" />
+        </property>
+        <property name="activitiTaskId" type="string">
+            <column name="ACTIVITI_TASK_ID" length="40" />
+        </property>
+        <property name="caseStage" type="string">
+            <column name="CASE_STAGE" length="30" />
+        </property>
+        <property name="caseTitle" type="string">
+            <column name="CASE_TITLE" />
+        </property>
+        <property name="caseStatus" type="string">
+            <column name="CASE_STATUS" length="30" />
+        </property>
+        <property name="caseSubstatus" type="string">
+            <column name="CASE_SUBSTATUS" length="30" />
+        </property>
+        <property name="caseAction" type="string">
+            <column name="CASE_ACTION" length="30" />
+        </property>
+        <property name="caseAssignerId" type="string">
+            <column name="CASE_ASSIGNER_ID" length="30" />
+        </property>
+        <property name="caseAssignerName" type="string">
+            <column name="CASE_ASSIGNER_NAME" />
+        </property>
+        <property name="caseAcquiredId" type="string">
+            <column name="CASE_ACQUIRED_ID" length="10" />
+        </property>
+        <property name="updateDate" type="date">
+            <column name="UPDATE_DATE" length="10" />
+        </property>
+        <property name="caseClosedDate" type="date">
+            <column name="CASE_CLOSED_DATE" length="10" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" length="10" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="date">
+            <column name="CREATED_DATE" length="10" />
+        </property>
+        <property name="updateById" type="string">
+            <column name="UPDATE_BY_ID" length="10" />
+        </property>
+        <property name="updateByName" type="string">
+            <column name="UPDATE_BY_NAME" />
+        </property>
+        <property name="caseAcquiredName" type="string">
+            <column name="CASE_ACQUIRED_NAME" />
+        </property>
+    </class>
+</hibernate-mapping>

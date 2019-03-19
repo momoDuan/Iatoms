@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017/2/24 ?U?? 01:13:23 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.SrmCaseAssetLink" table="SRM_CASE_ASSET_LINK" schema="dbo">
+        <id name="assetLinkId" type="string">
+            <column name="ASSET_LINK_ID" length="32" />
+            <generator class="assigned" />
+        </id>
+       <property name="caseId" type="string">
+            <column name="CASE_ID" length="30" />
+        </property>
+        <property name="itemType" type="string">
+            <column name="ITEM_TYPE" length="32" />
+        </property>
+        <property name="itemId" type="string">
+            <column name="ITEM_ID" length="32" />
+        </property>
+        <property name="itemCategory" type="string">
+            <column name="ITEM_CATEGORY" length="32" />
+        </property>
+        <property name="serialNumber" type="string">
+            <column name="SERIAL_NUMBER" length="20" />
+        </property>
+        <property name="number" type="java.lang.Integer">
+            <column name="NUMBER" />
+        </property>
+        <property name="action" type="string">
+            <column name="ACTION" length="32" />
+        </property>
+        <property name="content" type="string">
+            <column name="CONTENT" />
+        </property>
+        <property name="isLink" type="string">
+            <column name="IS_LINK" length="1" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="enableDate" type="timestamp">
+            <column name="ENABLE_DATE" length="23" />
+        </property>
+        <property name="warehouseId" type="string">
+            <column name="WAREHOUSE_ID" length="32" />
+        </property>
+        <property name="contractId" type="string">
+            <column name="CONTRACT_ID" length="32" />
+        </property>
+        <property name="price" type="big_decimal">
+            <column name="PRICE" precision="12" />
+        </property>
+         <property name="historyAssetId" type="string">
+            <column name="HISTORY_ASSET_ID" length="32" />
+        </property>
+        <property name="propertyId" type="string">
+            <column name="PROPERTY_ID" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>

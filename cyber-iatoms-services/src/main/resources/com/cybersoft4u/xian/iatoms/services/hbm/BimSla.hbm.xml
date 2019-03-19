@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/8/5 ?U?? 09:40:52 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.BimSla" table="BIM_SLA" schema="dbo">
+         <id name="slaId" type="string">
+            <column name="SLA_ID" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="contractId" type="string">
+            <column name="CONTRACT_ID" length="32" not-null="true" />
+        </property>
+        <property name="ticketType" type="string">
+            <column name="TICKET_TYPE" length="40" not-null="true" />
+        </property>
+        <property name="location" type="string">
+            <column name="LOCATION" length="40" not-null="true" />
+        </property>
+        <property name="ticketMode" type="string">
+            <column name="TICKET_MODE" length="40" not-null="true" />
+        </property>
+        <property name="isWorkDay" type="string">
+            <column name="IS_WORK_DAY" length="1" not-null="true" />
+        </property>
+        <property name="isThatDay" type="string">
+            <column name="IS_THAT_DAY" length="1" />
+        </property>
+        <property name="thatDayTime" type="string">
+            <column name="THAT_DAY_TIME" length="10" />
+        </property>
+        <property name="responseHour" type="double">
+            <column name="RESPONSE_HOUR" precision="8" scale="1" />
+        </property>
+        <property name="responseWarnning" type="double">
+            <column name="RESPONSE_WARNNING" precision="8" scale="1" />
+        </property>
+        <property name="arriveHour" type="double">
+            <column name="ARRIVE_HOUR" precision="8" scale="1" />
+        </property>
+        <property name="arriveWarnning" type="double">
+            <column name="ARRIVE_WARNNING" precision="8" scale="1" />
+        </property>
+        <property name="completeHour" type="double">
+            <column name="COMPLETE_HOUR" precision="8" scale="1" />
+        </property>
+        <property name="completeWarnning" type="double">
+            <column name="COMPLETE_WARNNING" precision="8" scale="1" />
+        </property>
+        <property name="comment" type="string">
+            <column name="COMMENT" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="updatedById" type="string">
+            <column name="UPDATED_BY_ID" />
+        </property>
+        <property name="updatedByName" type="string">
+            <column name="UPDATED_BY_NAME" />
+        </property>
+        <property name="updatedDate" type="timestamp">
+            <column name="UPDATED_DATE" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

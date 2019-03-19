@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017/1/24 ?U?? 02:56:57 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.DmmRepositoryHistoryMonthly" table="DMM_REPOSITORY_HISTORY_MONTHLY" schema="dbo">
+        <composite-id name="id" class="com.cybersoft4u.xian.iatoms.services.dmo.DmmRepositoryHistoryMonthlyId">
+            <key-property name="monthYear" type="string">
+                <column name="MONTH_YEAR" length="6" />
+            </key-property>
+            <key-property name="assetId" type="string">
+	            <column name="ASSET_ID" length="32" />
+	        </key-property>
+        </composite-id>
+        <property name="serialNumber" type="string">
+            <column name="SERIAL_NUMBER" length="20" />
+        </property>
+        <property name="assetTypeId" type="string">
+            <column name="ASSET_TYPE_ID" length="32" />
+        </property>
+        <property name="propertyId" type="string">
+            <column name="PROPERTY_ID" length="20" />
+        </property>
+        <property name="warehouseId" type="string">
+            <column name="WAREHOUSE_ID" length="32" />
+        </property>
+        <property name="contractId" type="string">
+            <column name="CONTRACT_ID" length="32" />
+        </property>
+        <property name="maType" type="string">
+            <column name="MA_TYPE" length="40" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" />
+        </property>
+        <property name="isEnabled" type="string">
+            <column name="IS_ENABLED" length="1" />
+        </property>
+        <property name="enableDate" type="timestamp">
+            <column name="ENABLE_DATE" length="23" />
+        </property>
+        <property name="simEnableDate" type="timestamp">
+            <column name="SIM_ENABLE_DATE" length="23" />
+        </property>
+        <property name="simEnableNo" type="string">
+            <column name="SIM_ENABLE_NO" />
+        </property>
+        <property name="carrier" type="string">
+            <column name="CARRIER" />
+        </property>
+        <property name="carryDate" type="timestamp">
+            <column name="CARRY_DATE" length="23" />
+        </property>
+        <property name="borrower" type="string">
+            <column name="BORROWER" />
+        </property>
+        <property name="borrowerStart" type="timestamp">
+            <column name="BORROWER_START" length="23" />
+        </property>
+        <property name="borrowerEnd" type="timestamp">
+            <column name="BORROWER_END" length="23" />
+        </property>
+        <property name="borrowerEmail" type="string">
+            <column name="BORROWER_EMAIL" length="200" />
+        </property>
+        <property name="borrowerMgrEmail" type="string">
+            <column name="BORROWER_MGR_EMAIL" length="200" />
+        </property>
+        <property name="backDate" type="timestamp">
+            <column name="BACK_DATE" length="23" />
+        </property>
+        <property name="assetOwner" type="string">
+            <column name="ASSET_OWNER" length="32" />
+        </property>
+        <property name="assetUser" type="string">
+            <column name="ASSET_USER" length="32" />
+        </property>
+        <property name="isCup" type="string">
+            <column name="IS_CUP" length="1" not-null="true" />
+        </property>
+        <property name="retireReasonCode" type="string">
+            <column name="RETIRE_REASON_CODE" length="32" />
+        </property>        
+        <property name="caseId" type="string">
+            <column name="CASE_ID" length="30" />
+        </property>
+        <property name="caseCompletionDate" type="timestamp">
+            <column name="CASE_COMPLETION_DATE" length="23" />
+        </property>
+        <property name="tid" type="string">
+            <column name="TID" length="8" />
+        </property>
+        <property name="dtid" type="string">
+            <column name="DTID" />
+        </property>
+        <property name="applicationId" type="string">
+            <column name="APPLICATION_ID" length="32" />
+        </property>
+        <property name="merchantId" type="string">
+            <column name="MERCHANT_ID" length="32" />
+        </property>
+        <property name="assetInId" type="string">
+            <column name="ASSET_IN_ID" length="14" not-null="true" />
+        </property>
+        <property name="assetInTime" type="timestamp">
+            <column name="ASSET_IN_TIME" length="23" />
+        </property>
+        <property name="assetTransId" type="string">
+            <column name="ASSET_TRANS_ID" length="14" />
+        </property>
+        <property name="maintainCompany" type="string">
+            <column name="MAINTAIN_COMPANY" length="32" />
+        </property>
+        <property name="repairVendor" type="string">
+            <column name="REPAIR_VENDOR" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="action" type="string">
+            <column name="ACTION" />
+        </property>
+        <property name="faultComponent" type="string">
+            <column name="FAULT_COMPONENT" />
+        </property>
+        <property name="faultDescription" type="string">
+            <column name="FAULT_DESCRIPTION" />
+        </property>
+        <property name="customerWarrantyDate" type="date">
+            <column name="CUSTOMER_WARRANTY_DATE" length="10" />
+        </property>
+        <property name="factoryWarrantyDate" type="date">
+            <column name="FACTORY_WARRANTY_DATE" length="10" />
+        </property>
+        <property name="createUser" type="string">
+            <column name="CREATE_USER" not-null="true" />
+        </property>
+        <property name="createUserName" type="string">
+            <column name="CREATE_USER_NAME" not-null="true" />
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="CREATE_DATE" length="23" not-null="true" />
+        </property>
+        <property name="updateUser" type="string">
+            <column name="UPDATE_USER" not-null="true" />
+        </property>
+        <property name="updateUserName" type="string">
+            <column name="UPDATE_USER_NAME" not-null="true" />
+        </property>
+        <property name="updateDate" type="timestamp">
+            <column name="UPDATE_DATE" length="23" not-null="true" />
+        </property>
+        <property name="checkedDate" type="timestamp">
+            <column name="CHECKED_DATE" length="23" />
+        </property>
+        <property name="assetModel" type="string">
+            <column name="ASSET_MODEL"/>
+        </property>
+        <property name="installedAdress" type="string">
+            <column name="INSTALLED_ADRESS" />
+        </property>
+        <property name="installType" type="string">
+            <column name="INSTALL_TYPE" />
+        </property>
+        <property name="merchantHeaderId" type="string">
+            <column name="MERCHANT_HEADER_ID" length="32" />
+        </property>
+        <property name="cyberApprovedDate" type="date">
+            <column name="CYBER_APPROVED_DATE" length="10" />
+        </property>
+        <property name="keeperName" type="string">
+            <column name="KEEPER_NAME" />
+        </property>
+        <property name="installedAdressLocation" type="string">
+            <column name="INSTALLED_ADRESS_LOCATION" length="40" />
+        </property>
+        <property name="isChecked" type="string">
+            <column name="IS_CHECKED" length="1" />
+        </property>
+        <property name="isCustomerChecked" type="string">
+            <column name="IS_CUSTOMER_CHECKED" length="1" />
+        </property>
+        <property name="departmentId" type="string">
+            <column name="DEPARTMENT_ID" />
+        </property>
+        <property name="repairCompany" type="string">
+            <column name="REPAIR_COMPANY" />
+        </property>
+        <property name="brand" type="string">
+            <column name="BRAND" />
+        </property>
+        <property name="maintainUser" type="string">
+            <column name="MAINTAIN_USER" />
+        </property>
+        <property name="analyzeDate" type="timestamp">
+            <column name="ANALYZE_DATE" />
+        </property>
+        <property name="uninstallOrRepairReason" type="string">
+            <column name="UNINSTALL_OR_REPAIR_REASON" />
+        </property>
+	    <property name="counter" type="string">
+            <column name="COUNTER" />
+        </property>
+        <property name="cartonNo" type="string">
+            <column name="CARTON_NO" />
+        </property>
+		<property name="installedDeptId" type="string">
+			<column name="INSTALLED_DEPT_ID" length="32" />
+		</property>
+		<property name="carryComment" type="string">
+			<column name="CARRY_COMMENT" length="200" />
+		</property>
+		<property name="disabledComment" type="string">
+			<column name="DISABLED_COMMENT" length="200" />
+		</property>
+		<property name="repairComment" type="string">
+			<column name="REPAIR_COMMENT" length="200" />
+		</property>
+    </class>
+</hibernate-mapping>

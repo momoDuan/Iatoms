@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/6/3 ?U?? 01:30:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.BimContractAsset" table="BIM_CONTRACT_ASSET" schema="dbo">
+        <composite-id name="id" class="com.cybersoft4u.xian.iatoms.services.dmo.BimContractAssetId">
+            <key-property name="contractId" type="java.lang.String">
+                <column name="CONTRACT_ID" />
+            </key-property>
+            <key-property name="assetTypeId" type="java.lang.String">
+                <column name="ASSET_TYPE_ID" length="10" />
+            </key-property>
+        </composite-id>
+        <property name="amount" type="java.lang.Long">
+            <column name="AMOUNT" precision="15" scale="0" />
+        </property>
+        <property name="safetyStock" type="java.lang.Long">
+            <column name="SAFETY_STOCK" precision="15" scale="0" />
+        </property>
+        <property name="price" type="double">
+            <column name="PRICE" precision="12" scale="2" />
+        </property>
+    </class>
+</hibernate-mapping>

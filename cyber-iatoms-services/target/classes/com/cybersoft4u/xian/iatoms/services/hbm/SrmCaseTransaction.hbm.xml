@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017/2/24 ?U?? 01:13:23 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.SrmCaseTransaction" table="SRM_CASE_TRANSACTION" schema="dbo">
+        <id name="transactionId" type="string">
+            <column name="TRANSACTION_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="caseId" type="string">
+            <column name="CASE_ID" length="30" />
+        </property>
+        <property name="actionId" type="string">
+            <column name="ACTION_ID" length="32" not-null="true" />
+        </property>
+        <property name="caseStatus" type="string">
+            <column name="CASE_STATUS" not-null="true" />
+        </property>
+        <property name="deptCode" type="string">
+            <column name="DEPT_CODE" length="32" />
+        </property>
+        <property name="dealById" type="string">
+            <column name="DEAL_BY_ID" />
+        </property>
+        <property name="dealByName" type="string">
+            <column name="DEAL_BY_NAME" />
+        </property>
+        <property name="dealDate" type="timestamp">
+            <column name="DEAL_DATE" length="23" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="caseStage" type="string">
+            <column name="CASE_STAGE" length="30" />
+        </property>
+        <property name="caseStageName" type="string">
+            <column name="CASE_STAGE_NAME" length="50" />
+        </property>
+        <property name="nextCaseStage" type="string">
+            <column name="NEXT_CASE_STAGE" length="30" />
+        </property>
+        <property name="nextCaseStageName" type="string">
+            <column name="NEXT_CASE_STAGE_NAME" length="50" />
+        </property>
+        <property name="delayTime" type="timestamp">
+            <column name="DELAY_TIME" length="23" />
+        </property>
+        <property name="checkResult" type="string">
+            <column name="CHECK_RESULT" length="32" />
+        </property>
+        <property name="problemReason" type="string">
+            <column name="PROBLEM_REASON" length="32" />
+        </property>
+        <property name="problemSolution" type="string">
+            <column name="PROBLEM_SOLUTION" length="32" />
+        </property>
+        <property name="responsibity" type="string">
+            <column name="RESPONSIBITY" length="30" />
+        </property>
+        <property name="caseType" type="string">
+            <column name="CASE_TYPE" length="32" />
+        </property>
+        <property name="expectedCompletionDate" type="timestamp">
+            <column name="EXPECTED_COMPLETION_DATE" length="23" />
+        </property>
+        <property name="createdById" type="string">
+            <column name="CREATED_BY_ID" />
+        </property>
+        <property name="createdByName" type="string">
+            <column name="CREATED_BY_NAME" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="23" />
+        </property>
+        <property name="problemReasonCode" type="string">
+            <column name="PROBLEM_REASON_CODE" />
+        </property>
+        <property name="problemSolutionCode" type="string">
+            <column name="PROBLEM_SOLUTION_CODE" />
+        </property>
+         <property name="updateItem" type="string">
+            <column name="UPDATE_ITEM" />
+        </property>
+        <property name="mailInfo" type="string">
+            <column name="MAIL_INFO" />
+        </property>
+        <property name="logisticsVendor" type="string">
+            <column name="LOGISTICS_VENDOR" />
+        </property>
+    </class>
+</hibernate-mapping>

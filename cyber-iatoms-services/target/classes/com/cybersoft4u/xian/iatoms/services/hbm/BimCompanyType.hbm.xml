@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/8/19 ?W?? 11:46:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cybersoft4u.xian.iatoms.services.dmo.BimCompanyType" table="BIM_COMPANY_TYPE" schema="dbo">
+        <composite-id name="id" class="com.cybersoft4u.xian.iatoms.services.dmo.BimCompanyTypeId">
+            <key-property name="companyId" type="string">
+                <column name="COMPANY_ID" length="32" />
+            </key-property>
+            <key-property name="companyType" type="string">
+                <column name="COMPANY_TYPE" length="40" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>
