@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<bean id="oldDataTransferServiceBean" class="com.cybersoft4u.xian.iatoms.dataTransfer.service.impl.OldDataTransferService" parent="atomicService">
+		<property name="repositoryService">
+			<ref bean="repositoryService" />
+		</property>
+		<property name="assetSupportedFunctionMap">
+			<map>
+				<entry key="11" value="Pinpad"/>
+				<entry key="12" value="Pinpad"/>
+				<entry key="13" value="Pinpad"/>
+				<entry key="16" value="Pinpad"/>
+				<entry key="22" value="Pinpad"/>
+				<entry key="23" value="Pinpad"/>
+				<entry key="27" value="Pinpad"/>
+				<entry key="29" value="Pinpad、Dongle"/>
+				<entry key="30" value="Pinpad、Dongle"/>
+				<entry key="32" value="Pinpad、Dongle"/>
+				<entry key="33" value="Pinpad、Dongle、電子簽名"/>
+				<entry key="34" value="Pinpad、Dongle、電子簽名"/>
+				<entry key="37" value="Pinpad、Dongle"/>
+				<entry key="41" value="Pinpad、Dongle、電子簽名"/>
+				<entry key="43" value="Pinpad、Dongle、電子簽名"/>
+				
+				<entry key="48" value="Pinpad"/>
+				<entry key="49" value="Pinpad、Dongle、電子簽名"/>
+				<entry key="19" value="Pinpad"/>
+				<entry key="20" value="Dongle"/>
+				<entry key="24" value="Pinpad"/>
+				<entry key="25" value="Pinpad"/>
+				<entry key="31" value="Pinpad、Dongle、電子簽名"/>
+				<entry key="35" value="Pinpad、Dongle、電子簽名"/>
+				<entry key="47" value="Pinpad"/>
+				<entry key="52" value="Pinpad、Dongle、電子簽名"/>
+				<entry key="62" value="Pinpad、Dongle"/>
+			</map>
+		</property>
+		<property name="assetSupportedCommMap">
+			<map>
+				<entry key="11" value="TLS、Dial-Up、TCP/IP、3G、GPRS"/>
+				<entry key="12" value="TLS、Dial-Up、TCP/IP、3G、GPRS"/>
+				<entry key="13" value="TLS、Dial-Up、TCP/IP、3G"/>
+				
+				<entry key="14" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="15" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="16" value="TLS、Dial-Up、TCP/IP、3G"/>
+				
+				<entry key="21" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="22" value="TLS、Dial-Up、TCP/IP、3G、Wifi"/>
+				<entry key="23" value="TLS、Dial-Up、TCP/IP、3G、GPRS"/>
+				
+				<entry key="27" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="28" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="29" value="TLS、Dial-Up、TCP/IP、3G、GPRS"/>
+				
+				<entry key="30" value="TLS、Dial-Up、TCP/IP、3G、Bluetooth (3G/WIFI)"/>
+				<entry key="32" value="TLS、Dial-Up、TCP/IP、3G、GPRS、Wifi"/>
+				<entry key="33" value="TLS、Dial-Up、TCP/IP、3G、GPRS"/>
+				
+				<entry key="34" value="TLS、Dial-Up、TCP/IP、3G、GPRS"/>
+				<entry key="36" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="37" value="TLS、Dial-Up、TCP/IP、3G"/>
+				
+				<entry key="38" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="39" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="41" value="TLS、Dial-Up、TCP/IP、3G"/>
+				
+				<entry key="42" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="43" value="TLS、Dial-Up、TCP/IP、3G、Bluetooth (3G/WIFI)"/>
+				<entry key="44" value="TLS、Dial-Up、TCP/IP、3G"/>
+				
+				<entry key="46" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="48" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="49" value="TLS、Dial-Up、TCP/IP、3G、Bluetooth (3G/WIFI)"/>
+				
+				<entry key="50" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="53" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="54" value="TLS、Dial-Up、TCP/IP、3G"/>
+				<entry key="61" value="TLS、Dial-Up、TCP/IP、3G"/>
+			</map>
+		</property>
+		<property name="fomsAssetTypeMap">
+			<map>
+				<entry key="S80 GPRS委外機" value="S80"/>
+				<entry key="S90 GPRS委外機" value="S90"/>
+				<entry key="S80 Ethernet委外機" value="S80 Ethernet"/>
+				<entry key="S80 Ethernet買斷機" value="S80 Ethernet"/>
+				<entry key="P58 買斷機" value="P58"/>
+				<entry key="S90 3G 委外機" value="S90 3G"/>
+				<entry key="S90 3G 買斷機" value="S90 3G"/>
+				<entry key="S60T 買斷機" value="S60-T"/>
+				<entry key="S90 RF租賃機" value="S90 RF"/>
+				<entry key="S90 RF買斷機" value="S90 RF"/>
+				<entry key="S80 RF租賃機" value="S80 RF"/>
+				<entry key="S80 RF買斷機" value="S80 RF"/>
+			</map>
+		</property>
+		<property name="applicationAssetLinkList">
+			<list>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="GP" />
+					<property name="applicationId" value="GPAP" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="TCB_EDC" />
+					<property name="applicationId" value="TCBANK" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="SCSB" />
+					<property name="applicationId" value="SCSB" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="CHB_EDC" />
+					<property name="applicationId" value="CHB" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="SYB-EDC" />
+					<property name="applicationId" value="SYB" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>	
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="GreenWorld" />
+					<property name="applicationId" value="Greenworld" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>	
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="JDW-EDC" />
+					<property name="applicationId" value="JDWFCB" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>	
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="GreenWorld" />
+					<property name="applicationId" value="AllPay" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>
+				<bean class="com.cybersoft4u.xian.iatoms.common.bean.dto.ApplicationAssetLinkDTO">
+					<property name="customerId" value="TCB_EDC" />
+					<property name="applicationId" value="CUP EMV MULTI" />
+					<property name="assetTypeId" value="S80,S90" />
+				</bean>	
+			</list>
+		</property>
+		<property name="oldDataTransferDAO" ref="oldDataTransferDAO"></property>
+		<property name="calendarYearDAO" ref="calendarYearDAO"></property>
+		<property name="calendarDayDAO" ref="calendarDayDAO"></property>
+		<property name="baseParameterManagerDAO" ref="baseParameterManagerDAO"></property>
+		<property name="companyDAO" ref="companyDAO"></property>
+		<property name="companyTypeDAO" ref="companyTypeDAO"></property>
+		<property name="baseParameterItemDefDAO" ref="baseParameterItemDefDAO"></property>
+		<property name="departmentDAO" ref="departmentDAO"></property>
+		<property name="warehouseDAO" ref="warehouseDAO"></property>
+		<property name="merchantDAO" ref="merchantNewDAO"></property>
+		<property name="merchantHeaderDAO" ref="merchantHeaderDAO"></property>
+		<property name="applicationDAO" ref="applicationDAO"></property>
+		<property name="applicationAssetLinkDAO" ref="applicationAssetLinkDAO"></property>
+		<property name="contractDAO" ref="contractDAO"></property>
+		<property name="contractVendorDAO" ref="contractVendorDAO"></property>
+		<property name="assetTypeDAO" ref="assetTypeDAO"></property>
+		<property name="repositoryDAO" ref="repositoryDAO"></property>
+		<property name="dmmRepositoryHistDAO" ref="repoHistoryDAO"></property>
+		<property name="repositoryFaultComDAO" ref="repositoryFaultComDAO"></property>
+		<property name="repositoryFaultDescDAO" ref="repositoryFaultDescDAO"></property>
+		<property name="dmmRepositoryHistoryDescDAO" ref="dmmRepositoryHistoryDescDAO"></property>
+		<property name="dmmRepositoryHistoryCommDAO" ref="dmmRepositoryHistoryCommDAO"></property>
+		<property name="srmCaseHandleInfoDAO" ref="srmCaseHandleInfoDAO"></property>
+		<property name="srmCaseAttFileDAO" ref="srmCaseAttFileDAO"></property>
+		<property name="srmCaseTransactionParameterDAO" ref="srmCaseTransactionParameterDAO"></property>
+		<property name="srmCaseTransactionDAO" ref="srmCaseTransactionDAO"></property>
+		<property name="admUserDAO" ref="admUserDAO"></property>
+		<property name="srmCaseNewHandleInfoDAO" ref="srmCaseNewHandleInfoDAO"></property>
+		<property name="srmCaseNewTransactionParameterDAO" ref="srmCaseNewTransactionParameterDAO"></property>
+		<property name="srmCaseNewAssetLinkDAO" ref="srmCaseNewAssetLinkDAO"></property>
+		<property name="srmCaseNewAssetFunctionDAO" ref="srmCaseNewAssetFunctionDAO"></property>
+		<property name="suppliesDAO" ref="suppliesDAO"></property> 
+		<property name="srmCaseCommModeDAO" ref="srmCaseCommModeDAO"></property>
+		<property name="srmCaseNewCommModeDAO" ref="srmCaseNewCommModeDAO"></property>
+		
+	</bean>
+	<bean id="oldDataTransferService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.cybersoft4u.xian.iatoms.dataTransfer.service.IOldDataTransferService</value>
+			</list>
+		</property>
+		<property name="target" ref="oldDataTransferServiceBean" />
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+	</bean>
+</beans>
