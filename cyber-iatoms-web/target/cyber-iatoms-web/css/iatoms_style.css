@@ -1,0 +1,32 @@
+	.formStyle {
+		margin: 0;
+		padding: 10px 30px;
+	}
+	.dialogtitle {
+		border-bottom: 1px solid #CCCCCC;
+		font-size: 18px;
+		font-weight: bold;
+		margin-bottom: 10px;
+		padding: 5px 0;
+	}
+	.roleFunction {
+		margin: 0;
+		padding: 3px 3px;
+	}
+	.ms-container .ms-selectable li.ms-elem-selectable, .ms-container .ms-selection li.ms-elem-selection {
+		font-size: 12px;
+		border-bottom: 1px solid #C0C0C0;
+	}
+	.logFormStyle {
+		margin: 0;
+		padding: 10px 15%;
+	}
+	.checked-style-for-row {
+		background: #ffe48d;
+	}
+	.mouse-style-for-row {
+		background:#eaf2ff;
+	}
+	.input-width-144 {
+    	width:144px;
+    }

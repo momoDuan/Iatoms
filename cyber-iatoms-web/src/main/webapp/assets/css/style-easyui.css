@@ -1,0 +1,45 @@
+.red {
+	color: #c41000;
+}
+#fm {
+          margin: 0;
+          padding: 10px 30px;
+      }
+
+.ftitle {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.fitem {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.fitem label {
+    display: inline-block;
+    width: 80px;
+}
+
+.fitem input {
+    width: 160px;
+}
+.background{
+ 	 background-color:#FFF3F3;
+ 	 border-color:#FFA8A8;
+ 	 border-width: 1px 1px 1px 1px;
+ 	 border-style: solid;
+  }
+.div-tips{
+	border-radius: 5px 5px 5px 5px;
+	border:1px #ffa8a8 solid;
+	background-color: #FFF3F3;
+	padding: 1px;
+}
+.div-list{
+	border-radius: 5px 5px 5px 5px;	
+	padding: 2px;
+}

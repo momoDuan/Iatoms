@@ -1,0 +1,1238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+   <import resource="classpath*:cyber-iatoms-common-context.xml"/>
+   <import resource="classpath*:cyber-iatoms-application-context.xml"/>
+  <!--  <import resource="classpath*:activiti-context.xml"/> -->
+   <!-- 系統組態管理 -->
+   <bean id="systemConfigManager" class="com.cybersoft4u.xian.iatoms.config.IAtomsSystemConfigManager" />
+   
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="order" value="1"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="20971520" />
+		<property name="maxInMemorySize" value="20971520" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	<!-- tiles定义 start -->
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles-def.xml</value>
+			</list>
+		</property>
+		<!-- resolving preparer names as Spring bean definition names -->
+		<property name="preparerFactoryClass"
+			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
+	</bean>
+	<!-- 视图解析器 -->
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+		<property name="order" value="0"/>
+		<property name="basename">
+			<value>views</value>
+		</property>
+	</bean>
+	 <!--  tiles定义 end -->
+ 	<!-- 服務代理器 -->
+	<bean id="serviceLocator" class="cafe.core.web.locator.JavaBeanServiceLocatorProxy" />   
+	  
+	<!-- Http Request參數解析輔助器 -->
+ 	<bean id="httpRequestHelper" class="cafe.core.web.controller.util.HttpRequestHelper">
+		<property name="uploadFileTempDir" value="/home/cybersoft/WorkSpace_IAtoms/file" /><!-- 上傳多媒體之暫存目錄 -->
+	</bean>
+	<!-- Http Session 輔助器 -->
+ 	<bean id="sessionHelper" class="cafe.workflow.web.controller.util.WfSessionHelper">
+		<property name="ignoreToClearSessionAttributes"><!-- 清除session時所要忽視的屬性 -->
+			<list>
+				<value>logonUser</value>
+				<value>common</value>
+				<value>workflowContext</value>
+			</list>
+		</property>
+	</bean> 
+
+ 	<!-- 識別認證攔截器 -->	
+	<bean id="identityHandlerInterceptor" class="cafe.workflow.web.interceptor.WfIdentityHandlerInterceptor">
+		<property name="serviceLocator" ref="serviceLocator" /><!-- 服務代理器 -->
+		<property name="sessionHelper" ref="sessionHelper" /><!-- Http Session 輔助器 -->
+		<property name="redirectUrl" value="auth_redirect" /><!-- 認證異常所導向的網頁 -->
+		<!-- 忽視攔截的http request action清單，以逗號區隔 -->
+		<property name="ignores" value="logon.do,logoff.do,logonShift.do" />
+	</bean>
+	<!-- 自動釋件攔截器 -->
+	<bean id ="releaseTaskInterceptor" class="cafe.workflow.web.interceptor.ReleaseTaskInterceptor">
+		<property name="serviceId" value="taskService" /><!-- 服務編號 -->
+		<property name="actions"><!-- 需自動釋件的action -->
+			<list>
+				<value>logoff</value>
+				<value>init</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 基本參數管理器 -->
+	<!-- 僅提供輸入參數為BaseParameterInquiryContext或MultiParamRequest -->
+	<bean id="parameterManager" class="cafe.core.web.controller.util.ParameterManager">
+		<!-- 服務代理器 -->
+		<property name="serviceLocator" ref="serviceLocator" /><!-- 服務代理器 -->
+		<property name="serviceId" value="baseParameterService" /><!-- 服務編號 -->
+		<!-- 設定依據:系統類型參數或不常變動參數。為第一層參數類型項目搜尋,若搜尋不到才會去DB尋找 -->
+		<property name="attributes">
+			<map>
+				<entry key="DATA_TYPE"><!-- 資料型態 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="DATE"/>
+							<property name="value" value="91"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="NUMERIC"/>
+							<property name="value" value="2"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="TEXT"/>
+							<property name="value" value="12"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="DATA_TYPE2"><!-- 資料型態2 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="文字"/>
+							<property name="value" value="12"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="數字"/>
+							<property name="value" value="2"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="VARIABLE_TYPE"><!-- 變數類型 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="範圍"/>
+							<property name="value" value="SCOPE"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="文數字"/>
+							<property name="value" value="TEXT"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="CONDITION_OPERATOR"><!-- 條件限制類型 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="大於等於"/>
+							<property name="value" value=">="/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="大於"/>
+							<property name="value" value=">"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="小於等於"/>
+							<property name="value">
+								<value><![CDATA[<=]]></value>
+							</property>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="小於"/>
+							<property name="value">
+								<value><![CDATA[<]]></value>
+							</property>	
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="等於"/>
+							<property name="value" value="="/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="LIMIT_CONDITION"><!-- 條件限制類型 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value=">="/>
+							<property name="value" value=">="/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="="/>
+							<property name="value" value="="/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name">
+								<value><![CDATA[<=]]></value>
+							</property>
+							<property name="value">
+								<value><![CDATA[<=]]></value>
+							</property>
+						</bean>
+					</list>
+				</entry>
+				<entry key="YES_OR_NO">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="是"/>
+							<property name="value" value="Y"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="否"/>
+							<property name="value" value="N"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="NO_OR_YES">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="否"/>
+							<property name="value" value="N"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="是"/>
+							<property name="value" value="Y"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="TRUE_OR_FALSE">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="是"/>
+							<property name="value" value="1"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="否"/>
+							<property name="value" value="0"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="HAS_OR_NONE">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="有"/>
+							<property name="value" value="Y"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="無"/>
+							<property name="value" value="N"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="PRIORITY"><!-- 案件急件等級 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="一般"/>
+							<property name="value" value="3"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="急件"/>
+							<property name="value" value="2"/>
+						</bean>
+						<!-- <bean class="cafe.core.bean.Parameter">
+							<property name="name" value="最速件"/>
+							<property name="value" value="1"/>
+						</bean> -->
+					</list>
+				</entry>
+				<entry key="PRIORITY_LIMITATION"><!-- 案件急件時效 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="暫時"/>
+							<property name="value" value="0"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="永久"/>
+							<property name="value" value="1"/>
+						</bean>
+					</list>
+				</entry>
+				<!-- IM Start-->
+				<entry key="FUNCTION_CATEGORY">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="Menu選單"/>
+							<property name="value" value="M"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="按鈕/超連結"/>
+							<property name="value" value="A"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="關卡"/>
+							<property name="value" value="T"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="系統"/>
+							<property name="value" value="S"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="資料欄項"/>
+							<property name="value" value="F"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="TAB標籤"/>
+							<property name="value" value="B"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="產品"/>
+							<property name="value" value="P"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="參數種類"/>
+							<property name="value" value="I"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="STATUS">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="啟動"/>
+							<property name="value" value="A"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="暫停"/>
+							<property name="value" value="I"/>
+						</bean>						
+					</list>
+				</entry>
+				<entry key="ROLE_TYPE">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="一般"/>
+							<property name="value" value="N"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="系統"/>
+							<property name="value" value="S"/>
+						</bean>						
+					</list>
+				</entry>
+				<entry key="AGREE_YES_NO">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="同意"/>
+							<property name="value" value="Y"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="不同意"/>
+							<property name="value" value="N"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="WEEK">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="星期一"/>
+							<property name="value" value="2"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="星期二"/>
+							<property name="value" value="3"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="星期三"/>
+							<property name="value" value="4"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="星期四"/>
+							<property name="value" value="5"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="星期五"/>
+							<property name="value" value="6"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="星期六"/>
+							<property name="value" value="7"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="星期日"/>
+							<property name="value" value="1"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="INTEGER">
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="0"/>
+							<property name="value" value="0"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="1"/>
+							<property name="value" value="1"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="2"/>
+							<property name="value" value="2"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="3"/>
+							<property name="value" value="3"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="4"/>
+							<property name="value" value="4"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="5"/>
+							<property name="value" value="5"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="6"/>
+							<property name="value" value="6"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="7"/>
+							<property name="value" value="7"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="8"/>
+							<property name="value" value="8"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="9"/>
+							<property name="value" value="9"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="10"/>
+							<property name="value" value="10"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="11"/>
+							<property name="value" value="11"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="12"/>
+							<property name="value" value="12"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="13"/>
+							<property name="value" value="13"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="14"/>
+							<property name="value" value="14"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="15"/>
+							<property name="value" value="15"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="16"/>
+							<property name="value" value="16"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="17"/>
+							<property name="value" value="17"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="18"/>
+							<property name="value" value="18"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="19"/>
+							<property name="value" value="19"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="20"/>
+							<property name="value" value="20"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="ASSET_OPEN_MODE"><!-- 設備開啟模式 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="內建"/>
+							<property name="value" value="BUILT_IN"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="外接"/>
+							<property name="value" value="EXTERNAL"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="REMOVE_OR_LOSS"><!-- 案件歷史設備連接檔-動作 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="拆回"/>
+							<property name="value" value="REMOVE"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="遺失"/>
+							<property name="value" value="LOSS"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="ASSET_REMOVE_STATUS"><!-- 設備解除綁定狀態 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="已拆回"/>
+							<property name="value" value="RETURNED"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="已遺失"/>
+							<property name="value" value="LOST"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="ACTIONS"><!-- 設備解除綁定狀態 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="已拆回"/>
+							<property name="value" value="REMOVE"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="已遺失"/>
+							<property name="value" value="LOSS"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="NOTICE_TYPE"><!-- 通知email -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="Email"/>
+							<property name="value" value="EMAIL"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="提醒"/>
+							<property name="value" value="REMIND"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="RESPONSIBITY"><!-- 責任歸屬 -->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="責任歸屬"/>
+							<property name="value" value="RESPON_ATTRIBUTION"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="非責任歸屬"/>
+							<property name="value" value="NOT_RESPON_ATTRIBUTION"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="CASE_TEMPLATE_CATEGORY"><!--範本類別-->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="案件資訊"/>
+							<property name="value" value="1"/>
+						</bean>
+						<!-- <bean class="cafe.core.bean.Parameter">
+							<property name="name" value="刷卡機參數"/>
+							<property name="value" value="2"/>
+						</bean> -->
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="刷卡機安裝維修服務單"/>
+							<property name="value" value="2"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="刷卡機安裝維修服務單_空白套印"/>
+							<property name="value" value="3"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="CASE_LOGO"><!--建案logo-->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="僅LOGO"/>
+							<property name="value" value="ONLY_LOGO"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="僅表頭"/>
+							<property name="value" value="ONLY_MERCHANT_HEADER"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="LOGO+表頭"/>
+							<property name="value" value="LOGO_AND_MERCHANT_HEADER"/>
+						</bean>
+					</list>
+				</entry>
+				<entry key="CASE_PROGRESS"><!--案件進度-->
+					<list>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="進行中"/>
+							<property name="value" value="PROGRESS"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="待結案審查"/>
+							<property name="value" value="WAIT_CLOSE"/>
+						</bean>
+						<bean class="cafe.core.bean.Parameter">
+							<property name="name" value="已結案"/>
+							<property name="value" value="CLOSED"/>
+						</bean>
+					</list>
+				</entry>
+			</map>	
+		</property>
+ 	</bean>
+ 	
+	<!-- DWR AJAX代理服務 -->
+  	<bean id="ajaxService" class="com.cybersoft4u.xian.iatoms.web.controllers.ajax.IAtomsAjaxService">
+		<property name="serviceLocator" ref="serviceLocator" /><!-- 服務代理器 -->
+		<property name="parameterManager" ref="parameterManager" /> <!-- 基本參數管理器 -->
+	</bean>	
+ 	<!-- 初始化資料載入器 -->
+	<bean id="baseInitialDataLoader" abstract="true">
+		<property name="ajaxService" ref="ajaxService" /><!-- ajax服務代理器 -->
+	</bean>		
+ 	<!-- 抽象案件查詢初始化資料載入器 -->
+	<bean id="abstractQueryCaseInitialDataLoader" abstract="true" parent="baseInitialDataLoader">
+		<property name="parameterItemNames"><!-- 參數類別項目 -->
+			<list>
+				<value>PRIORITY</value><!-- 案件急件等級-->
+				<value>CASE_TYPE</value><!-- 案件類型-->
+				<value>PROCESS_ID</value><!-- 流程-->
+			</list>
+		</property>
+	</bean>
+    <!-- 抽象之基本Controller -->
+	<bean id="baseController" abstract="true">
+		<!-- 服務代理器 -->
+		<property name="serviceLocator" ref="serviceLocator" /><!-- 服務代理器 -->
+		<property name="httpRequestHelper" ref="httpRequestHelper" /><!-- Http Request參數解析輔助器 -->
+		<property name="sessionHelper" ref="sessionHelper" /><!-- Session 輔助器 -->
+	</bean>
+	
+	<!-- 抽象之多動作Controller -->
+	<bean id="multiActionController" abstract="true" parent="baseController">
+		<!-- 動作方法名稱解析器 -->
+        <property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		        <property name="paramName" value="actionId" /><!-- 參數名稱 -->
+		        <property name="defaultMethodName" value="init" /><!-- 預設action方法名稱 -->
+			</bean>
+        </property>
+	</bean>
+	<!-- EDC合約到期提示報表 Start (elvahe)-->
+	<bean id="edcContractExpireInformReport" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobEdcContractExpire"/>
+		</property>
+		<property name="cronExpression">
+			<value>0 11 0 1 * ?</value>  <!-- 每月第一天 00:11 -->
+		</property> 
+	</bean>
+	<bean id="jobEdcContractExpire" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="edcContractExpireServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>sendMailExpireInformReport</value>
+		</property>
+	</bean>
+	<!-- EDC合約到期提示報表 End (elvahe)-->
+	
+	<!-- EDC報表服務需求案件(維修)分析月報 start(Carrieduan)-->
+	<bean id="edcReqCaseAnalysisMonReport" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobEdcReqCaseAnalysis"/>
+		</property>
+		<property name="cronExpression">
+			<value>0 0 01 1 * ?</value>	<!--每月第一天 01:00 -->
+		</property>
+	</bean>
+	<bean id="jobEdcReqCaseAnalysis" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="edcReqCaseAnalysisMonReportServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>sendMailAnalysisMonthlyReport</value>
+		</property>
+	</bean>
+	<!-- EDC報表服務需求案件(維修)分析月報 end(Carrieduan)-->
+	
+	<!-- EDC流通在外台數報表 start(Carrieduan)-->
+	<bean id="edcOutstandingNumReport" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobEdcOutstandingNum"/>
+		</property>
+		<property name="cronExpression">
+			<value>0 0 0 ? * 3</value> <!-- 非節假日 每周二 00:00 -->
+		</property>
+	</bean>
+	<bean id="jobEdcOutstandingNum" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="edcOutstandingNumServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>sendMailOutstandingNumReport</value>
+		</property>
+	</bean>
+	<!-- EDC流通在外台數報表 end(Carrieduan)-->
+	
+	<!-- 未完修報表(大眾格式) start(Carrieduan)-->
+	<bean id="unfinishedReportToTCB" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobUnfinishedReportToTCB"/>
+		</property>
+		<property name="cronExpression">
+			<value>0 30 02 * * ?</value>	<!--每日2:30 -->
+		</property>
+	</bean>
+	<bean id="jobUnfinishedReportToTCB" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="unfinishedReportServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>sendMailUnfinishedReportToTCB</value>
+		</property>
+	</bean>
+	<!-- 未完修報表(大眾格式) end(Carrieduan)-->
+	
+	<!-- 未完修報表(環匯格式) start(Carrieduan)-->
+	<bean id="unfinishedReportToGP" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobUnfinishedReportToGP"/>
+		</property>
+		<property name="cronExpression">
+			<value>0 0 02 * * ?</value>	<!--每日2:00 -->
+		</property>
+	</bean>
+	<bean id="jobUnfinishedReportToGP" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="unfinishedReportToGPServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>sendMailUnfinishedReportToGP</value>
+		</property>
+	</bean>
+	<!-- 未完修報表(環匯格式) end(Carrieduan)-->
+	
+	<!-- 完工回覆檔(環匯格式) start(CarrieDuan)-->
+	<bean id="finishedReplyReportToGP" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobFinishedReplyReportToGP"/>
+		</property>
+		<property name="cronExpression">
+	            <value>0 0 03 * * ?</value>	<!--每日3:00 -->
+		</property>
+	</bean>
+	<bean id="jobFinishedReplyReportToGP" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="finishedReplyReportServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>sendMailFinishedReplyReportToGP</value>
+		</property>
+	</bean>
+	<!-- 完工回覆檔(環匯格式) end(CarrieDuan)-->
+	
+	<!-- 設備未歸還mail提醒 start-->
+	<bean id="borrowUnBackMail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    	<!-- 调用的类 -->
+    	<property name="targetObject">
+        	<ref bean="assetManageServiceBean"/>
+    	</property>
+   		 <!-- 调用类中的方法 -->
+    	<property name="targetMethod">
+        	<value>sendUnBackMail</value>
+    	</property>
+	</bean>
+	<bean id="sendUnBackMail" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+		    <ref bean="borrowUnBackMail"/>
+		</property>
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+		    <value>0 0 0 * * ?</value> <!-- 每天 00：00触发 -->
+		</property>
+	</bean>
+	<!-- 設備未歸還mail提醒 end-->
+	
+	<!-- 完工回覆檔(大眾格式) start-->
+	<bean id="finishedReplyReportToTCB" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobFinishedReplyReportToTCB"/>
+		</property>
+		<property name="cronExpression">
+			<value>0 30 03 * * ?</value>	<!--每日3:30 -->
+		</property>
+	</bean>
+	<bean id="jobFinishedReplyReportToTCB" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="finishedReplyReportTCBServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>sendMailFinishedReplyReportToTCB</value>
+		</property>
+	</bean>
+	<!-- 完工回覆檔(大眾格式) end-->
+	<!-- 案件報修明細(環匯格式) start (elvahe)-->
+	<bean id="caseRepairDetailReportToGP" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobCaseRepairDetailReportToGP" />
+		</property>
+		<property name="cronExpression">
+			<value>0 30 0 1 * ?</value> <!-- 每月第一天 00:30 -->
+		</property>
+	</bean>
+	<bean id="jobCaseRepairDetailReportToGP" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="caseRepairDetailReportToGPServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>sendMailCaseRepairDetailReportToGP</value>
+		</property>
+	</bean> 
+	<!-- 案件報修明細(環匯格式) end (elvahe)-->	
+	<!-- 完修逾時率警示通知 start(carrie)-->
+	<bean id="completeOverdueRateReport" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobCompleteOverdueRateReport"/>
+		</property>
+		<property name="cronExpression">
+			<value>0 0 14 * * ?</value>	<!--每日14:00 -->
+		</property>
+	</bean>
+	<bean id="jobCompleteOverdueRateReport" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="completeOverdueRateReportServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>sendMailCompleteOverdueRateReport</value>
+		</property>
+	</bean>
+	<!-- 完修逾時率警示通知 end(carrie)-->
+	<!-- 案件設備明細（環匯格式） start (elvahe)-->
+	<bean id="caseAssetDetailReportToGP" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobCaseAssetDetailReportToGP"/>
+		</property>
+		<property name="cronExpression">
+	        <value>0 30 1 1,16 * ?</value>  <!--每月1號和16號，01:30 -->
+	        
+	             <!-- <value>0 0/1 * * * ?</value> -->
+		</property>
+	</bean>
+	<bean id="jobCaseAssetDetailReportToGP" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="caseAssetDetailReportToGPServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>sendMailCaseAssetDetailReportToGP</value>
+		</property>
+	</bean>
+	<!-- 案件設備明細（環匯格式） end (elvahe)-->
+	<!-- 完工回覆檔(歐付寶格式) start(carrie)-->
+	<bean id="finishedReplyReportToOFB" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobFinishedReplyReportToOFB"/>
+		</property>
+		<property name="cronExpression">
+			<value>0 0 04 * * ?</value>	<!--每日4:00 -->
+		</property>
+	</bean>
+	<bean id="jobFinishedReplyReportToOFB" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="finishedReplyReportToOFBServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>sendMailFinishedReplyReportToOFB</value>
+		</property>
+	</bean>
+	<!-- 完工回覆檔(歐付寶格式) end(carrieDuan)-->
+	<!-- 批次處理 臨時目錄文件清理 start(hermanwang)-->
+	<bean id="tempFilesClean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobTempFilesClean"/>
+		</property>
+		<property name="cronExpression">
+	            <value>0 0 5 * * ?</value>	<!--每日5:00 -->
+		</property>
+	</bean>
+	<bean id="jobTempFilesClean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="iatomsBatchServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>cleanTempFiles</value>
+		</property>
+	</bean>
+	<!-- 批次處理 臨時目錄文件清理 end(hermanwang)-->
+	<!--  批次處理 設備庫存資料複製 start(hermanwang)-->
+	<bean id="assetHistoryToMonthTable" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobAssetHistoryToMonthTable"/>
+		</property>
+		<property name="cronExpression">
+	            <value>0 0 0/1 1 * ?</value>	<!--每月1號 00:00開始，每隔一小時執行一次 -->
+		</property>
+	</bean>
+	<bean id="jobAssetHistoryToMonthTable" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="iatomsBatchServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>copyAssetHistoryToMonthTable</value>
+		</property>
+	</bean>
+	<!-- 批次處理 設備庫存資料複製 end(hermanwang)-->
+	
+	<!-- 批次處理 系統備份或刪除 start(crisszhang)-->
+	<bean id="jobDealSystemLimit" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    	<!-- 调用的类 -->
+    	<property name="targetObject">
+        	<ref bean="iatomsBatchServiceBean"/>
+    	</property>
+   		 <!-- 调用类中的方法 -->
+    	<property name="targetMethod">
+        	<value>dealSystemLimit</value>
+    	</property>
+	</bean>
+	<bean id="dealSystemLimit" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+		    <ref bean="jobDealSystemLimit"/>
+		</property>
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+		    <value>0 0 0 1 * ?</value> <!-- 每月1號 00：00 触发 -->
+		</property>
+	</bean>
+	<!-- 批次處理 系統備份或刪除 end(crisszhang)-->
+	
+	<!--維護費報表(大眾格式TCB-EDC) start(Hermanwang) -->
+	<bean id="edcFeeReportForTcb" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobEdcFeeReportForTcb" />
+		</property>
+		<property name="cronExpression">
+			<value>0 30 06 5 * ?</value>	<!--每月5號，6:30 -->
+		</property>
+	</bean>
+	<bean id="jobEdcFeeReportForTcb" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="edcFeeReportForTcbServiceBean" />
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>toReport</value>
+		</property>
+	</bean>
+	<!--維護費報表(大眾格式TCB-EDC) end(Hermanwang) -->
+	
+	<!--维护费报表(捷达威格式JDW-EDC) start(carrieduan)-->
+	<bean id="edcFeeReportForJdw" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+	<property name="jobDetail">
+		<ref bean="jobEdcFeeReportForJdw"/>
+	</property>
+	<property name="cronExpression">
+		<value>0 30 07 05 * ?</value>	<!--每月5号，7:30 -->
+	</property>
+	</bean>
+	<bean id="jobEdcFeeReportForJdw" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="edcFeeReportForJdwServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>toReport</value>
+		</property>
+	</bean>
+	<!--维护费报表(捷达威格式JDW-EDC) end(carrieduan)-->
+	
+	<!--程式版本tms資料 start(crisszhang)-->
+	<bean id="oldDataBatchAppTms" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobOldDataBatchAppTms"/>
+		</property>
+		<property name="cronExpression">
+			<value>00 00 03 * * ?</value><!-- 每日03:00 -->
+		</property>
+	</bean>
+	<bean id="jobOldDataBatchAppTms" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="oldDataBatchServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>transferApplicatonTms</value>
+		</property>
+	</bean>
+	<!--程式版本tms資料 end(crisszhang)-->
+	
+	<!--行事歷資料 start(crisszhang)-->
+	<bean id="oldDataBatchCalendar" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobOldDataBatchCalendar"/>
+		</property>
+		<property name="cronExpression">
+			<value>00 00 00 * * ?</value><!-- 每日00:00 -->
+		</property>
+	</bean>
+	<bean id="jobOldDataBatchCalendar" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="oldDataBatchServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>transferCalendar</value>
+		</property>
+	</bean>
+	<!--行事歷資料 end(crisszhang)-->
+	
+	<!-- 維護費報表(環匯格式GP_EDC) start(carrieduan) -->
+	<bean id="edcFeeReportForGp" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobEdcFeeReportForGp"/>
+		</property>
+		<property name="cronExpression">
+			 <value>0 30 04 5 * ?</value>	<!--每月5號，4:30 -->
+		</property>
+	</bean>
+	<bean id="jobEdcFeeReportForGp" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="edcFeeReportForGpServiceBean"/>
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>toReport</value>
+		</property>
+	</bean>
+	<!-- 維護費報表(環匯格式GP_EDC) end(carrieduan) -->
+	<!-- 維護費報表(綠界格式GreenWorld) Start (hermanwang) -->
+	<bean id="edcFeeReportForGreenWorld "
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobEdcFeeReportForGreenWorld" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0 07 5 * ?</value>	<!--每月5號，7:00 -->
+		</property>
+	</bean>
+	<bean id="jobEdcFeeReportForGreenWorld"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="edcFeeReportForGreenWorldServiceBean" />
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>toReport</value>
+		</property>
+	</bean>
+	<!-- 維護費報表(綠界格式GreenWorld) End (hermanwang) -->
+	
+	<!-- 維護費報表(上銀格式Scsb) Start (hermanwang) -->
+	<bean id="edcFeeReportForScsb"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobEdcFeeReportForScsb" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0 06 5 * ?</value>	<!--每月5號，6:00 -->
+		</property>
+	</bean>
+	<bean id="jobEdcFeeReportForScsb"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="edcFeeReportForScsbServiceBean" />
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>toReport</value>
+		</property>
+	</bean>
+	<!-- 維護費報表(上銀格式Scsb) End (hermanwang) -->
+	
+	<!-- 維護費報表(陽信格式SYB-EDC)  Start (hermanwang) -->
+	<bean id="edcFeeReportForSyb"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobEdcFeeReportForSyb" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0 05 5 * ?</value>	<!--每月5號，5:00 -->
+		</property>
+	</bean>
+	<bean id="jobEdcFeeReportForSyb"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="edcFeeReportForSybServiceBean" />
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>toReport</value>
+		</property>
+	</bean>
+	<!-- 維護費報表(陽信格式SYB-EDC)  End (hermanwang) -->
+	
+	<!-- 維護費報表(彰銀格式CHB-EDC)  Start (hermanwang) -->
+	<bean id="edcFeeReportForChb"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobEdcFeeReportForChb" />
+		</property>
+		<property name="cronExpression">
+			<value>0 30 05 5 * ?</value>	<!--每月5號，5:30 -->
+		</property>
+	</bean>
+	<bean id="jobEdcFeeReportForChb"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="edcFeeReportForChbServiceBean" />
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>toReport</value>
+		</property>
+	</bean>
+	<!-- 維護費報表(彰銀格式CHB-EDC)  End (hermanwang) -->
+	<!-- (CMS)_批次作業(匯出案件資料) start-->
+	<bean id="queryCmsCase" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    	<!-- 调用的类 -->
+    	<property name="targetObject">
+        	<ref bean="caseManagerServiceBean"/>
+    	</property>
+   		 <!-- 调用类中的方法 -->
+    	<property name="targetMethod">
+        	<value>queryCaseInfo</value>
+    	</property>
+	</bean>
+	<bean id="queryCaseInfo" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+		    <ref bean="queryCmsCase"/>
+		</property>
+		<property name="cronExpression">
+		    <value>00 3/30 * * * ?</value> <!-- 每 30分鐘 触发一次 -->
+		</property>
+	</bean>
+	<!-- (CMS)_批次作業(匯出案件資料) end-->
+	<!-- (CMS)_批次作業(設備停用、啟用) start-->
+	<bean id="queryCmsAsset" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    	<!-- 调用的类 -->
+    	<property name="targetObject">
+        	<ref bean="assetManageServiceBean"/>
+    	</property>
+   		 <!-- 调用类中的方法 -->
+    	<property name="targetMethod">
+        	<value>queryAssetInfo</value>
+    	</property>
+	</bean>
+	<bean id="queryAssetInfo" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+		    <ref bean="queryCmsAsset"/>
+		</property>
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+		    <value>00 0/30 * * * ?</value> <!-- 每 30分鐘 触发一次 -->
+		</property>
+	</bean>
+	<!-- (CMS)_批次作業(設備停用、啟用) end-->
+	<!-- 匯出案件資訊範本(派工給華經資訊)  Start (nicklin) -->
+	<bean id="exportCaseTemplateForFis"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobExportCaseTemplateForFis" />
+		</property>
+		<property name="cronExpression">
+			<value>00 30 23 * * ?</value>	<!--  每日23:30  -->
+		</property>
+	</bean>
+	<bean id="jobExportCaseTemplateForFis"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="exportCaseTemplateForFisServiceBean" />
+		</property>
+		<property name="targetMethod">
+			<value>exportCaseTemplate</value>
+		</property>
+	</bean>
+	 <!-- 匯出案件資訊範本(派工給華經資訊)  End (nicklin) -->
+	 
+	<!-- 批次通知工程師回應、到場、完修逾期情況  Start (CarrieDuan) -->
+	<bean id="exportCaseOverdue" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobExportCaseOverdue" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0 */1 * * ?</value>	<!--  每隔一小時執行一次  -->
+		</property>
+	</bean>
+	<bean id="jobExportCaseOverdue" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="exportCaseOverdueServiceBean" />
+		</property>
+		<property name="targetMethod">
+			<value>queryCaseInfo</value>
+		</property>
+	</bean>
+	<!-- 批次通知工程師回應、到場、完修逾期情況  End (CarrieDuan) -->
+	
+	<bean id="startQuertz" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="edcContractExpireInformReport"/><!--EDC合約到期提示報表 -->
+				<ref bean="edcReqCaseAnalysisMonReport"/><!-- EDC報表服務需求案件(維修)分析月報-->
+				<ref bean="edcOutstandingNumReport"/><!-- EDC流通在外台數報表-->
+				<ref bean="unfinishedReportToTCB"/><!--未完修報表(大眾格式) -->
+				<ref bean="unfinishedReportToGP"/><!--未完修報表(環匯格式) -->
+				<ref bean="finishedReplyReportToGP"/><!-- 完工回覆檔(環匯格式) -->
+				<ref bean="sendUnBackMail"/><!-- 設備未歸還mail提醒 -->
+				<ref bean="finishedReplyReportToTCB"/><!-- 完工回覆檔(大眾格式) -->
+				<ref bean="caseRepairDetailReportToGP"/><!-- 案件保修明細(環匯格式) -->
+				<ref bean="completeOverdueRateReport"/><!-- 完修逾時率警示通知 -->
+				<ref bean="finishedReplyReportToOFB"/><!-- 完工回覆檔(歐付寶) -->
+				<ref bean="caseAssetDetailReportToGP"/><!-- 案件設備明細（環匯格式） -->
+				<ref bean="tempFilesClean"/><!--臨時目錄文件清理 -->
+				<ref bean="assetHistoryToMonthTable"/><!--設備庫存資料複製-->
+				<ref bean="edcFeeReportForTcb"/><!--維護費報表(大眾格式TCB-EDC) -->
+				<ref bean="edcFeeReportForJdw"/><!--维护费报表(捷达威格式JDW-EDC) -->
+				<ref bean="oldDataBatchAppTms"/><!--TMS程式版本資料 -->
+				<ref bean="oldDataBatchCalendar"/><!--行事曆資料 -->
+				<ref bean="edcFeeReportForGp"/><!--維護費報表(環匯格式GP-EDC) -->
+				<ref bean="edcFeeReportForGreenWorld"/><!--維護費報表(綠界格式GreenWorld) -->
+				<ref bean="edcFeeReportForScsb"/><!--維護費報表(上銀格式Scsb) -->
+				<ref bean="dealSystemLimit"/><!--批次處理 系統備份或刪除 -->
+				<ref bean="edcFeeReportForSyb"/><!--維護費報表(陽信格式Syb-Edc) -->
+				<ref bean="edcFeeReportForChb"/><!--維護費報表(彰銀格式Chb-Edc)-->
+				<ref bean="queryCaseInfo"/><!--CMS)_批次作業(匯出案件資料)-->
+				<ref bean="queryAssetInfo"/>  <!--(CMS)_批次作業(設備停用、啟用)-->
+				<ref bean="exportCaseTemplateForFis"/><!--匯出案件資訊範本(第一次派工給華經資訊)-->
+				<ref bean="exportCaseOverdue"/><!--批次通知工程師回應、到場、完修逾期情況-->
+			</list>
+		</property>
+	</bean>
+</beans>

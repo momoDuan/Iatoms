@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+  <wb-module deploy-name="cyber-iatoms-web">
+    <property name="context-root" value="cyber-iatoms-web"/>
+    <wb-resource deploy-path="/" source-path="src/main/webapp"/>
+    <wb-resource deploy-path="/" source-path="src/main/webapp"/>
+    <property name="java-output-path" value="/target/classes"/>
+    <dependent-module archiveName="cafe-cm-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/cafe-framework/cafe-cm/1.0/cafe-cm-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="cafe-core-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/cafe-framework/cafe-core/1.0/cafe-core-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="cafe-identity-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/cafe-framework/cafe-identity/1.0/cafe-identity-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="cafe-workflow-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/cafe-framework/cafe-workflow/1.0/cafe-workflow-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="cyber-iatoms-common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cyber-iatoms-common/cyber-iatoms-common">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="ESAPI-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/owasp/ESAPI/2.0.1/ESAPI-2.0.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="groovy-all-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/codehaus/groovy/groovy-all/2.0.1/groovy-all-2.0.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-compress-1.7.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/apache/commons/commons-compress/1.7/commons-compress-1.7.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xz-1.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/tukaani/xz/1.4/xz-1.4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="zip4j-1.3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/net/lingala/zip4j/zip4j/1.3.2/zip4j-1.3.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="ftp4j-1.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/it/sauronsoftware/ftp4j/1.6/ftp4j-1.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="cyber-iatoms-services.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cyber-iatoms-services/cyber-iatoms-services">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jxls-core-1.0.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/net/sf/jxls/jxls-core/1.0.6/jxls-core-1.0.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-jexl-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/apache/commons/commons-jexl/2.0.1/commons-jexl-2.0.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="cyber-iatoms-controllers.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cyber-iatoms-controllers/cyber-iatoms-controllers">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-ldap-core-2.3.1.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/springframework/ldap/spring-ldap-core/2.3.1.RELEASE/spring-ldap-core-2.3.1.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="core-3.3.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/google/zxing/core/3.3.0/core-3.3.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="javase-3.3.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/google/zxing/javase/3.3.0/javase-3.3.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jcommander-1.48.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/beust/jcommander/1.48/jcommander-1.48.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jai-imageio-core-1.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/github/jai-imageio/jai-imageio-core/1.3.1/jai-imageio-core-1.3.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jxls-reader-1.0.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/net/sf/jxls/jxls-reader/1.0.6/jxls-reader-1.0.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="cyber-iatoms-dataTransfer.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cyber-iatoms-dataTransfer/cyber-iatoms-dataTransfer">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+  </wb-module>
+</project-modules>

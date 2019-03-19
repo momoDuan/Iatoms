@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- 案件明細畫面 -->
+	<definition name="SRM05020_02_CaseDetail" template="/jsp/SRM/SRM05020_02_CaseDetail.jsp">
+		<put-attribute name="caseInformation" value="/jsp/SRM/SRM05020_CaseInformation.jsp"  />
+		<put-attribute name="merchantInfo" value="/jsp/SRM/SRM05020_MerchantInfo.jsp"  />
+		<put-attribute name="edcInformation" value="/jsp/SRM/SRM05020_EDCInformation.jsp"  />
+		<put-attribute name="caseAdditionalInfo" value="/jsp/SRM/SRM05020_CaseAdditionalInfo.jsp"  />
+		<put-attribute name="tradingParameters" value="/jsp/SRM/SRM05020_TradingParameters.jsp"  />
+		<put-attribute name="caseAction" value="/jsp/SRM/SRM05020_CaseAction.jsp"  />
+	</definition>
+	<definition name="SRM05010_01_SrmCaseTemplates" template="/jsp/SRM/SRM05010_01_SrmCaseTemplates.jsp">
+		<put-attribute name="tradingParameters" value="/jsp/SRM/SRM05020_TradingParameters.jsp"  />
+	</definition>
+</tiles-definitions>

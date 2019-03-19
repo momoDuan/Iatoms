@@ -1,0 +1,145 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+       http://www.directwebremoting.org/schema/spring-dwr
+       http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
+	
+	<!-- LDAP 域驗證處理器-->
+	<bean id="authenticatorHelper" class="com.cybersoft4u.xian.iatoms.web.controllers.authenticator.AuthenticatorHelper" init-method="init">
+		<property name="ldapCtxFactory" value="com.sun.jndi.ldap.LdapCtxFactory"/>
+	</bean>
+
+	<dwr:configuration>
+		<dwr:convert type="bean" class="cafe.core.bean.Parameter" />
+		<dwr:convert type="bean" class="cafe.core.bean.CompositeParameter" />
+		<dwr:convert type="bean" class="cafe.core.bean.identity.LogonUser" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.AssetInInfoDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.DmmAssetTransInfoDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.DmmRepositoryHistoryDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.DmmAssetStacktakeListDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.MerchantDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.BimMerchantHeaderDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.AdmUserDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.AssetTypeDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.SrmCaseHandleInfoDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.SrmCaseNewTransactionParameterDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.SrmCaseAttFileDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.SrmCaseHandleInfoDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.SrmPaymentItemDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.SrmPaymentInfoDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.DmmSuppliesDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.SrmCaseTemplatesDTO" />
+		<dwr:convert type="bean" class="com.cybersoft4u.xian.iatoms.common.bean.dto.CompanyDTO" />
+		<dwr:convert type="map" class="java.util.Map" />
+	</dwr:configuration>
+	
+  	<bean id="ajaxService" class="com.cybersoft4u.xian.iatoms.web.controllers.ajax.IAtomsAjaxService">
+ 		<dwr:remote javascript="ajaxService">
+			<dwr:include method="settingActiveFinish"/>
+			<dwr:include method="getCustomerDefDTO"/>
+			<dwr:include method="addrLinkage"/>
+			<dwr:include method="getModelByType"/>
+			<dwr:include method="getUnitPrice"/>
+			<dwr:include method="isDuplicateEmp"/>
+			<dwr:include method="getContractListByVendorId"/>
+			<dwr:include method="getAssetInfoByContractNo"/>
+			<dwr:include method="getAssetInInfoByAssetInId"/>
+			<dwr:include method="getAssetInIdList"/>
+			<dwr:include method="checkExsitDownLoadFile"/>
+			<dwr:include method="getContractIdListByCustomer"/>
+			<dwr:include method="getContractList"/>
+			<dwr:include method="getFunctionByParentId"/>
+			<dwr:include method="getAssetTransInfoByAssetTransId"/>
+			<dwr:include method="getAssetTransIdList"/>
+			<dwr:include method="getInventoryNumberList"/>
+			<dwr:include method="getAssetStocktackInfoByStocktackId"/>
+			<dwr:include method="getAssetInfoList"/>
+			<dwr:include method="getAssetTransInfoById"/>
+			<dwr:include method="getRepositoryHistDTOByHistId"/>
+			<dwr:include method="getRoleCode"/><!-- 獲得角色列表code -->
+			<dwr:include method="getEmailByUserId"/>
+			<dwr:include method="getWorkFlowRoleList"/>
+			<dwr:include method="checkUseRole"/>
+			<dwr:include method="getReportNameList"/>
+			<dwr:include method="getReportDetailList"/>
+			<dwr:include method="getDeptList"/>
+			<dwr:include method="getAssetTypeIdList"/>
+			<dwr:include method="getAssetTypeList"/>
+			<dwr:include method="getMerchantHeader"/>
+			<dwr:include method="getAssetTypeIdByContractId"/>
+			<dwr:include method="getUnityNameByCompanyId"/>
+			<dwr:include method="checkName"/>
+			<dwr:include method="getContractByCustomerAndStatus"/>
+			<dwr:include method="getContractCodeList"/>
+			<dwr:include method="getMerchantList"/>
+			<dwr:include method="getContractWarranty"/>
+			<dwr:include method="getAssetTransInfoByKeyId"/>
+			<dwr:include method="saveLog"/>
+			<dwr:include method="getAssetTransIds"/>
+			<dwr:include method="getStocktackIdByWarehouseAndAssetType"/>
+			<dwr:include method="getAssetListTypeByCustomer"/>
+			<dwr:include method="getAssetList"/>
+			<dwr:include method="getWareHouseUserNameList"/>
+			<dwr:include method="checkDownLoadFile"/>
+			<dwr:include method="getAssetModelAndBrand"/>
+			<dwr:include method="getUserByDeparment"/>
+			<dwr:include method="getMerchantHeaderDTOById"/>
+			<dwr:include method="getMerchantDTOById"/>
+			<dwr:include method="getMerchantHeaderList"/>
+			<dwr:include method="getCaseMessageByDTID"/>
+			<dwr:include method="getBuiltInFeature"/>
+			<dwr:include method="getComboboxValueByContractId"/>
+			<dwr:include method="getSoftwareVersions"/>
+			<dwr:include method="saveSystemLog"/>
+			<dwr:include method="getConnectionType"/>
+			<dwr:include method="checkCaseFile"/>
+			<dwr:include method="checkDtidType"/>
+			<dwr:include method="isUseDtid"/>
+			<dwr:include method="checkDtidNumber"/>
+			<dwr:include method="getPayInfo"/>
+			<dwr:include method="getSuppliesTypeNameList"/>
+			<dwr:include method="getPaymentItemByItemIds"/>
+			<dwr:include method="getUserByDepartmentAndRole"/>
+			<dwr:include method="getDeptByCompanyId"/>
+			<dwr:include method="getCaseRepeatList"/>
+			<dwr:include method="getSuppliesListByCustomseId"/>
+			<dwr:include method="getSuppliesNameList"/>
+			<dwr:include method="getAssetNameList"/>
+			<dwr:include method="checkCaseTemplatesDownLoadFile"/>
+			<dwr:include method="getUploadTemplatesId"/>
+			<dwr:include method="getCaseInfoById"/>
+			<dwr:include method="getCompanyByCompanyCode"/>
+			<dwr:include method="getAoEmailByCaseId"/>
+			<dwr:include method="getcaseInfoEmailByCaseId"/>
+			<dwr:include method="getAssetListForCase"/>
+			<dwr:include method="getVendersByContractId"/>
+			<dwr:include method="getCaseLinkIsChange"/>
+			<dwr:include method="initEditCheckUpdate"/>
+			<dwr:include method="checkRoleRepeat"/>
+			<dwr:include method="getMailGroupList"/>
+			<dwr:include method="getNameList"/>
+			<dwr:include method="isChangeAsset"/>
+			<dwr:include method="getExportFlag"/>
+			<dwr:include method="getUserListByCompany"/>
+			<dwr:include method="getHaveEdcContract"/>
+			<dwr:include method="getUserColumnTemplate"/>
+			<dwr:include method="checkSerialNumber"/>
+			<dwr:include method="getCaseRepeatByInstallUncomplete"/>
+			<dwr:include method="getChangeCaseInfoById"/>
+			<dwr:include method="getCountByInstall"/>
+			<dwr:include method="getAssetModelList"/>
+			<dwr:include method="checkComplaintFile"/>
+			<dwr:include method="createBatchNum"/>
+			<dwr:include method="TMSPost"/>
+			<dwr:include method="TMSParaContents"/>
+			<dwr:include method="getPostCodeList"/>
+			<dwr:include method="getMerchantsByCodeAndCompamyId"/>
+			<dwr:include method="getInstallCaseId"/>
+			<dwr:include method="checkLogFileExist"/>
+		</dwr:remote>
+		<property name="parameterManager" ref="parameterManager" />
+		<property name="authenticatorHelper" ref="authenticatorHelper"></property>
+	</bean>
+</beans>
