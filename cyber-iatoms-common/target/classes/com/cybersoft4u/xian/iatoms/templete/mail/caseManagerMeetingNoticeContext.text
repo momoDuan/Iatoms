@@ -1,0 +1,22 @@
+		\n	案件類別: ${caseCategory}\n
+		案件編號: ${caseId}\n
+		需求單號：${requirementNo}\n
+		客戶名稱：${customerName}\n
+		進件時間：${createdDate}\n
+		聯絡人姓名：${contactUser}\n
+		聯絡人電話：${contactUserPhone}\n
+		行動電話：${phone}\n
+		DTID：${dtid}\n
+		TID：${tid}\n
+		特店代碼：${merchantCode}\n
+		特店名稱：${merchantName}\n
+		表頭：${merchantHeaderName}\n
+		${address}：${installedAdress}\n
+		設備名稱：${edcType}\n
+		預計完成日：${acceptableFinishDate}\n
+		實際完成日：${completeDate}\n
+		需求描述：${description}\n
+		處理人員：${updatedByName}\n
+		處理說明：${transactionDescription}\n
+		=======================================================\n
+		請您撥冗查詢案件處理狀況\n

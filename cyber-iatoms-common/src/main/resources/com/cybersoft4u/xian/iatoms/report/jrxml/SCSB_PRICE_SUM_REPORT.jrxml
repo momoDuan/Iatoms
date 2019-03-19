@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SCSB_PRICE_SUM_REPORT" language="groovy" pageWidth="800" pageHeight="600" columnWidth="800" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="4001aeca-6146-481c-a240-f18d5c6e1ce0">
+	<property name="ireport.zoom" value="0.9090909090909107"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Documents and Settings\\Administrator\\Desktop\\圖片\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="yyyyMM" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.Integer"/>
+	<parameter name="yyyy" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR4" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="SUBREPORT_DIR3" class="net.sf.jasperreports.engine.JasperReport"/>
+	<field name="workFeeSettingList" class="java.util.List"/>
+	<field name="workFeeSettingFeeList" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="400" height="25" uuid="b8aa5f2f-9c42-42ee-8525-359eee9c8db1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{yyyyMM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="0" width="400" height="25" uuid="df922102-2d54-4353-9ae2-d35a3f900cd6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[費用統計表]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="25" width="800" height="20" uuid="4c18d22b-a032-4198-ba26-8486aea2f66f"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="200" height="40" backcolor="#999999" uuid="b9655366-62e5-4cd4-aa15-f4a415cf0da8"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[作業別]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="200" y="0" width="100" height="40" backcolor="#999999" uuid="d7fc46e0-34f9-4801-ae28-4edbcf3929c9"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[台數]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="300" y="0" width="100" height="40" backcolor="#999999" uuid="5be5d1ba-9aa9-466a-814a-3926a9bfb16f"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[單價]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="400" y="0" width="100" height="40" backcolor="#999999" uuid="b0dbf2e7-e69e-4b08-9fbf-9b23ce2894ef"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[合計]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="500" y="0" width="300" height="40" backcolor="#999999" uuid="c294905b-1ad3-4911-83e4-81984352fb22"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[備註]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="800" height="20" uuid="d39bb0a2-5369-4bab-ac0f-9e92411df569">
+					<printWhenExpression><![CDATA[!($F{workFeeSettingList}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{workFeeSettingList})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR4}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="40">
+			<subreport>
+				<reportElement x="0" y="0" width="800" height="40" uuid="f2c49da4-1fa9-4656-a11c-ea0ecda808af">
+					<printWhenExpression><![CDATA[!($F{workFeeSettingFeeList}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{workFeeSettingFeeList})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR3}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="126">
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="8ec919d8-d877-4a5e-a929-51a4f246eea4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[總計金額：]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="$ #,##0" isBlankWhenNull="true">
+				<reportElement x="400" y="0" width="100" height="20" uuid="dc44fc26-54ee-488a-b666-d2ee78286d91"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="32" width="100" height="20" uuid="21924563-6fa0-4096-9a1e-09bb7046b1f8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{yyyy}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="32" width="150" height="20" uuid="11acbe67-2916-4c64-a8e7-14ee4f74034d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[/    /    同意可開立發票]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="52" width="200" height="20" uuid="37cba165-74cb-472b-9375-78640169d914"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[承辦者:________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="106" width="200" height="20" uuid="ca2d98b2-5939-46da-8bb7-b36f15ceb795"/>
+				<text><![CDATA[襄理:________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="106" width="200" height="20" uuid="e74d6d86-bd20-44cb-af43-d916ea8b19b3"/>
+				<text><![CDATA[協理:________]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="caseImportTemplateInstall" language="groovy" pageWidth="4450" pageHeight="842" columnWidth="4450" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="4547a799-a23d-4532-8726-11a80e0baa53">
+	<property name="ireport.zoom" value="2.3579476910000063"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="customerName" class="java.lang.String"/>
+	<field name="departmentName" class="java.lang.String"/>
+	<field name="isProject" class="java.lang.String"/>
+	<field name="caseTypeName" class="java.lang.String"/>
+	<field name="expectedCompletionDate" class="java.util.Date"/>
+	<field name="merchantCode" class="java.lang.String"/>
+	<field name="headerName" class="java.lang.String"/>
+	<field name="isBussinessAddress" class="java.lang.String"/>
+	<field name="installedAdressLocation" class="java.lang.String"/>
+	<field name="installedAdress" class="java.lang.String"/>
+	<field name="isBussinessContact" class="java.lang.String"/>
+	<field name="installedContact" class="java.lang.String"/>
+	<field name="isBussinessContactPhone" class="java.lang.String"/>
+	<field name="installedContactPhone" class="java.lang.String"/>
+	<field name="softwareVersionName" class="java.lang.String"/>
+	<field name="builtInFeatureName" class="java.lang.String"/>
+	<field name="multiModuleName" class="java.lang.String"/>
+	<field name="peripheralsName" class="java.lang.String"/>
+	<field name="peripheralsFunctionName" class="java.lang.String"/>
+	<field name="ecrConnectionName" class="java.lang.String"/>
+	<field name="peripherals2Name" class="java.lang.String"/>
+	<field name="peripheralsFunction2Name" class="java.lang.String"/>
+	<field name="connectionTypeName" class="java.lang.String"/>
+	<field name="peripherals3Name" class="java.lang.String"/>
+	<field name="peripheralsFunction3Name" class="java.lang.String"/>
+	<field name="gateway" class="java.lang.String"/>
+	<field name="netmask" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="logoStyle" class="java.lang.String"/>
+	<field name="electronicPayPlatform" class="java.lang.String"/>
+	<field name="isOpenEncrypt" class="java.lang.String"/>
+	<field name="cupQuickPass" class="java.lang.String"/>
+	<field name="electronicInvoice" class="java.lang.String"/>
+	<field name="tmsParamDesc" class="java.lang.String"/>
+	<field name="netVendorName" class="java.lang.String"/>
+	<field name="isTms" class="java.lang.String"/>
+	<field name="localhostIp" class="java.lang.String"/>
+	<field name="requirementNo" class="java.lang.String"/>
+	<field name="dtid" class="java.lang.String"/>
+	<field name="sameInstalled" class="java.lang.String"/>
+	<field name="oldMerchantCode" class="java.lang.String"/>
+	<variable name="index" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$V{index}.valueOf( 1)]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="93551890-285a-4d33-a2b8-0c91158c05f9" mode="Opaque" x="100" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[需求單號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a652432-f1f8-4c51-bacc-99f24a5addc7" mode="Opaque" x="0" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[客戶]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="69cc4ce7-e804-48f1-ae59-ad283fecc906" mode="Opaque" x="350" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[維護部門]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5abfb856-7faa-4a25-b009-cd868fc33787" mode="Opaque" x="300" y="0" width="50" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[專案]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="00319e98-10b7-41b6-bcc1-f111aa7bec83" mode="Opaque" x="450" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[案件類型]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4a3719f9-292f-4fe3-9a54-f4143b69988d" mode="Opaque" x="550" y="0" width="150" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[預計完成日]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6ec170c8-7f29-429a-98ec-6c92b5b01c5b" mode="Opaque" x="800" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[特店代號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="33b4c997-232e-40c7-b206-f1c52572ed52" mode="Opaque" x="900" y="0" width="110" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[表頭（同對外名稱）]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d3776314-6f2f-4adc-bf04-7a1e5b3625d2" mode="Opaque" x="1110" y="0" width="120" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[裝機地址-同營業地址]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f53eb65e-5a27-40ce-810f-9ee58161aaa3" mode="Opaque" x="1230" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[裝機地址-縣市]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9a7b57d1-3dd7-465b-bba0-9e3af73b6c8a" mode="Opaque" x="1330" y="0" width="150" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[裝機地址]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="457645ca-0f57-499d-ad10-b8342c33a2ed" mode="Opaque" x="1480" y="0" width="150" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[裝機聯絡人-同特店聯絡人]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d4e58f89-f9e0-4a61-90f5-278a3e89fe35" mode="Opaque" x="1630" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[裝機聯絡人]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd57e8ba-b029-4484-960f-5649c4e3c1da" mode="Opaque" x="1730" y="0" width="171" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[裝機聯絡人電話-同特店聯絡人電話]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b2f29f31-ce12-440e-b03d-2fb2918cb64f" mode="Opaque" x="1901" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[裝機聯絡人電話]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="40f9c1f9-22a0-4aad-9930-31a6e68af8df" mode="Opaque" x="2001" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[軟體版本]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="976619ab-3bce-48f0-881d-b7bbcb753c7d" mode="Opaque" x="2101" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[內建功能]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2b9b777c-9848-4683-a595-7e37d5b3c64d" mode="Opaque" x="2201" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[雙模組模式]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="074e44ff-3f12-4655-b195-08b96867a71e" mode="Opaque" x="2301" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[週邊設備1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="72049e25-ff96-4026-9fb3-f0a4951892b4" mode="Opaque" x="2401" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[週邊設備功能1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="663aa2f0-61f5-4fcd-a676-0f8c401dafef" mode="Opaque" x="2501" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[ECR連線]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a88ea097-c874-4c29-af3c-193ff56a6aee" mode="Opaque" x="2601" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[週邊設備2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2c1be74c-e9cb-4ef1-a1e0-fed56025825f" mode="Opaque" x="2701" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[週邊設備功能2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="42d495c3-053b-4964-94d1-b132f4a8429b" mode="Opaque" x="2801" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[連接方式]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="943db2ab-00db-462b-81fe-6f213b4dcc27" mode="Opaque" x="2901" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[週邊設備3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4cc55540-ecbe-45a3-854f-e32d41683fef" mode="Opaque" x="3001" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[週邊設備功能3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5a094479-e6ea-492d-89e0-2cdd6595300e" mode="Opaque" x="3101" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[LOGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="51ea95b1-692a-4978-b6e9-1cf0d3dc9990" mode="Opaque" x="3201" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[是否開啟加密]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc830126-5d97-4d01-9ed2-1d57cc5c6277" mode="Opaque" x="3301" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[電子化繳費平台]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6694e3ed-1cb2-4d00-8ac1-5ad7cf4e5f00" mode="Opaque" x="3401" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[電子發票載具]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a6270928-1daa-4143-b70b-db34782db924" mode="Opaque" x="3501" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[銀聯閃付]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="202706c5-9928-4116-bb8f-ee7bfa38adad" mode="Opaque" x="3601" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[本機IP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="97a37cff-e7b8-4b5f-90d3-8acd3e836fbb" mode="Opaque" x="3701" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[寬頻連線]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="580bac03-080f-4ede-9fbd-60bb9419d91c" mode="Opaque" x="3801" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[Gateway]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b4b09a08-03c9-4e64-9057-74093cfc17f6" mode="Opaque" x="3901" y="0" width="100" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[Netmask]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f7c56b62-5a7b-4f0a-b3b7-90cb71b6d583" mode="Opaque" x="4001" y="0" width="200" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[其他說明]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e0965709-adb6-4ecb-a8ab-341319ec6c02" mode="Opaque" x="4201" y="0" width="50" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[派工TMS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d1f3e0f8-6d47-4ed4-a33e-2ff584675b67" mode="Opaque" x="4251" y="0" width="200" height="25" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[TMS參數說明]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e3f41e58-e302-4f8d-adc3-6cbc963463ef" mode="Opaque" x="200" y="0" width="100" height="25" forecolor="#000000" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[DTID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d0c6576e-7131-4404-822e-77a3b2810aab" mode="Opaque" x="700" y="0" width="100" height="25" forecolor="#000000" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[是否同裝機作業]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f88203a0-2cee-46a4-bc72-0cec4bfb8cc2" mode="Opaque" x="1010" y="0" width="100" height="25" forecolor="#000000" backcolor="#FFFF00"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[舊特店代號]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d9c21add-d97b-4cc8-af7e-0ac4274edf75" stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="9f20a8c0-d3c6-450a-ad76-952857572669" stretchType="RelativeToBandHeight" x="350" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{departmentName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c542c4f9-f0c2-41b7-a3b1-d5152bb46067" stretchType="RelativeToBandHeight" x="300" y="0" width="50" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isProject}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="6587f397-8565-4a96-9525-c535bcc492a2" stretchType="RelativeToBandHeight" x="450" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{caseTypeName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="yyyy/MM/dd HH:mm:ss" isBlankWhenNull="true">
+				<reportElement uuid="ff19f308-5471-433a-bf28-137999d2af3b" stretchType="RelativeToBandHeight" x="550" y="0" width="150" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{expectedCompletionDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b498beb0-dd50-482b-b47c-1b184c85a74a" stretchType="RelativeToBandHeight" x="800" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{merchantCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="28c02b72-d973-43b0-8075-bfe1aae6add3" stretchType="RelativeToBandHeight" x="900" y="0" width="110" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{headerName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="56ede61a-5fb5-4601-a339-61d1a305b1cf" stretchType="RelativeToBandHeight" x="1110" y="0" width="120" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isBussinessAddress}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="f7b38d7a-aea1-4163-82e8-f78970a43597" stretchType="RelativeToBandHeight" x="1230" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{installedAdressLocation}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="a6d55a3a-f080-478a-8165-0dde90dd038f" stretchType="RelativeToBandHeight" x="1330" y="0" width="150" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{installedAdress}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e2ccfa9c-148e-440e-92e9-4651ba90dec6" stretchType="RelativeToBandHeight" x="1480" y="0" width="150" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isBussinessContact}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="073b9ae1-3a8f-4464-ae85-7ade18745793" stretchType="RelativeToBandHeight" x="1630" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{installedContact}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="be41163b-2faf-47db-914f-a5349d0f0076" stretchType="RelativeToBandHeight" x="1730" y="0" width="171" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isBussinessContactPhone}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c692d45a-05ff-47f4-aa1e-a2df55bc673b" stretchType="RelativeToBandHeight" x="1901" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{installedContactPhone}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0d6d1352-abe2-4042-a4e0-97cac3caedd4" stretchType="RelativeToBandHeight" x="2001" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{softwareVersionName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ee9cb862-d666-49bc-82cf-55fb058c2bab" stretchType="RelativeToBandHeight" x="2101" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{builtInFeatureName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="3468e3fb-dce3-4708-964f-1a22708449bc" stretchType="RelativeToBandHeight" x="2201" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{multiModuleName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="731998e7-ce99-4cef-9d9c-e03838ccaf22" stretchType="RelativeToBandHeight" x="2301" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peripheralsName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="bbdb2021-3fae-4455-baef-4d87a84435c3" stretchType="RelativeToBandHeight" x="2401" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peripheralsFunctionName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="1ecfc80f-513b-4e10-ae19-4b1967923f4e" stretchType="RelativeToBandHeight" x="2501" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ecrConnectionName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="60c91f7f-1d90-494e-bf91-994c10287cfa" stretchType="RelativeToBandHeight" x="2601" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peripherals2Name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d8a34611-91ea-411a-9e9e-93921a479316" stretchType="RelativeToBandHeight" x="2701" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peripheralsFunction2Name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c44ef23a-4a38-492d-b6e7-b1bf1375f248" stretchType="RelativeToBandHeight" x="2801" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ecrConnectionName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="bf1837ac-abb8-4aee-8f56-0f43aa517aac" stretchType="RelativeToBandHeight" x="2901" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peripherals3Name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="26d2dc27-c53a-436e-a7ae-e17bde518dfa" stretchType="RelativeToBandHeight" x="3001" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peripheralsFunction3Name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="778f1df5-5f5a-400d-a661-6dbdd1edf5d2" stretchType="RelativeToBandHeight" x="3101" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{logoStyle}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c2d53207-75e4-4bdd-acd5-4744153a8ce4" stretchType="RelativeToBandHeight" x="3201" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isOpenEncrypt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="a00359b2-e545-47c6-9625-e006a8f1a82a" stretchType="RelativeToBandHeight" x="3301" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{electronicPayPlatform}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="75851236-a625-446a-87ff-0007550ef18f" stretchType="RelativeToBandHeight" x="4251" y="0" width="200" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tmsParamDesc}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="75923820-bbb2-4bb7-ba56-14385cc4f0a5" stretchType="RelativeToBandHeight" x="4201" y="0" width="50" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isTms}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0bf4e44e-45b6-4c5a-a7bd-185a789b4019" stretchType="RelativeToBandHeight" x="4001" y="0" width="200" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ad25a433-2158-4875-b333-1e092daba1e6" stretchType="RelativeToBandHeight" x="3801" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gateway}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="5033a18e-a5b1-423e-a256-e73f72732bea" stretchType="RelativeToBandHeight" x="3901" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{netmask}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e42a832b-81fb-44d2-8283-b1e1aa6f4d86" stretchType="RelativeToBandHeight" x="3701" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{netVendorName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="64d72291-0852-4c97-a08f-8a66924d77b0" stretchType="RelativeToBandHeight" x="3401" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{electronicInvoice}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="1fb90e9b-ace1-433f-a4a2-ca292a0672d7" stretchType="RelativeToBandHeight" x="3501" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cupQuickPass}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d99bdd4f-a38b-46b2-825a-14a423b95fe2" stretchType="RelativeToBandHeight" x="3601" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{localhostIp}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="813eca88-e987-4f02-b26e-6fdfe7221ac4" stretchType="RelativeToBandHeight" x="100" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{requirementNo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="99ac6cae-de0a-421a-a7fc-c1cb834dc136" stretchType="RelativeToBandHeight" x="200" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dtid}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ffebb223-4de6-46e4-8891-fc67971f7171" stretchType="RelativeToBandHeight" x="700" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sameInstalled}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0e9ea07d-2200-4f14-9e46-e735aeaaaa18" stretchType="RelativeToBandHeight" x="1010" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{oldMerchantCode}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">	
+	
+	
+	 <!-- 資源文件綁定器 -->
+   	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	   	<property name="basenames">
+	   		<list>
+	   			<value>cafe.core.messages.cafe_core_messages</value>
+	   			<value>cafe.workflow.messages.cafe_workflow_messages</value>	
+	   			<value>com.cybersoft4u.xian.iatoms.messages.cyber_iatoms_messages</value>	
+	   			<value>com.cybersoft4u.xian.iatoms.messages.cyber_iatoms</value>	 			
+	   		</list>	
+	   	</property>
+   	</bean>
+  	 
+  	 <!-- 异步处理Service注入  Star-->
+	<bean id="threadPoolExecutor" class="java.util.concurrent.ThreadPoolExecutor">
+		<constructor-arg index="0" value="20"/>
+		<constructor-arg index="1" value="20"/>
+		<constructor-arg index="2" value="2"/>
+		<constructor-arg index="3">
+			<util:constant static-field="java.util.concurrent.TimeUnit.SECONDS"></util:constant>
+		</constructor-arg>
+		<constructor-arg index="4">
+			<bean class="java.util.concurrent.LinkedBlockingQueue"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="javaMailSender" class="com.cybersoft4u.xian.iatoms.common.utils.mail.IAtomsMailSenderImpl">
+		<property name="javaMailProperties">  
+			<value>  
+				mail.smtp.auth=true  
+			</value>  
+		</property>
+	</bean>
+	<bean id="mailComponent" class="com.cybersoft4u.xian.iatoms.common.utils.mail.MailComponent">
+		<property name="javaMailSender" ref="javaMailSender"></property>
+	</bean>
+	<!-- 人工任務流程服務輔助器 -->	
+	<bean id="humanWorkflowServiceHelper" class="com.cybersoft4u.xian.iatoms.common.util.workflow.helper.ActivitiHumanWorkflowServiceHelper" >
+		
+	    <property name="identityService" > 
+			<ref bean="activitiIdentityService"/>
+	    </property>
+		<property name="taskContextConverter">
+			<ref bean="taskContextConverter" />
+		</property>
+		<property name="runtimeService">
+			<ref bean="runtimeService" />
+		</property>
+		<property name="taskService">
+			<ref bean="taskService" />
+		</property>
+		<property name="repositoryService">
+			<ref bean="repositoryService" />
+		</property>
+	</bean>		
+	<!-- 案件查詢過濾輔助器 -->
+	<bean id="taskPredicateFilterHelper" class="com.cybersoft4u.xian.iatoms.common.util.workflow.helper.IAtomsTaskPredicateFilterHelper" />
+	
+	<!-- Payload轉換器 -->
+	<bean id="payloadTranslator" class="com.cybersoft4u.xian.iatoms.common.util.workflow.activiti.convert.ActivitiServicePayloadTranslator">
+		<!-- 一條流程，一份Payload Context屬性對應表 -->
+		<property name="processPayloadContextMapping">
+			<map>
+				<!-- 必寫配置,如有正式配置可以刪除下列配置-->
+				<entry key="IATOMS_BP_CASE_PROCESS">
+					<bean class="cafe.core.bean.mappingtable.MappingFieldSet">
+						<!-- payload context class -->
+						<property name="target" value="com.cybersoft4u.xian.iatoms.common.bean.workflow.CaseProcessPayloadContext" />
+						<property name="mappings">
+							<set>
+								<bean class="cafe.workflow.context.bpmn20.activiti.convert.RestVariableMappingField">
+									<property name="targetFieldName" value="caseId" /><!-- payload context屬性名稱 -->
+									<property name="sourceFieldName" value="caseId" /><!-- Task Variable 名稱 -->
+									<property name="scope" value="global" /><!-- 變數範圍:local/global -->
+								</bean>
+								<bean class="cafe.workflow.context.bpmn20.activiti.convert.RestVariableMappingField">
+									<property name="targetFieldName" value="dispatchUser" />
+									<property name="sourceFieldName" value="dispatchUser" />
+									<property name="scope" value="global" />
+								</bean>						
+								<bean class="cafe.workflow.context.bpmn20.activiti.convert.RestVariableMappingField">
+									<property name="targetFieldName" value="outcome" />
+									<property name="sourceFieldName" value="outcome" />
+									<property name="scope" value="global" />
+								</bean>
+								<bean class="cafe.workflow.context.bpmn20.activiti.convert.RestVariableMappingField">
+									<property name="targetFieldName" value="candidateGroup" />
+									<property name="sourceFieldName" value="candidateGroup" />
+									<property name="scope" value="global" />
+								</bean>
+							</set>
+						</property>
+					</bean>
+				</entry>
+			</map>			
+		</property>
+	</bean>
+ 	<!-- TaskContext轉換器 -->
+	<bean id="taskContextConverter" class="com.cybersoft4u.xian.iatoms.common.util.workflow.activiti.convert.ActivitiServiceTaskContextConverter">
+		<property name="payloadTranslator">
+			<ref bean="payloadTranslator"/>
+		</property>
+		<property name="taskAttributeMappingFieldSet">
+			<!-- 需增加配置2015/05/22 -->
+			<bean class="cafe.core.bean.mappingtable.MappingFieldSet">
+				<property name="target" value="com.cybersoft4u.xian.iatoms.common.bean.workflow.CaseProcessPayloadContext" />
+				<property name="mappings">
+					<map>
+						<entry key="caseId">
+							<bean class="cafe.workflow.context.bpmn20.activiti.convert.RestVariableMappingField">
+								<property name="targetFieldName" value="caseId" />
+								<property name="sourceFieldName" value="caseId" />
+								<property name="scope" value="global" />
+							</bean>
+						</entry>
+						<entry key="caseCategory">
+							<bean class="cafe.workflow.context.bpmn20.activiti.convert.RestVariableMappingField">
+								<property name="targetFieldName" value="caseCategory" />
+								<property name="sourceFieldName" value="caseCategory" />
+								<property name="scope" value="global" />
+							</bean>
+						</entry>
+					</map>
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

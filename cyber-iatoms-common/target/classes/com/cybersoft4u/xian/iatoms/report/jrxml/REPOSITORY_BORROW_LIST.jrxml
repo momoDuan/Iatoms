@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="REPOSITORY_BORROE_LIST" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="252"/>
+	<parameter name="borrowers" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="borrowerStart" class="java.lang.String"/>
+	<parameter name="borrowerEnd" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="serialNumber" class="java.lang.String"/>
+	<field name="borrowerComment" class="java.lang.String"/>
+	<variable name="index" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$V{index}.valueOf( 1 )]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<variable name="code" class="java.lang.String"/>
+	<variable name="comment" class="java.lang.String">
+		<variableExpression><![CDATA[$F{borrowerComment}==null?"":$F{borrowerComment}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="443" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="15" width="323" height="52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="22" isBold="true" isItalic="false" isUnderline="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[設備借用申請單]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="395" width="62" height="20" forecolor="#0000CC"/>
+				<textElement>
+					<font fontName="Pictonic" size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[借用時間：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="395" width="20" height="20" forecolor="#0000CC" backcolor="#FFFFFF"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[～ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="422" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[借用設備清單]]></text>
+			</staticText>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="163" y="395" width="100" height="20" forecolor="#0000CC"/>
+				<textElement>
+					<font fontName="Pictonic" size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{borrowerEnd}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="74" y="395" width="69" height="20" forecolor="#0000CC"/>
+				<textElement>
+					<font fontName="Pictonic" size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{borrowerStart}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="67" width="64" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[借用申請人]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="74" y="67" width="68" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{borrowers}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="142" y="67" width="382" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[，因業務需求，茲向收單事業處庫房借出刷卡機相關設備(設備名稱及清]]></text>
+			</staticText>
+			<line>
+				<reportElement x="74" y="88" width="68" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="12" y="92" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[單如下)，庫房管理人員同意以約定之借用期間為期限，期滿按原包裝產品歸還，並保證遵循下列]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="117" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[條款。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="142" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[1.       借用申請人應負責借出及歸還借用產品所需之搬運人力，以及負責清點借用產品之產品型號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="167" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[與數量、確定借用產品之外觀、附件與其功能狀況良好。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="192" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[2.       領借財物時，僅限於供本公司內應用、因業務需要須放置於客戶處使用時。請客戶依一般裝]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="215" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[拆機作業向其內部相關單位提出申請。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="240" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[3.       本公司所有財產，非經正式領借，不得隨意移動或攜出本公司外。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="265" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[4.       借用人需負借用財產之養護、安全保管責任，如有硬體損壞或短少時，借用人應依「資產遺]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="290" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[失及損壞辦法」賠償。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="315" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[5.       財產之借用須於借用期限屆滿日前歸還，如有特殊理由需續借，應依相關規定辦理。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="340" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[6.       單次借用1~4台(含) ，須經倉管單位主管簽核；5台(含)以上，須經倉管單位之處級主管簽核]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="365" width="512" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[始得借出]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}.equals( 1 )]]></printWhenExpression>
+			<staticText>
+				<reportElement x="218" y="1" width="166" height="40" forecolor="#0000CC"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[備註]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="1" width="21" height="40" forecolor="#0000CC"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[項次]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="128" y="1" width="90" height="40" forecolor="#0000CC"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[序號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="1" width="97" height="40" forecolor="#0000CC"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[設備名稱]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="1" width="140" height="40"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[歸還檢測記錄
+*歸還時由倉管人員填寫
+]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="31" y="0" width="97" height="20" forecolor="#0000CC"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="128" y="0" width="90" height="20" forecolor="#0000CC"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{serialNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="218" y="0" width="166" height="20" forecolor="#0000CC"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{comment}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="384" y="0" width="140" height="20"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[□外觀□機器功能□附件]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="10" y="0" width="21" height="20" forecolor="#0000CC"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{index}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="152">
+			<staticText>
+				<reportElement x="10" y="24" width="129" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[申請人/日期]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="24" width="124" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[經辦人員/日期]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="24" width="135" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[倉管主管簽核/日期]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="24" width="126" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[處級主管簽核/日期]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="44" width="129" height="29"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="44" width="124" height="29"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="44" width="135" height="29"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="44" width="126" height="29"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="73" width="514" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[*歸還記錄(如有必要，歸還人員可影印本單留底)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="93" width="129" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[歸還人員/日期]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="93" width="124" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[經辦人員/日期]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="93" width="135" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[倉管主管簽核/日期]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="93" width="126" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="113" width="129" height="27"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="113" width="124" height="27"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="113" width="135" height="27"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="113" width="126" height="27"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="0" width="514" height="24"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[*借用簽核(單次借用1~4台(含)，須經單位主管簽核；5台(含)以上，須經處級主管簽核始得借出)]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

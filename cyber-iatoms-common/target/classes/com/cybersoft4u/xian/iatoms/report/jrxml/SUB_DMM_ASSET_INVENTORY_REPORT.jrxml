@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DMM_ASSET_INVENTORY_REPORT_subreport1" language="groovy" pageWidth="575" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="60228e9c-c786-4695-810d-7c418fa5d658">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="dataColumn1" class="java.lang.String"/>
+	<field name="dataColumn2" class="java.lang.String"/>
+	<field name="dataColumn3" class="java.lang.String"/>
+	<field name="dataColumn4" class="java.lang.String"/>
+	<field name="pageNum" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="bd2d6166-b99b-44d9-aebc-bc3901043ef4" x="43" y="0" width="100" height="20" backcolor="#999999"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[序號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b7b15ad3-27ef-48c2-bed5-e7cb57525778" x="186" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[序號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fa856350-6917-4918-bb28-dabc9d0ad45f" x="329" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[序號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ac0430d-ad95-4005-81b1-9f3e0914d9c8" x="472" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[序號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="74125d3d-3888-429a-b8bf-b2718e759172" x="0" y="0" width="43" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[項次]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c19d9ea4-3abd-4add-901c-27b507465050" x="143" y="0" width="43" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[項次]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2796968d-88cf-4545-8f3a-9d8b8ecf909d" x="286" y="0" width="43" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[項次]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a4be940b-ef01-4b0b-a312-e04f57b57f7a" x="429" y="0" width="43" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[項次]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement uuid="5adcc992-b437-4d33-994d-25fd8f2e1de9" x="43" y="0" width="100" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dataColumn1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f3cdf9ca-8232-4f37-ac33-2e8ddc8e8217" x="186" y="0" width="100" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dataColumn2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e43a2fa0-d59e-446b-9e4e-33bb63ff15ed" x="329" y="0" width="100" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dataColumn3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="50b953b7-e55e-4143-a963-bc9af6a3ecad" x="472" y="0" width="100" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dataColumn4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="580db298-ec6c-46ed-9c57-d2b828df6f90" x="143" y="0" width="43" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}+30]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e6204aa1-0028-4569-a1c5-629a90c703b0" x="0" y="0" width="43" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT} ]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fef95ac5-494a-47a4-bac0-6f2747a0b540" x="286" y="0" width="43" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT} + 60]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1924d001-a4c9-4b35-8b43-243840adabd5" x="429" y="0" width="43" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT} + 90]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

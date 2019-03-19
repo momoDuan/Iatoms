@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AREA_REPORT" language="groovy" pageWidth="200" pageHeight="45" orientation="Landscape" columnWidth="200" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="99c8981e-60aa-4993-b806-40d5aacdc8da">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<field name="rowNo" class="java.lang.Integer"/>
+	<field name="columnName" class="java.lang.String"/>
+	<field name="content" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="45" splitType="Stretch">
+			<crosstab isRepeatColumnHeaders="false" isRepeatRowHeaders="false">
+				<reportElement x="0" y="0" width="200" height="45" uuid="f1bcacb9-befb-4dc1-a3cd-caf4e22f4e89"/>
+				<crosstabHeaderCell>
+					<cellContents>
+						<staticText>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="d6f0b0a1-215d-4b63-8a23-73621fa8c732"/>
+							<textElement verticalAlignment="Middle">
+								<font size="14"/>
+							</textElement>
+							<text><![CDATA[序号]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="rowNo" width="50">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{rowNo}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="20" uuid="8f9fbbc9-aee0-45b5-9458-b68e68aedae2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{rowNo}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="columnName" height="25">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{columnName}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="150" height="25" uuid="ee682f86-2a05-4ee2-b3c3-0fe33ae94492"/>
+								<textElement verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{columnName}.substring( 2 )]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="contentMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{content}]]></measureExpression>
+				</measure>
+				<crosstabCell width="150" height="20">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="150" height="20" isPrintWhenDetailOverflows="true" uuid="6ff637d7-71cd-437d-a8b0-2768ba209075">
+								<printWhenExpression><![CDATA[$V{columnName}.startsWith( '01' )||
+																$V{columnName}.startsWith( '02' )||
+																$V{columnName}.startsWith( '03' )||
+																$V{columnName}.startsWith( '04' )||
+																$V{columnName}.startsWith( '05' )||
+																$V{columnName}.startsWith( '07' )||
+																$V{columnName}.startsWith( '08' )||
+																$V{columnName}.startsWith( '09' )||
+																$V{columnName}.startsWith( '10' )||
+																$V{columnName}.startsWith( '13' )||
+																$V{columnName}.startsWith( '14' )||
+																$V{columnName}.startsWith( '17' )||
+																$V{columnName}.startsWith( '19' )||
+																$V{columnName}.startsWith( '21' )||
+																$V{columnName}.startsWith( '22' )||
+																$V{columnName}.startsWith( '23' )||
+																$V{columnName}.startsWith( '24' )||
+																$V{columnName}.startsWith( '25' )||
+																$V{columnName}.startsWith( '26' )||
+																$V{columnName}.startsWith( '27' )||
+																$V{columnName}.startsWith( '28' )||
+																$V{columnName}.startsWith( '29' )||
+																$V{columnName}.startsWith( '30' )||
+																$V{columnName}.startsWith( '33' )]]></printWhenExpression>
+							</reportElement>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{contentMeasure}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="150" height="20" uuid="d4984250-f1fc-4c2e-a952-448440498ce8">
+								<printWhenExpression><![CDATA[$V{columnName}.startsWith( '06' )||
+$V{columnName}.startsWith( '07' )||
+$V{columnName}.startsWith( '11' )||
+$V{columnName}.startsWith( '12' )||
+$V{columnName}.startsWith( '15' )||
+$V{columnName}.startsWith( '16' )||
+$V{columnName}.startsWith( '18' )||
+$V{columnName}.startsWith( '20' )||
+$V{columnName}.startsWith( '31' )||
+$V{columnName}.startsWith( '32' )||
+$V{columnName}.startsWith( '34' )||
+$V{columnName}.startsWith( '29' )]]></printWhenExpression>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{contentMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="rowNo">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="4992f4a5-aa67-4f4f-a6b9-f00fa859387d"/>
+							<textFieldExpression><![CDATA[$V{contentMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="columnName">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="973c13d9-fe10-46c0-ae79-da16487d2d25"/>
+							<textFieldExpression><![CDATA[$V{contentMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="rowNo" columnTotalGroup="columnName">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="f37d67da-92d5-4b63-afa0-a7c17046074a"/>
+							<textFieldExpression><![CDATA[$V{contentMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="expenseStatement " language="groovy" pageWidth="980" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="980" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="d40984b6-2727-4e49-924c-1f63d774f70f">
+	<property name="ireport.zoom" value="1.0000000000000007"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="month" class="java.lang.String"/>
+	<parameter name="totalNumber" class="java.lang.Integer"/>
+	<parameter name="year" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="freeTmsFrequency" class="java.lang.String"/>
+	<field name="surplusFreeFrequency" class="java.lang.String"/>
+	<field name="total" class="java.lang.Integer"/>
+	<field name="remarks" class="java.lang.String"/>
+	<field name="totalNumber" class="java.lang.Integer"/>
+	<field name="year" class="java.lang.String"/>
+	<field name="otherRemarks" class="java.lang.String"/>
+	<field name="number" class="java.lang.Integer"/>
+	<field name="priceString" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement uuid="1064a424-67d9-490b-878f-ea4cff24804f" mode="Transparent" x="0" y="0" width="980" height="30"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{month}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f6675a1f-f02a-412b-9564-e508d8a7477a" mode="Opaque" x="0" y="0" width="220" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[作業別]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cfceab9-a5e9-4e8e-997b-64ceb7c564f9" mode="Opaque" x="221" y="0" width="99" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[台數]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="06f0738e-13ab-44c0-8199-961524d49a79" mode="Opaque" x="520" y="0" width="280" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[備註]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8682712d-ced7-4da4-b23d-2ffeca3b6f95" mode="Opaque" x="420" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[合計]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fc6d0f7a-4a4e-4a7b-beef-684dd4dd4861" mode="Opaque" x="320" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[單價]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="270632cb-96c6-453d-b9f0-bd835e3720b3" mode="Opaque" x="800" y="0" width="180" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="06a5b522-bad8-4655-9f8b-32d3268ea4d1" x="220" y="0" width="1" height="20"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<line>
+				<reportElement uuid="064809d1-977d-4ead-813f-ec72681171bd" stretchType="RelativeToTallestObject" mode="Opaque" x="220" y="0" width="1" height="20"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="46e47ff1-d717-4bf8-acdc-b08f8bcdb12c" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="0" y="0" width="220" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="$#,##0" isBlankWhenNull="true">
+				<reportElement uuid="1931e0c5-e31f-4ed0-9cf6-7bcdef73eba3" stretchType="RelativeToBandHeight" x="420" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="a2977657-aeda-4b38-b282-a760ac93f41b" stretchType="RelativeToBandHeight" x="520" y="0" width="280" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{remarks}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="12f3b7cf-881d-4029-a90a-ee49ced5fff2" stretchType="RelativeToBandHeight" x="800" y="0" width="180" height="20" isPrintWhenDetailOverflows="true" forecolor="#FF9933"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{otherRemarks}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d07dc4e1-b027-4cf0-a832-47f294734c77" stretchType="RelativeToBandHeight" x="221" y="0" width="99" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{number}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="8f6f6423-369b-4721-bbec-a125fa216c6b" stretchType="RelativeToBandHeight" x="320" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{priceString}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1">
+			<line>
+				<reportElement uuid="7d48bdf6-0210-4549-9f7f-0b7a0dd27f51" mode="Transparent" x="0" y="0" width="980" height="1"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="110">
+			<staticText>
+				<reportElement uuid="daea3cfa-a8aa-4374-a7d1-0841cf50844d" mode="Opaque" x="320" y="0" width="100" height="20" backcolor="#FF99FF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[總計金額]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e3978c18-befe-4f2e-a7ea-33a28e29022f" x="250" y="30" width="250" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[/    /    同意可開立發票]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="781309e3-768a-43d1-839b-70c575c90e0f" x="200" y="50" width="200" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[承辧者:     _______________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f43373be-e809-419f-9960-939fbaef5f75" x="0" y="90" width="200" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[協理:_______________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9d8dee70-194f-420a-ad2d-817b34fe115d" x="200" y="90" width="200" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<text><![CDATA[襄理:_______________]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="$#,##0" isBlankWhenNull="true">
+				<reportElement uuid="82f94057-a4c1-4fbc-9019-80bbf5c70c39" mode="Opaque" x="420" y="0" width="100" height="20" isPrintWhenDetailOverflows="true" backcolor="#FF99FF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b529ca90-0059-408e-a303-3de80afc4498" x="200" y="30" width="50" height="20" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{year}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

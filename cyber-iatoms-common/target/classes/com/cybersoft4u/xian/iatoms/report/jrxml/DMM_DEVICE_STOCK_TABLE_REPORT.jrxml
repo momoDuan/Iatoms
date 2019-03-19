@@ -1,0 +1,1043 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DEVICE_STOCK_TABLE_REPORT" pageWidth="1383" pageHeight="842" columnWidth="1383" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="522b8463-1e33-467b-bf15-9f331f212111">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="429"/>
+	<property name="ireport.y" value="0"/>
+	<field name="maTypeName" class="java.lang.String"/>
+	<field name="assetTypeName" class="java.lang.String"/>
+	<field name="supporedFunctionName" class="java.lang.String"/>
+	<field name="companyName" class="java.lang.String"/>
+	<field name="purchaseYearMonth" class="java.sql.Date"/>
+	<field name="contractId" class="java.lang.String"/>
+	<field name="purchaseNumber" class="java.lang.Long"/>
+	<field name="storageNumber" class="java.lang.Integer"/>
+	<field name="preparationNumber" class="java.lang.Integer"/>
+	<field name="destoryedNumber" class="java.lang.Integer"/>
+	<field name="scrapedNumber" class="java.lang.Integer"/>
+	<field name="loseNumber" class="java.lang.Integer"/>
+	<field name="maintenanceNumber" class="java.lang.Integer"/>
+	<field name="repairedNumber" class="java.lang.Integer"/>
+	<field name="stepNumber" class="java.lang.Integer"/>
+	<field name="availableNumber" class="java.lang.Integer"/>
+	<field name="yyyymm" class="java.lang.String"/>
+	<field name="currentDate" class="java.lang.String"/>
+	<field name="sumPurchaseNumber" class="java.lang.Long"/>
+	<field name="sumStorageNumber" class="java.lang.Integer"/>
+	<field name="sumPreparationNumber" class="java.lang.Integer"/>
+	<field name="sumDestoryedNumber" class="java.lang.Integer"/>
+	<field name="sumScrapedNumber" class="java.lang.Integer"/>
+	<field name="sumLoseNumber" class="java.lang.Integer"/>
+	<field name="sumRepairedNumber" class="java.lang.Integer"/>
+	<field name="sumMaintenanceNumber" class="java.lang.Integer"/>
+	<field name="sumStepNumber" class="java.lang.Integer"/>
+	<field name="sumAvailableNumber" class="java.lang.Integer"/>
+	<field name="titleName" class="java.lang.String"/>
+	<variable name="sumdestoryedNumber" class="java.lang.Integer" resetType="Group" resetGroup="sum" calculation="Sum">
+		<variableExpression><![CDATA[$F{destoryedNumber}==null?new Integer(0):$F{destoryedNumber}]]></variableExpression>
+	</variable>
+	<variable name="sumpurchaseNumber" class="java.lang.Long" resetType="Group" resetGroup="sum" calculation="Sum">
+		<variableExpression><![CDATA[$F{purchaseNumber}==null?new Integer(0):$F{purchaseNumber}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sumstorageNumber" class="java.lang.Integer" resetType="Group" resetGroup="sum" calculation="Sum">
+		<variableExpression><![CDATA[$F{storageNumber}==null?new Integer(0):$F{storageNumber}]]></variableExpression>
+	</variable>
+	<variable name="sumpreparationNumber" class="java.lang.Integer" resetType="Group" resetGroup="sum" calculation="Sum">
+		<variableExpression><![CDATA[$F{preparationNumber}==null?new Integer(0):$F{preparationNumber}]]></variableExpression>
+	</variable>
+	<variable name="sumscrapedNumber" class="java.lang.Integer" resetType="Group" resetGroup="sum" calculation="Sum">
+		<variableExpression><![CDATA[$F{scrapedNumber}==null?new Integer(0):$F{scrapedNumber}]]></variableExpression>
+	</variable>
+	<variable name="sumloseNumber" class="java.lang.Integer" resetType="Group" resetGroup="sum" calculation="Sum">
+		<variableExpression><![CDATA[$F{loseNumber}==null?new Integer(0):$F{loseNumber}]]></variableExpression>
+	</variable>
+	<variable name="sumrepairedNumber" class="java.lang.Integer" resetType="Group" resetGroup="sum" calculation="Sum">
+		<variableExpression><![CDATA[$F{repairedNumber}==null?new Integer(0):$F{repairedNumber}]]></variableExpression>
+	</variable>
+	<variable name="summaintenanceNumber" class="java.lang.Integer" resetType="Group" resetGroup="sum" calculation="Sum">
+		<variableExpression><![CDATA[$F{maintenanceNumber}==null?new Integer(0):$F{maintenanceNumber}]]></variableExpression>
+	</variable>
+	<variable name="sumstepNumber" class="java.lang.Integer" resetType="Group" resetGroup="sum" calculation="Sum">
+		<variableExpression><![CDATA[$F{stepNumber}==null?new Integer(0):$F{stepNumber}]]></variableExpression>
+	</variable>
+	<variable name="sumavailableNumber" class="java.lang.Integer" resetType="Group" resetGroup="sum" calculation="Sum">
+		<variableExpression><![CDATA[$F{availableNumber}==null?new Integer(0):$F{availableNumber}]]></variableExpression>
+	</variable>
+	<group name="sum">
+		<groupExpression><![CDATA[$F{assetTypeName}]]></groupExpression>
+		<groupFooter>
+			<band height="20">
+				<staticText>
+					<reportElement uuid="197ba55e-5164-4329-892c-4871a4c0c27a" mode="Opaque" x="0" y="0" width="150" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Pictonic" isBold="true"/>
+					</textElement>
+					<text><![CDATA[小計]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="35da139d-942d-4897-93ff-e3ef1f5a710f" mode="Opaque" x="265" y="0" width="99" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Pictonic"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="31b8da24-1f19-48c5-8143-e26fd540e1c0" mode="Opaque" x="364" y="0" width="91" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Pictonic"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="1988c65c-6733-4932-bb70-5663376fb477" mode="Opaque" x="455" y="0" width="96" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Pictonic"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="69104b24-6574-428a-af31-cadf22c63cdb" mode="Opaque" x="551" y="0" width="92" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Pictonic"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<textField pattern="#,##0">
+					<reportElement uuid="a8890645-a352-4a50-932b-a611f2797460" mode="Opaque" x="893" y="0" width="70" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Pictonic" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumdestoryedNumber}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="b1238ea7-d267-4cd4-aa28-f913abdbce63" mode="Opaque" x="643" y="0" width="110" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Pictonic" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumpurchaseNumber}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="036874fc-0194-473e-ad78-2b5e4653c84f" mode="Opaque" x="753" y="0" width="70" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Pictonic" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumstorageNumber}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="6cd8cfa9-8a0e-471f-b018-83584bfca28f" mode="Opaque" x="823" y="0" width="70" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Pictonic" isBold="true"/>
+					</textElement>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="5794130e-9bf3-45af-8d87-0d264252e70d" mode="Opaque" x="963" y="0" width="70" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Pictonic" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumscrapedNumber}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="fb00df28-0ab8-4128-8c6c-1aae2ca36bf9" mode="Opaque" x="1033" y="0" width="70" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Pictonic" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumloseNumber}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="83864721-ca59-475e-b229-eddab84b14f3" mode="Opaque" x="1173" y="0" width="70" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Pictonic" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumrepairedNumber}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="83864721-ca59-475e-b229-eddab84b14f3" mode="Opaque" x="1103" y="0" width="70" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Pictonic" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{summaintenanceNumber}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="a529c507-333e-4a04-8df3-3012883ecbd1" mode="Opaque" x="1243" y="0" width="70" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Pictonic" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumstepNumber}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="c10ce57d-d1d2-4a64-9f00-415b7af4a105" mode="Opaque" x="1313" y="0" width="70" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Pictonic" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumavailableNumber}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="5c7391a9-bb6b-4c04-8163-4c98ea395771" mode="Opaque" x="150" y="0" width="115" height="20" backcolor="#FFFF99"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Pictonic"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d9cc5094-75e9-4013-81c8-6e598128f6ab" x="455" y="0" width="96" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="14"/>
+				</textElement>
+				<text><![CDATA[設備庫存表-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="77c3bb91-9158-4b89-8039-674e35ec3236" mode="Opaque" x="150" y="40" width="115" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[通訊模式]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="27213b83-4db6-4f4a-baf8-9f34e4ae36a3" mode="Opaque" x="265" y="40" width="99" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[機型]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="12f314c3-4cf4-4325-b6b0-5795bad04632" mode="Opaque" x="364" y="40" width="91" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[支援功能]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2996bdc7-ef79-460f-87b3-13d68b460989" mode="Opaque" x="0" y="40" width="150" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[客戶]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22afea12-8dd0-4246-b31d-d5a1bf899027" mode="Opaque" x="455" y="40" width="96" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[採購年月]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="57c35417-34e8-4506-847b-311b5613781d" mode="Opaque" x="551" y="40" width="92" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[合約編號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="89f393d9-6235-451f-bb6d-6f8ad719736d" mode="Opaque" x="1313" y="40" width="70" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[可用台數]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="559ea524-c49b-4b57-901c-016b4bde3ffe" mode="Opaque" x="1243" y="40" width="70" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[已佈台數]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f8235226-2663-481e-b034-38c6d6f1a5e8" mode="Opaque" x="1173" y="40" width="70" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[維修中]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f8235226-2663-481e-b034-38c6d6f1a5e8" mode="Opaque" x="1103" y="40" width="70" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[送修中]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd895058-1c72-4456-953d-077a1845a49d" mode="Opaque" x="1033" y="40" width="70" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[待報廢]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="308dac1a-6816-48ee-bff9-ed136005d642" mode="Opaque" x="963" y="40" width="70" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[已報廢]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b95fe059-c131-4da1-952c-57ae0737bcbb" mode="Opaque" x="893" y="40" width="70" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[已銷毀]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7c030674-3ef4-4b76-974d-e37c67f5cb63" mode="Opaque" x="823" y="40" width="70" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[備機]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="98315129-b1dc-44b5-898f-d7ff8169fc3a" mode="Opaque" x="753" y="40" width="70" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[入庫台數]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32bae8a8-f160-4cb2-986a-69da39c2e132" mode="Opaque" x="643" y="40" width="110" height="20" backcolor="#99CCFF"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[採購台數]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="bd36e24e-4979-46ba-87f8-6b1f7d7a9c06" x="0" y="20" width="150" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{yyyymm}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d7c036db-39d6-4759-8cd8-e6f661581967" x="551" y="0" width="92" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pictonic" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{titleName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="2e441a16-b765-48f7-96f3-bb8330f8007b" stretchType="RelativeToBandHeight" x="265" y="0" width="99" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{assetTypeName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="24a046d5-e1f0-43f3-90bc-07603fe252e2" stretchType="RelativeToBandHeight" x="150" y="0" width="115" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{maTypeName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="5e6c170d-3f65-47a3-a717-6b1e9879f52d" stretchType="RelativeToBandHeight" x="364" y="0" width="91" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{supporedFunctionName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement uuid="87eda725-d836-4a0c-9007-c28875f2106c" stretchType="RelativeToBandHeight" x="455" y="0" width="96" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{purchaseYearMonth}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="fb43ef2b-9065-4472-9bc2-a37397a31090" stretchType="RelativeToBandHeight" x="551" y="0" width="92" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contractId}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="a6c6eea9-5f9a-472f-97f9-7f24f6783265" stretchType="RelativeToBandHeight" x="643" y="0" width="110" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{purchaseNumber}==null?new Integer(0):$F{purchaseNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="8498d652-c248-4f20-bdc1-ae151dc6d97f" stretchType="RelativeToBandHeight" x="753" y="0" width="70" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{storageNumber}==null?new Integer(0):$F{storageNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="16cea522-e568-43c5-8076-b2494baca534" stretchType="RelativeToBandHeight" x="893" y="0" width="70" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{destoryedNumber}==null?new Integer(0):$F{destoryedNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="6c5af959-ed35-4eb4-9727-608ad3f06898" stretchType="RelativeToBandHeight" x="963" y="0" width="70" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{scrapedNumber}==null?new Integer(0):$F{scrapedNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="54178439-fb82-410b-bcb3-6714d4c8a40a" stretchType="RelativeToBandHeight" x="1033" y="0" width="70" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{loseNumber}==null?new Integer(0):$F{loseNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="81afeb56-d37d-4a1e-a05f-45dd3b8a11b9" stretchType="RelativeToBandHeight" x="1173" y="0" width="70" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{repairedNumber}==null?new Integer(0):$F{repairedNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="81afeb56-d37d-4a1e-a05f-45dd3b8a11b9" stretchType="RelativeToBandHeight" x="1103" y="0" width="70" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{maintenanceNumber}==null?new Integer(0):$F{maintenanceNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="f4064266-bb35-4929-a1cd-fc8fec0ee18c" stretchType="RelativeToBandHeight" x="1243" y="0" width="70" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stepNumber}==null?new Integer(0):$F{stepNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="882d8463-0b92-4d0c-bf25-a755ba781a57" stretchType="RelativeToBandHeight" x="1313" y="0" width="70" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{availableNumber}==null?new Integer(0):$F{availableNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="0a345364-a6e4-4025-8a49-851bd3f3a9ec" stretchType="RelativeToBandHeight" x="823" y="0" width="70" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="129f3f93-1ebd-4c00-94b3-eb487fcffddb" stretchType="RelativeToBandHeight" x="0" y="0" width="150" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{companyName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="40">
+			<staticText>
+				<reportElement uuid="c17164e2-1790-4c93-a3af-28f40f51d59a" x="1243" y="20" width="70" height="20"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[列印日期：]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4ee76be8-575d-44b8-aa28-82faf9ce8a07" x="1313" y="20" width="70" height="20"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{currentDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ff0297d9-a809-4bc6-9563-18c012658bbf" mode="Opaque" x="0" y="0" width="150" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[合計]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement uuid="05c5a6c4-d104-40af-8c5c-f1d9c0750cb9" mode="Opaque" x="643" y="0" width="110" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sumPurchaseNumber}==null?new Long(0):$F{sumPurchaseNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="3023cb34-6657-460b-adc9-3685348fb1e3" mode="Opaque" x="753" y="0" width="70" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sumStorageNumber}==null?new Integer(0):$F{sumStorageNumber}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="61222eef-af01-4877-91ab-62adbb12fdbb" mode="Opaque" x="823" y="0" width="70" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" isBold="true"/>
+				</textElement>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="fa948741-a7fa-428f-a1a9-f3434eadb952" mode="Opaque" x="893" y="0" width="70" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sumDestoryedNumber}==null?new Integer(0):$F{sumDestoryedNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="166247fd-842f-45ea-adf3-47e1f608d476" mode="Opaque" x="963" y="0" width="70" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sumScrapedNumber}==null?new Integer(0):$F{sumScrapedNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="20ad2784-e164-4daa-873e-40bbf5059203" mode="Opaque" x="1033" y="0" width="70" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sumLoseNumber}==null?new Integer(0):$F{sumLoseNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="92830e0c-a7f2-446a-9321-5284df278fec" mode="Opaque" x="1173" y="0" width="70" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sumRepairedNumber}==null?new Integer(0):$F{sumRepairedNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="92830e0c-a7f2-446a-9321-5284df278fec" mode="Opaque" x="1103" y="0" width="70" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sumMaintenanceNumber}==null?new Integer(0):$F{sumMaintenanceNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="0aa65470-3a69-472c-b8c4-e916a8f75400" mode="Opaque" x="1243" y="0" width="70" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sumStepNumber}==null?new Integer(0):$F{sumStepNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="ce82cbb0-db7c-47b5-848c-99741c1d17e9" mode="Opaque" x="1313" y="0" width="70" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pictonic" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sumAvailableNumber}==null?new Integer(0):$F{sumAvailableNumber}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4cc11632-1b57-4a5e-abd8-5634422c41b0" mode="Opaque" x="150" y="0" width="115" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="135ff924-0445-4081-bcc0-b147db7e61f8" mode="Opaque" x="265" y="0" width="99" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e4532a18-7580-404c-9dfe-6e7e5ee6730b" mode="Opaque" x="364" y="0" width="91" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bf0e058e-8bcf-4079-8f62-5636421f6d21" mode="Opaque" x="455" y="0" width="96" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0b1f2e83-f171-403d-9a4d-7982ec996011" mode="Opaque" x="551" y="0" width="92" height="20" backcolor="#FFCC00"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

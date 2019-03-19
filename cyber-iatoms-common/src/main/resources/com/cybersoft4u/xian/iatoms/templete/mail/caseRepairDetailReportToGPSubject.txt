@@ -1,0 +1,1 @@
+${mailSubject} 案件報修明細_${mailCreateDate}

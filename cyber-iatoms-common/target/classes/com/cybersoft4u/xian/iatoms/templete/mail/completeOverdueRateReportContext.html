@@ -1,0 +1,73 @@
+
+<table style='font-family:PMingLiU;color:#000000; width : 1150px; height: auto;'  >
+	<tr>
+		<td colspan="5">
+		Dears,
+		</td>
+	</tr>
+	<tr>
+		<td colspan="5">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${shortName} 完修逾時率警示通知報表${result}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="5">
+			<table cellspacing=0 cellpadding=0  cellspacing="0px" style="font-family:PMingLiU;color:#000000;word-break:break-all; word-wrap:break-all; width :500px; margin-left :30px;border:1px solid black;"   >
+				<tr>
+					<td colspan="2" style="background-color: #DEFFAC; font-size: 20px; text-align: left;">
+						 ${shortName}完修逾時率警示通知
+					</td>
+				</tr>
+				<tr>
+					<td style= "border:1px solid black; width :30%; text-align:left; background-color: #AAAAFF ">
+						資料區間:
+					</td>
+					<td style= "border:1px solid black; width :70%; align:center ">
+						${startDate}~${endDate}
+					</td>
+				</tr>
+				<tr>
+					<td style= "border:1px solid black; width :30%; align:center;background-color: #AAAAFF ">
+						資料時間:
+					</td>
+					<td style= "border:1px solid black; width :70%; align:center ">
+						${dateTime}
+					</td>
+				</tr>
+				<tr>
+					<td style= "border:1px solid black; width :30%; align:center;background-color: #AAAAFF ">
+						完修逾時率達:
+					</td>
+					<td style= "border:1px solid black; width :70%; align:center ">
+						${perNumber}
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="5">
+			<table cellspacing=0 cellpadding=0  cellspacing="0px" style="font-family:PMingLiU;color:#000000;word-break:break-all; word-wrap:break-all; width :910px; margin-left :30px;border:1px solid black;"   >
+				<thead >
+					<tr style="text-align: center; background-color: #AAAAFF">
+						<th style= "border:1px solid black; width :15%; align:center ">序號</th>
+						<th style= "border:1px solid black; width :25%; align:left ">維修廠商</th>
+						<th style= "border:1px solid black; width :15%; align:right ">進件</th>
+						<th style= "border:1px solid black; width :15%; align:right ">結案</th>
+						<th style= "border:1px solid black; width :15%; align:right ">完修逾時</th>
+						<th style= "border:1px solid black; width :15%; align:right ">完修逾時比率</th>
+					</tr>
+				</thead>
+				<tbody>
+					${caseInfoDetails}
+				</tbody>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="5">
+			${list}
+		</td>
+	</tr>
+	
+</table>

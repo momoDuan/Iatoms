@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="REPOSITORY_LIST_REPORT" language="groovy" pageWidth="200" pageHeight="45" orientation="Landscape" columnWidth="200" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{contentMeasure}.length()>30]]></conditionExpression>
+			<style fontName="Pictonic">
+				<box topPadding="15" bottomPadding="15">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<paragraph lineSpacing="1_1_2"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{columnName}.startsWith( '01' )||
+																$V{columnName}.startsWith( '02' )||
+																$V{columnName}.startsWith( '03' )||
+																$V{columnName}.startsWith( '04' )||
+																$V{columnName}.startsWith( '05' )||
+																$V{columnName}.startsWith( '06' )||
+																$V{columnName}.startsWith( '07' )||
+																$V{columnName}.startsWith( '08' )||
+																$V{columnName}.startsWith( '09' )||
+																$V{columnName}.startsWith( '10' )||
+																$V{columnName}.startsWith( '11' )||
+																$V{columnName}.startsWith( '13' )||
+																$V{columnName}.startsWith( '15' )||
+																$V{columnName}.startsWith( '16' )||
+																$V{columnName}.startsWith( '20' )||
+																$V{columnName}.startsWith( '21' )||
+																$V{columnName}.startsWith( '23' )||
+																$V{columnName}.startsWith( '24' )||
+																$V{columnName}.startsWith( '25' )||
+																$V{columnName}.startsWith( '26' )||
+																$V{columnName}.startsWith( '27' )||
+																$V{columnName}.startsWith( '28' )||
+																$V{columnName}.startsWith( '29' )||
+																$V{columnName}.startsWith( '30' )||
+																$V{columnName}.startsWith( '31' )||
+																$V{columnName}.startsWith( '32' )||
+																$V{columnName}.startsWith( '33' )||
+																$V{columnName}.startsWith( '34' )||
+                                                                $V{columnName}.startsWith( '36' )||
+                                                                $V{columnName}.startsWith( '39' )||
+                                                                $V{columnName}.startsWith( '42' )||
+                                                                $V{columnName}.startsWith( '43' )||
+                                                                $V{columnName}.startsWith( '44' )||
+                                                                $V{columnName}.startsWith( '45' )||
+                                                                $V{columnName}.startsWith( '46' )||
+                                                                $V{columnName}.startsWith( '47' )||
+                                                                $V{columnName}.startsWith( '48' )||
+                                                                $V{columnName}.startsWith( '49' )||
+                                                                $V{columnName}.startsWith( '50' )||
+                                                                $V{columnName}.startsWith( '51' )||
+                                                                $V{columnName}.startsWith( '52' )||
+                                                                $V{columnName}.startsWith( '54' )||
+                                                                $V{columnName}.startsWith( '55' )||
+                                                                $V{columnName}.startsWith( '57' )||
+                                                                $V{columnName}.startsWith( '58' )]]></conditionExpression>
+			<style hAlign="Left" vAlign="Middle" fontName="Pictonic">
+				<paragraph lineSpacing="1_1_2"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{columnName}.startsWith( '12' )||
+$V{columnName}.startsWith( '14' )||
+$V{columnName}.startsWith( '17' )||
+$V{columnName}.startsWith( '18' )||
+$V{columnName}.startsWith( '19' )||
+$V{columnName}.startsWith( '22' )||
+$V{columnName}.startsWith( '35' )||
+$V{columnName}.startsWith( '37' )||
+$V{columnName}.startsWith( '38' )||
+$V{columnName}.startsWith( '40' )||
+$V{columnName}.startsWith( '41' )||
+$V{columnName}.startsWith( '53' )||
+$V{columnName}.startsWith( '56' )]]></conditionExpression>
+			<style hAlign="Center" vAlign="Middle" fontName="Pictonic">
+				<paragraph lineSpacing="1_1_2"/>
+			</style>
+		</conditionalStyle>
+	</style>
+	<field name="rowNo" class="java.lang.Integer"/>
+	<field name="columnName" class="java.lang.String"/>
+	<field name="content" class="java.lang.String"/>
+	<group name="myGroup">
+		<groupExpression><![CDATA[$F{rowNo}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="45" splitType="Stretch">
+			<crosstab>
+				<reportElement x="0" y="0" width="200" height="45" printWhenGroupChanges="myGroup"/>
+				<crosstabHeaderCell>
+					<cellContents>
+						<staticText>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Pictonic" size="12" isBold="true"/>
+							</textElement>
+							<text><![CDATA[序號]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="rowNo" width="50">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{rowNo}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="50" height="21"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Pictonic" size="12"/>
+									<paragraph lineSpacing="1_1_2"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{rowNo}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="columnName" height="25">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{columnName}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField isBlankWhenNull="true">
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="150" height="25"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Pictonic" size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{columnName}.substring( 2 )]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="contentMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{content}]]></measureExpression>
+				</measure>
+				<crosstabCell width="150" height="21">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="150" height="21"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Pictonic" size="12"/>
+								<paragraph lineSpacing="1_1_2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{contentMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="rowNo">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement>
+								<font fontName="Pictonic" size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{contentMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="columnName">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement>
+								<font fontName="Pictonic" size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{contentMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="rowNo" columnTotalGroup="columnName">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement>
+								<font fontName="Pictonic" size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{contentMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

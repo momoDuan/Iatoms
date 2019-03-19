@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">	
+	
+	
+	 <!-- 資源文件綁定器 -->
+   	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	   	<property name="basenames">
+	   		<list>
+	   			<value>cafe.core.messages.cafe_core_messages</value>
+	   			<value>cafe.workflow.messages.cafe_workflow_messages</value>	
+	   			<value>com.cybersoft4u.xian.iatoms.messages.cyber_iatoms_messages</value>	
+	   			<value>com.cybersoft4u.xian.iatoms.messages.cyber_iatoms</value>	 			
+	   		</list>	
+	   	</property>
+   	</bean>
+  	 
+  	 <!-- 异步处理Service注入  Star-->
+	<bean id="threadPoolExecutor" class="java.util.concurrent.ThreadPoolExecutor">
+		<constructor-arg index="0" value="20"/>
+		<constructor-arg index="1" value="20"/>
+		<constructor-arg index="2" value="2"/>
+		<constructor-arg index="3">
+			<util:constant static-field="java.util.concurrent.TimeUnit.SECONDS"></util:constant>
+		</constructor-arg>
+		<constructor-arg index="4">
+			<bean class="java.util.concurrent.LinkedBlockingQueue"/>
+		</constructor-arg>
+	</bean>
+</beans>

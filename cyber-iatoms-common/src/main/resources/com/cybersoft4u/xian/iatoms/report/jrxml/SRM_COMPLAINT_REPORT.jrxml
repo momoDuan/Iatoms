@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SRM_COMPLAINT_REPORT" pageWidth="1980" pageHeight="43" orientation="Landscape" columnWidth="1980" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="9a010cd3-9d24-40c5-83a8-4fc7046d7707">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="caseId" class="java.lang.String"/>
+	<field name="customerName" class="java.lang.String"/>
+	<field name="merchantCode" class="java.lang.String"/>
+	<field name="companyName" class="java.lang.String"/>
+	<field name="complaintStaff" class="java.lang.String"/>
+	<field name="createdDate" class="java.util.Date"/>
+	<field name="complaintDate" class="java.util.Date"/>
+	<field name="contactWay" class="java.lang.String"/>
+	<field name="isVip" class="java.lang.String"/>
+	<field name="questionTypeName" class="java.lang.String"/>
+	<field name="userName" class="java.lang.String"/>
+	<field name="merchantName" class="java.lang.String"/>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="180" height="21" uuid="a72b605b-1c2a-4162-8f24-4daf6756e34c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[客訴案號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="0" width="150" height="21" uuid="21cb96b5-4348-4763-9f41-0ad151b92fa0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[申訴人員]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="930" y="0" width="200" height="21" uuid="d9a39469-937a-47be-bb72-f77f1bd51e4a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[特店代號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1480" y="0" width="150" height="21" uuid="c0ffd489-eb36-4040-af9a-bc7a30234aa9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[歸責廠商]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1630" y="0" width="150" height="21" uuid="a22a28bb-9637-4ebe-884c-a3084259991a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[歸責人員]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1780" y="0" width="200" height="21" uuid="058129b2-db69-4349-9e74-ae9c81e7bc8d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[新增日期]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="0" width="150" height="21" uuid="3a3a32e5-84da-4fe4-9dbd-ef5d2102421b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[發生日期]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="0" width="200" height="21" uuid="09800a7a-56c0-45c6-9c59-50a4e12ef30a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[聯繫方式]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="680" y="0" width="150" height="21" uuid="878be043-7a19-475d-b37d-f25af415cb04"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[客戶]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="830" y="0" width="100" height="21" uuid="4e62f377-6437-4f94-821c-77a89abf01ca"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[VIP特店]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1130" y="0" width="200" height="21" uuid="72e9af4e-1046-4177-b122-c07d63f6c7ce"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[特店名稱]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1330" y="0" width="150" height="21" uuid="2e1dcddb-9eef-4109-848f-a1018432899a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" isBold="true" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[問題分類]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="180" height="21" uuid="a77ef4e5-843a-4887-9e35-f6077fc3cdf6"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{caseId}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="930" y="0" width="200" height="21" uuid="9380791b-fa1a-4f03-bf4a-516af17c6761"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{merchantCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="1480" y="0" width="150" height="21" uuid="3270a83a-b615-4ff8-8122-713c695e9f1a"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{companyName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="1630" y="0" width="150" height="21" uuid="f264a125-fbf5-4cef-8bd2-07db2792e77f"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{userName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="180" y="0" width="150" height="21" uuid="7b4e26ca-1160-4af0-b1ca-c5a750560b96"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{complaintStaff}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="1780" y="0" width="200" height="21" uuid="b0614ed3-c6bf-44b4-b6ef-6a821d42958b"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{createdDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="330" y="0" width="150" height="21" uuid="d3ee6987-e208-4268-b982-e9ab54c90763"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{complaintDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="480" y="0" width="200" height="21" uuid="715a5995-3116-4b06-a481-2afb5c7969d8"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contactWay}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="680" y="0" width="150" height="21" uuid="153627fd-6400-440f-968f-3fdc9b8c3f8c"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="830" y="0" width="100" height="21" uuid="ea19917c-01e2-485c-90b3-f7c047b45786"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isVip}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="1130" y="0" width="200" height="21" uuid="03cc2b4a-dad9-4677-8f6d-b2aef728f9d1"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{merchantName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="1330" y="0" width="150" height="21" uuid="1664ce62-b0a6-4669-917c-390bee0fbc87"/>
+				<box topPadding="10" leftPadding="0" bottomPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pictonic" size="12" pdfFontName="/com/cybersoft4u/xian/iatoms/report/jrxml/Pictonic.ttc" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{questionTypeName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

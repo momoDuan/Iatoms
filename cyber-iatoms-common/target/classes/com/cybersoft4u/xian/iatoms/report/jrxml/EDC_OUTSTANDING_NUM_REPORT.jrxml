@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EDC_OUTSTANDING_NUM_REPORT" language="groovy" pageWidth="300" pageHeight="140" whenNoDataType="AllSectionsNoDetail" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="40f23fb0-dfa5-4cfb-94c1-d6c42475bd3c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="net.sf.jasperreports.engine.JasperReport">
+		<defaultValueExpression><![CDATA["C:\\Users\\cybersoft\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR_1" class="net.sf.jasperreports.engine.JasperReport"/>
+	<field name="crossTabReportDTOsOrderByShort" class="java.util.List"/>
+	<field name="crossTabReportDTOsOrderByDept" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="5d107b85-d700-4dfb-be87-519af9c1e9c4" mode="Opaque" x="0" y="0" width="300" height="20" backcolor="#00CC99"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[刷卡機裝機數]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="57">
+			<subreport>
+				<reportElement uuid="a12993f7-c2a1-4734-aadc-20827ce91dd1" x="0" y="0" width="300" height="40"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{crossTabReportDTOsOrderByShort})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="60">
+			<subreport isUsingCache="true">
+				<reportElement uuid="4102afb2-ebe2-4500-9303-98c030f97853" x="0" y="0" width="300" height="60"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{crossTabReportDTOsOrderByDept})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR_1}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>
